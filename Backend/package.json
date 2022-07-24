@@ -4,7 +4,8 @@
   "description": "This is a API that will be used to create a hospital management system for phj",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "devStart": "nodemon index.js"
   },
   "author": "Aldaine Clarke",
   "license": "ISC",
