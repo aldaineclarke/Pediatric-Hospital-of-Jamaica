@@ -8,7 +8,6 @@ let patientSchema = new Schema({
     DOB: {type:Date},
     guardianName:{type:String},
     gender:{type: String},
-    email:{type:String},
     phone: {type:String},
     Address:[{
         street: {type: String},
