@@ -8,7 +8,7 @@ class PatientsController{
      * Gets all the patients from the database
      * 
      */
-    async getAllPatients(req, res, next){
+    static async getAllPatients(req, res, next){
         try{
             let patients = await Patient.find();
             res.status(200).json(patients); 
@@ -21,7 +21,7 @@ class PatientsController{
      * Gets a singles patient from the database where it matches the id that is found in the request parameters
      * 
      */
-    async getSinglePatient(req, res, next){
+    static async getSinglePatient(req, res, next){
         try{
             let id = parseInt(req.params.id);
             let patient = await Patient.findById(id);
@@ -37,7 +37,7 @@ class PatientsController{
      * ### Description
      * Creates a single patient with the data that is submitted in the request body
      */
-    async createPatient(req, res, next){
+    static async createPatient(req, res, next){
         try{
             let data = {
                 fname: req.body.fname,
@@ -63,7 +63,7 @@ class PatientsController{
      * ### Description
      * Updates the patient with the data that is passed in the request body, and identifies the patient by the id passed in the request parameters
      */
-    async updatePatient(req,res, next){
+    static async updatePatient(req,res, next){
         try{
            let id = parseInt(req.params.id);
            if(Object.keys(req.body).length == 0){
@@ -82,7 +82,7 @@ class PatientsController{
      * ### Description
      * Deletes the patient that matches the id that is passed in the request url.
      */
-    async deletePatient(req,res, next){
+    static async deletePatient(req,res, next){
         try{
             let id = parseInt(req.params.id);
             await Patient.findByIdAndDelete(id);
@@ -92,4 +92,4 @@ class PatientsController{
         }
     }
 }
-module.exports = new PatientsController();
+module.exports = PatientsController;

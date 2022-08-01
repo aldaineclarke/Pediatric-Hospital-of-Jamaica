@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 
 let medRecord = new Schema({
-    patient: {type: Schema.Types.ObjectId, ref:"patient"},
-    doctor: {type:Schema.Types.ObjectId, ref:"doctor"},
+    patient: {type: Schema.Types.ObjectId, ref:"Patient"},
+    doctor: {type:Schema.Types.ObjectId, ref:"Doctor"},
     complaint:{type: String},
     diagnosis: {type: String},
     comments: [{
@@ -14,4 +14,4 @@ let medRecord = new Schema({
 }, {timeseries: true})
 
 
-module.exports = model("medRecord", medRecord);
+module.exports = model("MedRecord", medRecord);

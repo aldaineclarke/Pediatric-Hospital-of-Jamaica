@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const patientsController = require("../controllers/patients.controller");
+const PatientsController = require("../controllers/patients.controller");
 
 
 router.param(":id", (req,res, next,id)=>{
@@ -10,15 +10,15 @@ router.param(":id", (req,res, next,id)=>{
 
 router
     .route("/")
-    .get(patientsController.getAllPatients)
-    .post(patientsController.createPatient);
-    
+    .get(PatientsController.getAllPatients)
+    .post(PatientsController.createPatient);
+
 router
     .route("/:id")
-    .get(patientsController.getSinglePatient)
-    .patch(patientsController.updatePatient)
-    .put(patientsController.updatePatient)
-    .delete(patientsController.deletePatient)
+    .get(PatientsController.getSinglePatient)
+    .patch(PatientsController.updatePatient)
+    // .put(PatientsController.updatePatient)
+    .delete(PatientsController.deletePatient)
 
 
 
