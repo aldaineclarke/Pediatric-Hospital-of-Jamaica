@@ -78,5 +78,18 @@ class PatientsController{
 
 
     }
+    /**
+     * ### Description
+     * Deletes the patient that matches the id that is passed in the request url.
+     */
+    async deletePatient(req,res, next){
+        try{
+            let id = parseInt(req.params.id);
+            await Patient.findByIdAndDelete(id);
+            res.status(200).json({message: "Patient deleted"})
+        }catch(error){
+            res.status(500).json({message: "Unable to delete user"})
+        }
+    }
 }
 module.exports = new PatientsController();
