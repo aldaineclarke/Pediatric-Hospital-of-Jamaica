@@ -1,11 +1,23 @@
 const User = require("../schemas/user.schema");
 const bcrypt = require("bcrypt")
 class UsersController{
+
+    /**
+     * ### Description
+     * Authenticates the user that is passed in the body of the request. 
+     */
+    static async loginUser(req,res, next){
+        try{
+
+        }catch(error){
+
+        }
+    }
     /**
      * ### Description
      * Gets all the users that are saved in the database.
      */
-    static async getAllUsers(res, req, next){
+    static async getAllUsers(req, res, next){
         try{
             let users = await User.find();
             res.status(200).json({
@@ -26,7 +38,7 @@ class UsersController{
      * ### Description
      * Gets a single student which matches the id that was passed in the url
      */
-     static async getUserById(res, req, next){
+     static async getUserById(req, res, next){
         try{
             let id = req.params.id;
             let user = await User.findById(id);
@@ -47,7 +59,7 @@ class UsersController{
      * ### Description
      * Updates the user with the data that is passed to the request in the body.
      */
-     static async updateUser(res, req, next){
+     static async updateUser(req, res, next){
         try{
             let id = req.params.id;
             let user = await User.findByIdAndUpdate(id, req.body, {new:true});
@@ -68,7 +80,7 @@ class UsersController{
      * ### Description
      * Delete the user that matches the id that is passed in the url
      */
-         static async deleteUser(res, req, next){
+         static async deleteUser(req, res, next){
             try{
                 let id = req.params.id;
                 await User.findByIdAndUpdate(id);
@@ -86,7 +98,7 @@ class UsersController{
      * ### Description
      * Creates a new User from the data that is passed in the request body. 
      */
-         static async createUser(res, req, next){
+         static async createUser(req, res, next){
             try{
                 let user = await new User(req.body);
                 res.status(200).json({
