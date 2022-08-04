@@ -17,4 +17,4 @@ let patientSchema = new Schema({
 })
 
 
-module.exports = model("patient", patientSchema);
+module.exports = model("Patient", patientSchema);
