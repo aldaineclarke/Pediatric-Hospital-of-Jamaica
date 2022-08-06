@@ -138,6 +138,24 @@ class UsersController{
                 })
             }
         }
+        async getAllUsersByRole(role){
+            try{
+                if(role){
+                    let users = await User.find({"role":role})
+                    return res.status(200).json({
+                        status:"Success",
+                        data:{
+                            users
+                        }
+                    })
+                }
+            }catch(error){
+                res.status(400).json({
+                    status:"Failed",
+                    message:error.message
+                })
+            }
+        }
 }
 
 module.exports = UsersController;
