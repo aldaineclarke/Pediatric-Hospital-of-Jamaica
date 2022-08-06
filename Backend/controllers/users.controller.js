@@ -8,9 +8,33 @@ class UsersController{
      */
     static async loginUser(req,res, next){
         try{
+            let username = req.body.username;
+            let user = await User.findOne({"username": username});
+            if(user){
+                if(await bcrypt.compare(password, user.password)){
+                    return res.status(200).json({
+                        status: "Success",
+                        data:{
+                            user
+                        },
+                        message: "Login Successful"
+                    })
+                }
+                return res.status(401).json({
+                    status:"Success",
+                    message:"Credential incorrect."
+                })
 
+            }
+            res.status(401).json({
+                status: "Failed",
+                message: "User is not found in the database"
+            })
         }catch(error){
-
+            res.status(400).json({
+                status:"Failed",
+                message:"Internal Error"
+            })
         }
     }
     /**

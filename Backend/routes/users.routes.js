@@ -13,6 +13,8 @@ router
     .patch(UsersController.updateUser)
     .delete(UsersController.deleteUser)
 
-
+router
+    .route("/login")
+    .post(UsersController.loginUser)
 
 module.exports = router;
