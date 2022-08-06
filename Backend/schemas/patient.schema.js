@@ -14,7 +14,7 @@ let patientSchema = new Schema({
         city:{type: String},
         parish:{type: String},
     }]
-})
-
+}, {timestamps:true});
+// Will create timestamps for the createdAt and updatedAt time;
 
 module.exports = model("Patient", patientSchema);

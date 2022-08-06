@@ -11,7 +11,7 @@ let medRecord = new Schema({
     }],
     prescription: {type:String}
 
-}, {timeseries: true})
+}, {timestamps: true})
 
 
 module.exports = model("MedRecord", medRecord);
