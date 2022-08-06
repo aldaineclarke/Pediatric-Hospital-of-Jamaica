@@ -43,6 +43,9 @@ class UsersController{
      */
     static async getAllUsers(req, res, next){
         try{
+            if(req.query.role){
+                return this.getAllUsersByRole(req,res,next);
+            }
             let users = await User.find();
             res.status(200).json({
                 status: "Success",
@@ -138,8 +141,9 @@ class UsersController{
                 })
             }
         }
-        async getAllUsersByRole(role){
+        static async getAllUsersByRole(req,res,next){
             try{
+                let role = req.query.role;
                 if(role){
                     let users = await User.find({"role":role})
                     return res.status(200).json({
