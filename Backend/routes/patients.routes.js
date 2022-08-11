@@ -2,10 +2,10 @@ const router = require("express").Router();
 const PatientsController = require("../controllers/patients.controller");
 
 
-router.param(":id", (req,res, next,id)=>{
-    console.log(id);
-    next();
-});
+// router.param(":id", (req,res, next,id)=>{
+//     console.log(id);
+//     next();
+// });
 
 
 router
