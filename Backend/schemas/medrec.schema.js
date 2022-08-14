@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 let medRecord = new Schema({
     patient: {type: Schema.Types.ObjectId, ref:"Patient"},
-    doctor: {type:Schema.Types.ObjectId, ref:"Doctor"},
+    doctor: {type:Schema.Types.ObjectId, ref:"User"},
     complaint:{type: String},
     diagnosis: {type: String},
     comments: [{
