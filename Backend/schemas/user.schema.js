@@ -8,8 +8,8 @@ const userSchema = mongoose.Schema({
     gender:{type: String},
     email:{type:String, unique:true, lowercase:true},
     phone: {type:String, required:true},
-    role:{type:String, required:true},
-    department:{type:String, required:true},
+    role:{type:String, required:true, default:"Customer"},
+    department:{type:String, required:true, default: "Customer"},
     username: {type: String, unique: true, required: true},
     password: {type:String, required:true},
     isSuperAdmin: {type:Boolean, default:false}
