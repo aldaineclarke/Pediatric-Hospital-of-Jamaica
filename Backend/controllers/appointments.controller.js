@@ -49,7 +49,7 @@ class AppointmentController{
      * ### Description
      * Updates the Appointment with the data that is passed in the request body, and identifies the patient by the id passed in the request parameters
      */
-    static async updatePatient(req,res, next){
+    static async updateAppointment(req,res, next){
         try{
            let id = parseInt(req.params.id);
            if(Object.keys(req.body).length == 0){
@@ -68,7 +68,7 @@ class AppointmentController{
      * ### Description
      * Deletes the Appointment that matches the id that is passed in the request url.
      */
-    static async deletePatient(req,res, next){
+    static async deleteAppointment(req,res, next){
         try{
             let id = parseInt(req.params.id);
             await Appointment.findByIdAndDelete(id);
