@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+.lower-head{
+    @apply shadow-md;
+   ul{
+        display:flex;
+        align-items:center;
+        padding: 1rem 0; 
+   }   
+    .nav__item{
+        color: $light-brown;
+        @apply mx-3;
+    }
+    .nav__item:first-of-type{
+        color:$dark-brown;
+        font-weight: bold;
+        @apply text-4xl ml-0 mr-auto;
+
+    }
+    .cta-buttons{
+        @apply ml-auto flex gap-2;
+
+    }
+}
+
