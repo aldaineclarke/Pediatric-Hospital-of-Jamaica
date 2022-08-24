@@ -1,4 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Spline+Sans:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+$dark-brown: #65483D;
+$light-brown: #9E8279;
+$gold:#FDBF6E;
+$dull-grey:#564C55;
+$mystic:#FF0490;
+
+body{
+    font-family: 'Spline Sans', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.cta__btn{
+    @apply inline-flex px-7 py-2 border rounded-full font-semibold;
+}
+.cta__btn--outline{
+    @apply border-light-brown border-2 text-light-brown;
+}
+.cta__btn--mystic{
+    @apply bg-mystic text-dark-brown;
+    box-shadow: 0px 10px 17px rgba($mystic,.25)
+}
