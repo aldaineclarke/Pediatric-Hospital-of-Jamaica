@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { AdminHomeComponent } from './Pages/admin-home/admin-home.component';
+import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 
 
 
@@ -15,6 +17,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
+    AdminHomeComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
