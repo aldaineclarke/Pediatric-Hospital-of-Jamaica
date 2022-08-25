@@ -163,8 +163,15 @@
             img{
                 height: 100%;
                 border-radius: 1rem;
+                box-shadow: 0 0 3px 3px rgba(0,0,0, 0.1);
+
             }
 
+        }
+
+        .info p{
+            line-height: 1.5rem;
+            color: $dark-brown;
         }
     }
 }
@@ -173,17 +180,25 @@
     height:100%;
     width: 100%; 
     padding: 1rem;
+    display:flex;
+    flex-direction: column;
+
     box-shadow: 0 0 3px 3px rgba(0,0,0, 0.1);
     border-radius: 1.5rem;
 
     .img-wrapper img{
         border-radius:1.5rem;
+        height:100%;
+        width: 100%;
+        object-fit: cover;
+        object-position:center
     }
     .img-wrapper{
         position:relative;
         overflow:hidden;
         box-shadow: 0 0 3px 3px rgba(0,0,0, 0.1);
         border-radius:1.5rem;
+        flex-grow: 1;
 
     }
     .img-wrapper .headline{

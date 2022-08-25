@@ -8,7 +8,7 @@ import { NewsApiResponse } from '../Interfaces/news';
 })
 export class VendorService {
 
-  NEWS_ENDPOINT = "https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=7dfa680079a74b0ba1a6f9fd72ef36f8"
+  private NEWS_ENDPOINT = "https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=7dfa680079a74b0ba1a6f9fd72ef36f8"
 
   constructor(private _http: HttpClient) { }
 

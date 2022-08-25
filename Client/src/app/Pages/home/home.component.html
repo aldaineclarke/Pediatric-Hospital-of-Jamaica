@@ -128,77 +128,44 @@
 
         <div class="news-grid">
             <div class="news__main">
-                <div class="img-wrapper">
-                    <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of news headline">
-                    <div class="headline">
-                        <p>"Covid 19 Back again in the streets of Kingston"</p>
+                <ng-container *ngIf="mainNews">
+                    <div class="img-wrapper">
+                        <img [src]="mainNews.urlToImage" alt="main-headline news">
+                        <div class="headline">
+                            <p>"{{mainNews.title}}"</p>
+                        </div>
                     </div>
-                </div>
-                <div class="options mt-3 text-xs text-dull-grey flex justify-between items-center">
-                    <p>Aug 24, 2022</p>
-                    <div class="flex text-2xl text-gold gap-2">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        <i class="fa-solid fa-share-nodes"></i>
-                        <i class="fa-solid fa-comment"></i>
+                    <div class="options mt-3 text-xs text-dull-grey flex justify-between items-center">
+                        <p>{{convertStringToDate(mainNews.publishedAt)}}</p>
+                        <div class="flex text-2xl text-gold gap-2">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i class="fa-solid fa-share-nodes"></i>
+                            <i class="fa-solid fa-comment"></i>
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
             <div class="news__sub">
-                <div class="sub">
-                    <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of news headline">
-                    <div class="info flex flex-col">
-                        <p class="text-lg font-semibold">
-                           "Patients refusing medical care and the Mt. Peaks Hospital" 
-                        </p>
-                        <div class="flex justify-between items-center mt-auto">
-                            <span class="date text-xs">
-                                Aug 22, 2022
-                            </span>
-                            <div class="flex text-lg text-gold gap-2">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <i class="fa-solid fa-comment"></i>
+                <ng-container *ngIf="otherNews">
+                    <div class="sub" *ngFor="let news of otherNews">
+                        <img [src]="news.urlToImage" alt="Image of news headline">
+                        <div class="info flex flex-col">
+                            <p class="text-lg font-semibold">
+                               "{{news.title}}"
+                            </p>
+                            <div class="flex justify-between items-center mt-auto">
+                                <span class="date text-xs text-dull-grey">
+                                    {{ convertStringToDate(news.publishedAt)}}
+                                </span>
+                                <div class="flex text-lg text-gold gap-2">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                    <i class="fa-solid fa-comment"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="sub">
-                    <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of news headline">
-                    <div class="info flex flex-col">
-                        <p class="text-lg font-semibold">
-                           "Monkey Pox case found near village in St. Thomas" 
-                        </p>
-                        <div class="flex justify-between items-center mt-auto">
-                            <span class="date text-xs">
-                                Aug 22, 2022
-                            </span>
-                            <div class="flex text-lg text-gold gap-2">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <i class="fa-solid fa-comment"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sub">
-                    <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of news headline">
-                    <div class="info flex flex-col">
-                        <p class="text-lg font-semibold">
-                           "News of the century, breakthrough in medicine" 
-                        </p>
-                        <div class="flex justify-between items-center mt-auto">
-                            <span class="date text-xs">
-                                Aug 22, 2022
-                            </span>
-                            <div class="flex text-lg text-gold gap-2">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <i class="fa-solid fa-comment"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                </ng-container>
             </div>
         </div>
         </div>
