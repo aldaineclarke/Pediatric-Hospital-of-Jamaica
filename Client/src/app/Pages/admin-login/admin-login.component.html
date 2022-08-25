@@ -1,0 +1,24 @@
+<section>
+    <div class="section-wrapper h-screen w-screen ">
+        <div class="login-form-wrapper">
+            <div class="p-8">
+                <button class="text-dark-brown text-lg font-semibold"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            </div>
+
+            <form [formGroup]="adminLoginForm">
+                <legend>Login</legend>
+                <input type="text" placeholder="Janedoe@mailme.com" formControlName="email">
+                <input type="text" placeholder="Password" formControlName="password">
+                <div class="cta">
+                    <button class="cta__btn cta__btn--mystic">Login</button>
+                </div>
+            </form>
+            <div class="page-footer bg-white text-xs text-light-brown p-4 text-center">
+                <p>Created by VaineStudios</p>
+            </div>
+        </div>
+        <div class="img-wrapper">
+            <img src="/assets/mother-two-her-sons-have-appointment-with-pediatrician.jpg" alt="Image of Doctor and praent">
+        </div>
+    </div>
+</section>

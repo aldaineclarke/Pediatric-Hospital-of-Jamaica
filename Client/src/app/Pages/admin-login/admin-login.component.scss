@@ -1,0 +1,56 @@
+@import "../../../styles.scss";
+.section-wrapper{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+
+    
+}
+.login-form-wrapper{
+    border:1px solid lightgrey;
+    // padding: 2rem 2rem 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    button{
+        align-self:start;
+    }
+    form{
+        padding: 0 2rem;
+        display:flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        legend{
+            font-size: 2rem;
+            color: $dark-brown
+        }
+
+        input{
+            border-bottom: 2px solid $light-brown;
+            padding: 1rem 0 .5rem;
+            font-size: .8rem;
+            
+            &:focus{
+                outline: none;
+                border-bottom: 2px solid $dark-brown;
+            }
+        }
+
+    }
+}
+.img-wrapper{
+    height: 100%;
+    width: 100%;
+
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.page-footer{
+    box-shadow: 1px -1px 2px rgba(0,0,0,0.1);
+}

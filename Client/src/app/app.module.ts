@@ -8,6 +8,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { AdminHomeComponent } from './Pages/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,6 +24,7 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],
