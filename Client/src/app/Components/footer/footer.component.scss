@@ -1,0 +1,74 @@
+@import "../../../styles.scss";
+.footer-grid{
+    display:flex;
+    padding: 1rem 0;
+    justify-content:space-between;
+
+    .footer-list{
+        display:flex;
+        flex-direction: column;
+
+        .main{
+            font-size: 1.3rem;
+            color: $gold;
+            font-weight:bold;
+        }
+
+        a{
+            color: lightgrey;
+            font-size: .8rem;
+            transition: .3s ease-in-out linear;
+
+        }
+        a:hover{
+            color: $mystic;
+        }
+
+    }
+}
+form{
+    width:100%;
+}
+.input-wrapper{
+    padding: 1px;
+    padding-left: 1rem;
+    height: 50px;
+    background-color: white;
+    border-radius: 3rem;
+    display:flex;
+    width:100%;
+
+
+    button{
+        display: inline-flex;
+        flex-grow: 1;
+        background-color:$dark-brown;
+        border-radius: 3rem;
+        padding: 0 1.5rem;
+        align-items: center;
+        font-weight: 600;
+        color: $gold;
+    }
+
+    input{
+        // background-color:red;
+        align-self: center;
+        color: $dull-grey;;
+        font-size: .8rem;
+        width: 200px;
+    }
+    input:focus {
+        outline:none;
+        border-bottom: 1px solid lightgrey;
+    }
+
+}
+.lower-footer{
+    padding: 1rem;
+    text-align: center;
+    font-size: .7rem;
+    font-weight: thin;
+    color: $mystic;
+    background-color:#3f2c24
+
+}
