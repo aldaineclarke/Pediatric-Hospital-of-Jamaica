@@ -1,5 +1,9 @@
+<ng-container *ngIf="(navService.navState$ | async) else adminRoutes">
+    <hos-navbar ></hos-navbar>
+    <router-outlet></router-outlet>
+    <hos-footer></hos-footer>
+</ng-container>
 
-
-<hos-navbar></hos-navbar>
-<router-outlet></router-outlet>
-<hos-footer></hos-footer>
+<ng-template #adminRoutes>
+    <router-outlet></router-outlet>
+</ng-template>
