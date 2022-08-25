@@ -27,3 +27,6 @@ body{
     @apply bg-mystic text-dark-brown;
     box-shadow: 0px 10px 17px rgba($mystic,.25)
 }
+.content-fix{
+    @apply w-[1240px] m-auto
+}
