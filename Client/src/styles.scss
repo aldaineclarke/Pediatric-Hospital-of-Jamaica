@@ -19,6 +19,7 @@ body{
 }
 .cta__btn{
     @apply inline-flex px-7 py-2 border rounded-full font-semibold;
+    transition: box-shadow 200ms ease-in-out;
 }
 .cta__btn--outline{
     @apply border-light-brown border-2 text-light-brown;
@@ -26,6 +27,10 @@ body{
 .cta__btn--mystic{
     @apply bg-mystic text-dark-brown;
     box-shadow: 0px 10px 17px rgba($mystic,.25)
+}
+
+.cta__btn--mystic:hover{
+    box-shadow: 0px 0 1px rgba($mystic,.25);
 }
 .content-fix{
     @apply w-[1240px] m-auto
