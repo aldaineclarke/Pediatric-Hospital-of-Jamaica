@@ -127,8 +127,8 @@
             <h2 class="text-4xl font-bold text-dark-brown text-center">What is new in Medicine.</h2>
 
         <div class="news-grid">
-            <div class="news__main">
-                <ng-container *ngIf="mainNews">
+            <ng-container *ngIf="mainNews">
+            <div class="news__main" (click)="goToPage(mainNews.url)">
                     <div class="img-wrapper">
                         <img [src]="mainNews.urlToImage" alt="main-headline news">
                         <div class="headline">
@@ -143,11 +143,11 @@
                             <i class="fa-solid fa-comment"></i>
                         </div>
                     </div>
-                </ng-container>
-            </div>
+                </div>
+            </ng-container>
             <div class="news__sub">
                 <ng-container *ngIf="otherNews">
-                    <div class="sub" *ngFor="let news of otherNews">
+                    <div class="sub" *ngFor="let news of otherNews" (click)="goToPage(news.url)">
                         <img [src]="news.urlToImage" alt="Image of news headline">
                         <div class="info flex flex-col">
                             <p class="text-lg font-semibold">

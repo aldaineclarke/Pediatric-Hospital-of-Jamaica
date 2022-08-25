@@ -24,5 +24,8 @@ export class HomeComponent implements OnInit {
   convertStringToDate(date:string){
     return new Date(date).toDateString().slice(3)
   }
+  goToPage(url:string){
+    location.href= url;
+  }
 
 }
