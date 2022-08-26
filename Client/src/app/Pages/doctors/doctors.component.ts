@@ -12,17 +12,27 @@ export class DoctorsComponent implements OnInit {
   showDropdown = false;
   doctors: User[] = [];
 
-  constructor(private userService: UsersService) { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.userService.getAllUsers(this.user).subscribe((response)=>{
-      this.doctors = response.data;
-      console.log(this.doctors)
-    })
+    this.getDoctors()
   }
 
   showActions(){
     this.showDropdown = !this.showDropdown;
+  }
+  getDoctors(){
+    this.usersService.getAllUsers(this.user).subscribe((response)=>{
+      this.doctors = response.data;
+      console.log(this.doctors)
+    })
+  }
+  deleteUser(id:string){
+    if(confirm('Are you sure you want to delete')){
+      this.usersService.deleteUser(id).subscribe(()=>{
+        this.doctors = this.doctors.filter((user)=> user._id != id)
+      })
+    }
   }
 
 }

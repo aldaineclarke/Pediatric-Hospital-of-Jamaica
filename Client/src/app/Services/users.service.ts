@@ -30,5 +30,8 @@ export class UsersService {
   updateUser(role="Customer", id: string, changes: Partial<User>){
     return this._http.patch(this.USERS_ENDPOINT+"/"+ id, changes);
   }
+  deleteUser(id:string){
+    return this._http.delete(this.USERS_ENDPOINT+ "/"+id);
+  }
 
 }

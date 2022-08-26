@@ -80,8 +80,9 @@
                         <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
                     </div>
                 </td>
-                <td class="py-4 px-6">
-                    <a routerLink="edit/{{doc._id}}" class="font-medium text-mystic dark:text-blue-500 hover:underline">Edit user</a>
+                <td class="py-4 px-6 ">
+                    <a routerLink="edit/{{doc._id}}" class="font-medium text-blue-500 dark:text-blue-500 hover:underline mr-2 cursor-pointer">Edit</a>
+                    <a (click)="deleteUser(doc._id)" class="font-medium text-mystic dark:text-blue-500 hover:underline cursor-pointer">Delete</a>
                 </td>
                 
             </tr>

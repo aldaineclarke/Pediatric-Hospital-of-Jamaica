@@ -104,7 +104,7 @@ class UsersController{
          static deleteUser = async (req, res, next) =>{
             try{
                 let id = req.params.id;
-                await User.findByIdAndUpdate(id);
+                await User.findByIdAndDelete(id);
                 res.status(200).json({
                     status: "Success",
                 })
