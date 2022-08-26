@@ -12,3 +12,9 @@ export interface User {
     password: string;
     isSuperAdmin: boolean;
 }
+
+export interface API_Response<T>{
+    status: string;
+    data: T;
+    message?:string;
+}
