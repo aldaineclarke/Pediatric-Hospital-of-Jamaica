@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
+import { UserCreateComponent } from './Pages/user-create/user-create.component';
 
 
 
@@ -27,6 +28,7 @@ import { UserEditComponent } from './Pages/user-edit/user-edit.component';
     DoctorsComponent,
     
     UserEditComponent,
+         UserCreateComponent,
   ],
   imports: [
     BrowserModule,

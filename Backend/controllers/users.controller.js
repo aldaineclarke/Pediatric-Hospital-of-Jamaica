@@ -123,7 +123,10 @@ class UsersController{
             try{
 
                 let user = new User(req.body);
-                user.password = await bcrypt.hash(req.body.password, 10);
+                if(!user.password){
+                    user.password = (user.fname.slice(0,1)+"."+ user.lname).toUpperCase()
+                }
+                user.password = await bcrypt.hash(user.password, 10);
                 await user.save()
                 res.status(200).json({
                     status: "Success",
@@ -140,7 +143,6 @@ class UsersController{
         static getAllUsersByRole = async (req,res,next) =>{
             try{
                 const role = req.query.role;
-                console.log(req.query)
                 if(role){
                     let users = await User.find({"role":role})
                     return res.status(200).json({

@@ -24,6 +24,7 @@ export class UsersService {
     return this._http.get<API_Response<User>>(this.USERS_ENDPOINT+ "/"+id)
   }
   createUser(role="Customer", data: Partial<User>){
+    data.role = role;
     return this._http.post(this.USERS_ENDPOINT, data);
   }
   updateUser(role="Customer", id: string, changes: Partial<User>){

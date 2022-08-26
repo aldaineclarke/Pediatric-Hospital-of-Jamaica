@@ -5,6 +5,7 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { UserCreateComponent } from './Pages/user-create/user-create.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
 import { NavService } from './Services/nav.service';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
       {path:"", component:DashboardComponent},
       {path:"doctors", component:DoctorsComponent},
       {path:"doctors/edit/:id", component: UserEditComponent},
+      {path:"doctors/create", component: UserCreateComponent},
     ]
   },
 
