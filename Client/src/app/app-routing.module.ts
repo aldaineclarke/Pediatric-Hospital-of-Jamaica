@@ -39,10 +39,8 @@ export class AppRoutingModule {
   constructor(private router:Router, private navService: NavService){
     this.router.events.subscribe((res)=>{
         if(location.href.indexOf("admin") > -1){
-          console.log(location.href.indexOf("admin"))
           this.navService.removeOriginalNav();
         }else if(location.href.indexOf("admin") == -1 ){
-          console.log("admin")
           this.navService.addOriginalNav();
         }
     })

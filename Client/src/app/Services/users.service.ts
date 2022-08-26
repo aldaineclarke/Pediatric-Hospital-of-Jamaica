@@ -20,14 +20,14 @@ export class UsersService {
   getAllUsers(role="Customer"):Observable<API_Response<User[]>>{
     return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT+ "?role="+role)
   }
-  getUserById(role="Customer"):Observable<API_Response<User>>{
-    return this._http.get<API_Response<User>>(this.USERS_ENDPOINT)
+  getUserById(id:string):Observable<API_Response<User>>{
+    return this._http.get<API_Response<User>>(this.USERS_ENDPOINT+ "/"+id)
   }
   createUser(role="Customer", data: Partial<User>){
     return this._http.post(this.USERS_ENDPOINT, data);
   }
-  updateUser(role="Customer", changes: Partial<User>){
-    return this._http.patch(this.USERS_ENDPOINT, changes);
+  updateUser(role="Customer", id: string, changes: Partial<User>){
+    return this._http.patch(this.USERS_ENDPOINT+"/"+ id, changes);
   }
 
 }
