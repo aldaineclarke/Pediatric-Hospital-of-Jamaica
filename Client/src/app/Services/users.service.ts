@@ -18,7 +18,7 @@ export class UsersService {
    * @returns 
    */
   getAllUsers(role="Customer"):Observable<API_Response<User[]>>{
-    return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT)
+    return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT+ "?role="+role)
   }
   getUserById(role="Customer"):Observable<API_Response<User>>{
     return this._http.get<API_Response<User>>(this.USERS_ENDPOINT)

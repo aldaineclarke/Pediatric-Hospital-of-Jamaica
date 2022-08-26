@@ -17,6 +17,7 @@ export class DoctorsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllUsers(this.user).subscribe((response)=>{
       this.doctors = response.data;
+      console.log(this.doctors)
     })
   }
 
