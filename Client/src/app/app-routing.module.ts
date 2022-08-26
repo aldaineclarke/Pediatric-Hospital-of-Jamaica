@@ -5,6 +5,7 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { UserEditComponent } from './Pages/user-edit/user-edit.component';
 import { NavService } from './Services/nav.service';
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
     path:"admin",component:AdminHomeComponent,
     children:[
       {path:"", component:DashboardComponent},
-      {path:"doctors", component:DoctorsComponent}
+      {path:"doctors", component:DoctorsComponent},
+      {path:"doctors/edit/:id", component: UserEditComponent},
     ]
   },
 

@@ -11,6 +11,7 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
+import { UserEditComponent } from './Pages/user-edit/user-edit.component';
 
 
 
@@ -24,6 +25,8 @@ import { DoctorsComponent } from './Pages/doctors/doctors.component';
     AdminLoginComponent,
     DashboardComponent,
     DoctorsComponent,
+    
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
