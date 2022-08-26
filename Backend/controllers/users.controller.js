@@ -45,13 +45,10 @@ class UsersController{
             if(req.query.role){
                 return this.getAllUsersByRole(req,res,next);
             }
-            console.log("Still in the function")
             let users = await User.find();
             res.status(200).json({
                 status: "Success",
-                data:{
-                    users
-                }
+                data:users
             })
         }catch(error){
             res.status(500).json({
@@ -72,9 +69,7 @@ class UsersController{
             let user = await User.findById(id);
             res.status(200).json({
                 status: "Success",
-                data:{
-                    user
-                }
+                data:user
             })
         }catch(error){
             res.status(500).json({
@@ -93,9 +88,7 @@ class UsersController{
             let user = await User.findByIdAndUpdate(id, req.body, {new:true});
             res.status(200).json({
                 status: "Success",
-                data:{
-                    user
-                }
+                data:user
             })
         }catch(error){
             res.status(500).json({
@@ -134,9 +127,7 @@ class UsersController{
                 await user.save()
                 res.status(200).json({
                     status: "Success",
-                    data:{
-                        user
-                    }
+                    data:user
                 })
             }catch(error){
                 res.status(500).json({
@@ -154,9 +145,7 @@ class UsersController{
                     let users = await User.find({"role":role})
                     return res.status(200).json({
                         status:"Success",
-                        data:{
-                            users
-                        }
+                        data:users
                     })
                 }
             }catch(error){
