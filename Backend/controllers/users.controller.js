@@ -1,5 +1,6 @@
 const User = require("../schemas/user.schema");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 class UsersController{
     /**
      * ### Description
@@ -7,20 +8,22 @@ class UsersController{
      */
     static loginUser = async (req,res, next)=>{
         try{
-            let username = req.body.username;
-            let user = await User.findOne({"username": username});
+            let email = req.body.email;
+            let password = req.body.password;
+            let user = await User.findOne({"email": email});
+            console.log(user)
             if(user){
-                if(await bcrypt.compare(password, user.password)){
+                let isAuthenticated = await bcrypt.compare(password,user.password)
+                if(isAuthenticated){
+                    let token = generateToken({_id:user._id, role: user.role})
                     return res.status(200).json({
                         status: "Success",
-                        data:{
-                            user
-                        },
+                        data: token,
                         message: "Login Successful"
                     })
                 }
                 return res.status(401).json({
-                    status:"Success",
+                    status:"Failed",
                     message:"Credential incorrect."
                 })
 
@@ -32,7 +35,7 @@ class UsersController{
         }catch(error){
             res.status(400).json({
                 status:"Failed",
-                message:"Internal Error"
+                message:error
             })
         }
     }
@@ -159,4 +162,7 @@ class UsersController{
         }
 }
 
+function generateToken(data){
+    return jwt.sign(data,process.env.JWT_SECRET_KEY, {expiresIn: "60s"})
+}
 module.exports = UsersController;
