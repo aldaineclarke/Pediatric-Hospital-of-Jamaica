@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './Pages/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
+import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { NavService } from './Services/nav.service';
 
@@ -14,13 +16,14 @@ const routes: Routes = [
     pathMatch:"full",
     redirectTo:"home"
   },
+  {path:"admin/login", component: AdminLoginComponent},
   {
-    path:"admin",
+    path:"admin",component:AdminHomeComponent,
     children:[
-      {path: "", component:AdminHomeComponent},
-      {path: "login", component:AdminLoginComponent},
+      {path:"", component:DashboardComponent},
+      {path:"doctors", component:DoctorsComponent}
     ]
-  }
+  },
 
   
 

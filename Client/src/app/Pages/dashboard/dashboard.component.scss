@@ -1,0 +1,35 @@
+@import "../../../styles.scss";
+
+.service-grid{
+    margin-top: 4rem;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+.service{
+    padding: 1rem 2rem;
+    background-color: white;
+    color: $light-brown;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    box-shadow:1px 1px 9px 4px rgba(0,0,0,0.1);
+    border-radius: 1.5rem 2px 1.5rem 2px;
+    cursor:pointer;
+    transition: 300ms ease-in-out box-shadow;
+
+    &:hover{
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.1)
+    }
+    i{
+        font-size: 3rem;
+    }
+    p{
+        font-weight: bold;
+
+    }
+
+    
+}

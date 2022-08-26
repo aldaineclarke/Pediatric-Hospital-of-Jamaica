@@ -9,6 +9,8 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { AdminHomeComponent } from './Pages/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { DoctorsComponent } from './Pages/doctors/doctors.component';
 
 
 
@@ -20,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     AdminHomeComponent,
     AdminLoginComponent,
+    DashboardComponent,
+    DoctorsComponent,
   ],
   imports: [
     BrowserModule,
