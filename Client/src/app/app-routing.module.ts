@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './Guards/auth.guard';
 import { AdminHomeComponent } from './Pages/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
@@ -26,8 +27,10 @@ const routes: Routes = [
       {path:"doctors", component:DoctorsComponent},
       {path:"doctors/edit/:id", component: UserEditComponent},
       {path:"doctors/create", component: UserCreateComponent},
-    ]
+    ],
+    canActivate:[AuthGuard]
   },
+  {path: "**", redirectTo:"home", pathMatch:"full"}
 
   
 

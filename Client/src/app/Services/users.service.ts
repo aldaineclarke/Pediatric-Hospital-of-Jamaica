@@ -33,5 +33,8 @@ export class UsersService {
   deleteUser(id:string){
     return this._http.delete(this.USERS_ENDPOINT+ "/"+id);
   }
+  loginUser(data:Partial<User>){
+    return this._http.post(this.USERS_ENDPOINT+"/authenticate",data)
+  }
 
 }
