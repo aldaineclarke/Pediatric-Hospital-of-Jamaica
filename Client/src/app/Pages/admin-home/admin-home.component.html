@@ -3,14 +3,17 @@
         <div class="sidebar-wrapper">
             <h1 class="text-4xl my-8 pl-2 font-semibold text-dark-brown">PHJ</h1>
             <ul class="sidebar">
-                <li class="sidebar__item">
-                    <a routerLink="/admin" class="sidebar__link"><i class="fa-solid fa-house-chimney"></i>Home</a>
+                <li class="sidebar__item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    true}">
+                    <a  class="sidebar__link"><i class="fa-solid fa-house-chimney"></i>Home</a>
                 </li>
-                <li class="sidebar__item  active">
-                    <a routerLink="/admin"  class="sidebar__link"><i class="fa-solid fa-calendar-days"></i>Appointments</a>
+                <li class="sidebar__item" routerLink="appointments" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    true}">
+                    <a   class="sidebar__link"><i class="fa-solid fa-calendar-days"></i>Appointments</a>
                 </li>
-                <li class="sidebar__item">
-                    <a routerLink="doctors"  class="sidebar__link"><i class="fa-solid fa-user-doctor"></i>Doctors</a>
+                <li class="sidebar__item" routerLink="doctors" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    true}">
+                    <a  class="sidebar__link"><i class="fa-solid fa-user-doctor"></i>Doctors</a>
                 </li>
                 <li class="sidebar__item">
                     <a href="#" class="sidebar__link"><i class="fa-solid fa-file-medical"></i>Medical Records</a>
