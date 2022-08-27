@@ -1,6 +1,6 @@
 const Appointment = require("../schemas/appointment.schema");
 const {ObjectId} = require("mongoose").Types;
-
+const {jsonResponse} = require("../utilities/jsonResponse");
 class AppointmentController{
 
         /**
