@@ -11,6 +11,11 @@ export interface User {
     username: string;
     password: string;
     isSuperAdmin: boolean;
+    address:[{
+        street: string,
+        city:string,
+        parish:string,
+    }]
 }
 
 export interface API_Response<T>{
