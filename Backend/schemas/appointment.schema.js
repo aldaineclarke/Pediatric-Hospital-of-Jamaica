@@ -6,6 +6,12 @@ let appointmentSchema = new Schema({
     visitStart: {type:Date, required: true},
     guardian:{type:String},
     notes:{type:String},
+    fname: {type:String},
+    lname: {type:String},
+    title: {type:String},
+    email: {type:String},
+    gender: {type:String},
+    phone:{type:String},
     status: {type:Boolean, default:false},
 }, {timestamps:true});
 // Will create timestamps for the createdAt and updatedAt time;
