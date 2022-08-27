@@ -1,11 +1,13 @@
 const User = require("../schemas/user.schema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const {jsonResponse} = require("../utilities/jsonResponse");
 class UsersController{
     /**
      * ### Description
      * Authenticates the user that is passed in the body of the request. 
      */
+    
     static loginUser = async (req,res, next)=>{
         try{
             let email = req.body.email;
@@ -16,27 +18,13 @@ class UsersController{
                 let isAuthenticated = await bcrypt.compare(password,user.password)
                 if(isAuthenticated){
                     let token = generateToken({_id:user._id, role: user.role})
-                    return res.status(200).json({
-                        status: "Success",
-                        data: token,
-                        message: "Login Successful"
-                    })
+                    return jsonResponse(res,200,"Success","Successfully Logged in",token);
                 }
-                return res.status(401).json({
-                    status:"Failed",
-                    message:"Credential incorrect."
-                })
-
+                return jsonResponse(res,401,"Failed","Credentials are Incorrect");
             }
-            res.status(401).json({
-                status: "Failed",
-                message: "User is not found in the database"
-            })
+            return jsonResponse(res,401,"Failed","User not Found");
         }catch(error){
-            res.status(400).json({
-                status:"Failed",
-                message:error
-            })
+            jsonResponse(res, 400,"Failed", error.message);
         }
     }
     /**
@@ -49,15 +37,11 @@ class UsersController{
                 return this.getAllUsersByRole(req,res,next);
             }
             let users = await User.find();
-            res.status(200).json({
-                status: "Success",
-                data:users
-            })
+
+            return jsonResponse(res,200, "Success", "Successfully retrieved", users)
+
         }catch(error){
-            res.status(500).json({
-                status: "Failed",
-                message: error.message
-            })
+            return jsonResponse(res, 400, "Failed", error.message);
         }
     }
 
@@ -68,17 +52,10 @@ class UsersController{
      static getUserById = async (req, res, next)=>{
         try{
             let id = req.params.id;
-
             let user = await User.findById(id);
-            res.status(200).json({
-                status: "Success",
-                data:user
-            })
+            return jsonResponse(res, 200,"Success", "Successfully retrieved", user)
         }catch(error){
-            res.status(500).json({
-                status: "Failed",
-                message: error.message
-            })
+            jsonResponse(res, 500, "Failed", error.message)
         }
     }
     /**
@@ -89,15 +66,9 @@ class UsersController{
         try{
             let id = req.params.id;
             let user = await User.findByIdAndUpdate(id, req.body, {new:true});
-            res.status(200).json({
-                status: "Success",
-                data:user
-            })
+            jsonResponse(res, 200,"Success", "Successfully updated", user)
         }catch(error){
-            res.status(500).json({
-                status: "Failed",
-                message: error.message
-            })
+            jsonResponse(res, 400, "Failed", error.message);
         }
     }
         /**
@@ -108,14 +79,9 @@ class UsersController{
             try{
                 let id = req.params.id;
                 await User.findByIdAndDelete(id);
-                res.status(200).json({
-                    status: "Success",
-                })
+                jsonResponse(res,200, "Success", "Successfully Deleted")
             }catch(error){
-                res.status(500).json({
-                    status: "Failed",
-                    message: error.message
-                })
+                jsonResponse(res, 400, "Failed", error.message)
             }
         }
         /**
@@ -124,22 +90,15 @@ class UsersController{
      */
          static createUser =  async (req, res, next)=>{
             try{
-
                 let user = new User(req.body);
                 if(!user.password){
                     user.password = (user.fname.slice(0,1)+"."+ user.lname).toUpperCase()
                 }
                 user.password = await bcrypt.hash(user.password, 10);
                 await user.save()
-                res.status(200).json({
-                    status: "Success",
-                    data:user
-                })
+                return jsonResponse(res, 200, "Success", "Successfully Logged in")
             }catch(error){
-                res.status(500).json({
-                    status: "Failed",
-                    message: error.message
-                })
+                jsonResponse(res, 400, "Failed", error.message);
             }
         }
 
@@ -148,16 +107,10 @@ class UsersController{
                 const role = req.query.role;
                 if(role){
                     let users = await User.find({"role":role})
-                    return res.status(200).json({
-                        status:"Success",
-                        data:users
-                    })
+                    return jsonResponse(res, 200, "Success", "Successfully Retrieved", users)
                 }
             }catch(error){
-                res.status(400).json({
-                    status:"Failed",
-                    message:error.message
-                })
+                jsonResponse(res, 400, "Failed", error.message);
             }
         }
 }
