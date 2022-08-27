@@ -13,8 +13,15 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
 import { UserCreateComponent } from './Pages/user-create/user-create.component';
+import { PatientComponent } from './Pages/patient/patient.component';
+import { MedicalRecordsComponent } from './Pages/medical-records/medical-records.component';
+import { AppointmentComponent } from './Pages/appointment/appointment.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+//ANGULAR MATERIAL COMPONENTS
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { AppointmentCreateComponent } from './Pages/appointment-create/appointment-create.component'
 
 @NgModule({
   declarations: [
@@ -26,15 +33,24 @@ import { UserCreateComponent } from './Pages/user-create/user-create.component';
     AdminLoginComponent,
     DashboardComponent,
     DoctorsComponent,
-    
     UserEditComponent,
-         UserCreateComponent,
+    UserCreateComponent,
+    PatientComponent,
+    MedicalRecordsComponent,
+    AppointmentComponent,
+    AppointmentCreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+
+    //Material modules
+    MatTableModule,
+    MatPaginatorModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
