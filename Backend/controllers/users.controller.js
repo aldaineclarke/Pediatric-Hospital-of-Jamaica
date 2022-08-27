@@ -116,6 +116,6 @@ class UsersController{
 }
 
 function generateToken(data){
-    return jwt.sign(data,process.env.JWT_SECRET_KEY, {expiresIn: "60s"})
+    return jwt.sign(data,process.env.JWT_SECRET_KEY, {expiresIn: "3600s"})
 }
 module.exports = UsersController;
