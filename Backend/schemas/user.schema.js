@@ -11,6 +11,11 @@ const userSchema = mongoose.Schema({
     role:{type:String, required:true, default:"Customer"},
     department:{type:String, required:true, default: "Customer"},
     username: {type: String, unique: true, required: true},
+    Address:[{
+        street: {type: String},
+        city:{type: String},
+        parish:{type: String},
+    }],
     password: {type:String, required:true},
     isSuperAdmin: {type:Boolean, default:false}
 
