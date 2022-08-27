@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { API_Response, User } from '../Interfaces/user';
 
 @Injectable({
@@ -10,6 +10,14 @@ export class UsersService {
 
   private  USERS_ENDPOINT = "http://localhost:3000/api/v1/users"
   constructor(private _http: HttpClient) { }
+
+  private handleErrror(error:any) {
+    let message = ""
+      if(error.error.message){
+        message = error.error.message;
+      }else message = error;
+    return throwError(()=> new Error(message));
+  }
 
   /**
    * ### Description
@@ -33,8 +41,11 @@ export class UsersService {
   deleteUser(id:string){
     return this._http.delete(this.USERS_ENDPOINT+ "/"+id);
   }
-  loginUser(data:Partial<User>):Observable<API_Response<string>>{
+  loginUser(data:Partial<User>){
     return this._http.post<API_Response<string>>(this.USERS_ENDPOINT+"/login",data)
+    .pipe(
+      catchError(this.handleErrror)
+    )
   }
 
 }

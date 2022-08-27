@@ -23,15 +23,19 @@ export class AdminLoginComponent implements OnInit {
   }
 
   loginUser(){
-    this.usersService.loginUser(this.adminLoginForm.value).subscribe((response)=>{
-      if(response.data){
-        localStorage.setItem("token",response.data);
-        this.router.navigate(['/admin']);
-      }else{
-        this.serverError = response.message as string;
-      }
+    this.usersService.loginUser(this.adminLoginForm.value).subscribe({
+      next: (response)=>{
+        if(response.data){
+          localStorage.setItem("token",response.data);
+          this.router.navigate(['/admin']);
+        }
+        
+      },
+      error: (error)=>{
+        console.log(error)
+        this.serverError = error.toString().slice(7);
 
-       
+      }
     })
   }
 
