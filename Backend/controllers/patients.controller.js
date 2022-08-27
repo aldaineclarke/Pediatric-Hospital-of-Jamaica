@@ -1,4 +1,5 @@
 const Patient = require("../schemas/patient.schema");
+const { jsonResponse } = require("../utilities/jsonResponse");
 const {ObjectId} = require("mongoose").Types;
 
 class PatientsController{
@@ -11,9 +12,9 @@ class PatientsController{
     static async getAllPatients(req, res, next){
         try{
             let patients = await Patient.find();
-            res.status(200).json(patients); 
+            return jsonResponse(res, 200, "Success", "Successfully Retrieved", patients);
         }catch(error){
-            res.status(500).json({message: "Server has encountered an error"})
+            jsonResponse(res, 400, "Failed", error.message);
         }
     }
     /**
@@ -26,11 +27,11 @@ class PatientsController{
             let id = parseInt(req.params.id);
             let patient = await Patient.findById(id);
             if(patient){
-                return res.status(200).send(patient);
+                return jsonResponse(res, 200, "Success", "Successfully Retrieved", patient);
             }
-            return res.status(400).json({message: "No user exist with that information"})
+            return jsonResponse(res,400,"Failed","No user exists with this id");
         }catch(error){
-            res.status(500).json({message: "Server has encountered an error"})
+            return jsonResponse(res, 400, "Failed",error.message);
         }
     }
         /**
@@ -39,24 +40,11 @@ class PatientsController{
      */
     static async createPatient(req, res, next){
         try{
-            let data = {
-                fname: req.body.fname,
-                lname: req.body.lname,
-                email: req.body.email,
-                DOB: req.body.DOB,
-                guardianName:req.body.guardianName,
-                gender:req.body.gender,
-                phone: req.body.phone,
-                Address:[{
-                    street: req.body.street,
-                    city:req.body.city,
-                    parish:req.body.parish,
-                }]
-            }
-            let newPatient = await new Patient(data).save();
-            res.status(201).json(newPatient);
+            
+            let newPatient = await new Patient(req.body).save();
+            jsonResponse(res, 200, "Success", "Successfully Created Patient", newPatient);
         }catch(error){
-            res.status(500).json({message: error.message})
+            jsonResponse(res, 400,"Failed", error.message);
         }
     }
         /**
@@ -67,13 +55,13 @@ class PatientsController{
         try{
            let id = parseInt(req.params.id);
            if(Object.keys(req.body).length == 0){
-            return res.json({message: "There is no data passed to update the patient "})
+            return jsonResponse(res, 400,"Failed", "There is no data passed to update the patient");
            }else{
                 let patient = await Patient.findByIdAndUpdate(id,req.body)
-                res.status(200).json(patient)
+                jsonResponse(res,200, "Success","Successfully Updated",patient);
             }
         }catch(error){
-            res.status(404).json({message: "Unable to find patient"})
+            jsonResponse(res, 404, "Failed","Unable to find Patient");
         }
 
 
@@ -86,9 +74,9 @@ class PatientsController{
         try{
             let id = parseInt(req.params.id);
             await Patient.findByIdAndDelete(id);
-            res.status(200).json({message: "Patient deleted"})
+            jsonResponse(res, 200, "Success","Patient deleted")
         }catch(error){
-            res.status(500).json({message: "Unable to delete user"})
+            jsonResponse(res,404,"Failed", error.message)
         }
     }
 }
