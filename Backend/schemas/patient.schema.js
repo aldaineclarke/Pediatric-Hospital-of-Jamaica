@@ -7,11 +7,11 @@ let patientSchema = new Schema({
     mname:{type:String},
     email: {type:String},
     DOB: {type:Date},
-    patientImage: {type:string},
+    patientImage: {type:String},
     guardianName:{type: Schema.Types.ObjectId, ref: "User"},
     gender:{type: String},
-    allergies: string,
-    nationality:string,
+    allergies: {type:String},
+    nationality:{type:String},
 
 }, {timestamps:true});
 // Will create timestamps for the createdAt and updatedAt time;

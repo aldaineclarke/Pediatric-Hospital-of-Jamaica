@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     lname: {type:String, required:true},
     title:{type: String},
     gender:{type: String},
+    imageUrl: {type: String},
     email:{type:String, unique:true, lowercase:true},
     phone: {type:String, required:true},
     role:{type:String, required:true, default:"Customer"},
