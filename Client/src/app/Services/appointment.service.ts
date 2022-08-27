@@ -10,7 +10,7 @@ import { API_Response } from '../Interfaces/user';
 export class AppointmentService {
 
   constructor(private _http:HttpClient) { }
-  APPOINTMENT_ENDPOINT = 'http://localhost:3000/appointments';
+  APPOINTMENT_ENDPOINT = 'http://localhost:3000/api/v1/appointments';
 
   getAllAppointments():Observable<API_Response<Appointment[]>>{
     return this._http.get<API_Response<Appointment[]>>(this.APPOINTMENT_ENDPOINT);

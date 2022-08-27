@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
+import { AppointmentService } from 'src/app/Services/appointment.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class AppointmentCreateComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private appointmentService: AppointmentService, private router: Router) { }
   doctors:User[] = [];
   doctorsPool:User[] = [];
   ngOnInit(): void {
@@ -45,7 +47,19 @@ export class AppointmentCreateComponent implements OnInit {
     })
   }
   submitForm(){
-
+    const data = {
+      doctor: this.appointmentCreationForm.get("doctor")?.value,
+      fname: this.appointmentCreationForm.get("fname")?.value,
+      title: this.appointmentCreationForm.get("title")?.value,
+      lname: this.appointmentCreationForm.get("lname")?.value,
+      gender: this.appointmentCreationForm.get("gender")?.value,
+      phone: this.appointmentCreationForm.get("phone")?.value,
+      visitStart: this.appointmentCreationForm.get("visitStart")?.value,
+      notes: this.appointmentCreationForm.get("notes")?.value,
+    }
+    this.appointmentService.createAppointment(data).subscribe(()=>{
+      this.router.navigate(["admin/appointments"])
+    })
   }
 
 }
