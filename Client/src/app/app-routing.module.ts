@@ -28,7 +28,8 @@ const routes: Routes = [
       {path:"doctors/edit/:id", component: UserEditComponent},
       {path:"doctors/create", component: UserCreateComponent},
     ],
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    canActivateChild:[AuthGuard]
   },
   {path: "**", redirectTo:"home", pathMatch:"full"}
 
