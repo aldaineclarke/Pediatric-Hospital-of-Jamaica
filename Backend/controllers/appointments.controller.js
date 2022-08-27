@@ -11,9 +11,9 @@ class AppointmentController{
     static async getAllAppointments(req, res, next){
         try{
             let appointments = await Appointment.find();
-            res.status(200).json(appointments); 
+            jsonResponse(res, 200, "Success", "Successfully Retrieved", appointments);
         }catch(error){
-            res.status(500).json({message: "Server has encountered an error"})
+            jsonResponse(res, 400, "Failed", error.message)
         }
     }
     /**
@@ -26,11 +26,11 @@ class AppointmentController{
             let id = parseInt(req.params.id);
             let appointment = await Appointment.findById(id);
             if(appointment){
-                return res.status(200).send(appointment);
+                jsonResponse(res, 200, "Success", "Successfully Retrieved", appointment);
             }
-            return res.status(400).json({message: "No user exist with that information"})
+            return jsonResponse(res, 400, "Failed","No user exist with that information");
         }catch(error){
-            res.status(500).json({message: "Server has encountered an error"})
+            jsonResponse(res, 400, "Failed", error.message)
         }
     }
         /**
@@ -40,9 +40,9 @@ class AppointmentController{
     static async createAppointment(req, res, next){
         try{
             let newAppointment = await new Appointment(req.body).save();
-            res.status(201).json(newAppointment);
+            jsonResponse(res, 200, "Success", "Successfully Created Appointment", newAppointment);
         }catch(error){
-            res.status(500).json({message: error.message})
+            jsonResponse(res, 400, "Failed", error.message)
         }
     }
         /**
@@ -56,10 +56,10 @@ class AppointmentController{
             return res.json({message: "There is no data passed to update the patient "})
            }else{
                 let appointment = await Appointment.findByIdAndUpdate(id,req.body)
-                res.status(200).json(appointment)
+                jsonResponse(res, 200, "Success", "Successfully Updated", appointment);
             }
         }catch(error){
-            res.status(404).json({message: "Unable to find an appointment"})
+            jsonResponse(res, 400, "Failed", error.message)
         }
 
 
@@ -72,9 +72,9 @@ class AppointmentController{
         try{
             let id = parseInt(req.params.id);
             await Appointment.findByIdAndDelete(id);
-            res.status(200).json({message: "Appointment deleted"})
+            jsonResponse(res, 200, "Success", "Successfully Deleted");
         }catch(error){
-            res.status(500).json({message: "Unable to delete user"})
+            jsonResponse(res, 400, "Failed", error.message)
         }
     }
 }
