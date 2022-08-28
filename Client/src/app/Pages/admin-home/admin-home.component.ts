@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/Services/users.service';
+import decode from "jwt-decode";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hos-admin-home',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private usersService: UsersService, private router: Router) { }
+  username = ""
   ngOnInit(): void {
+    let token = decode(localStorage.getItem("token") as string);
+    console.log(token);
+    this.username = (token as any).username
+  }
+  logoutUser(){
+    localStorage.removeItem("token");
+    this.router.navigate(["admin/login"]);
   }
 
 }

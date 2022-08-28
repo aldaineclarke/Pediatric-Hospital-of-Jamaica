@@ -2,12 +2,12 @@
     <ul class="nav-section">
         <li class="logo text-4xl font-bold"><a routerLink="/">PHJ</a></li>
         <li class="ml-auto">
-            <div routerLink="/" class="userInfo">
-                <span>ADMIN</span>
+            <div routerLink="admin/profile" class="userInfo">
+                <span>{{username}}</span>
                 <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="image of user">
             </div>
         <li>
-        <li><a routerLink="/"><i class="mr-1 fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+        <li class="cursor-pointer" (click)="logoutUser()"><a><i class="mr-1 fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
     </ul>
     <div class="page-wrapper">
         <div class="sidebar-wrapper">

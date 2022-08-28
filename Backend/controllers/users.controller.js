@@ -17,7 +17,7 @@ class UsersController{
             if(user){
                 let isAuthenticated = await bcrypt.compare(password,user.password)
                 if(isAuthenticated){
-                    let token = generateToken({_id:user._id, role: user.role})
+                    let token = generateToken({_id:user._id,username:user.username, role: user.role})
                     return jsonResponse(res,200,"Success","Successfully Logged in",token);
                 }
                 return jsonResponse(res,401,"Failed","Credentials are Incorrect");
