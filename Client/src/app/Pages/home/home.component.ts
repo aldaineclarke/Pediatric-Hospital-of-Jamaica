@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { News } from 'src/app/Interfaces/news';
 import { VendorService } from 'src/app/Services/vendor.service';
 
@@ -12,12 +13,20 @@ export class HomeComponent implements OnInit {
   constructor(private vendorService: VendorService) { }
   
   counters:{[key: string]:{start:number}} = {patient: {start:300}, capacity:{start: 150}, doctor:{start: 1500}, experience:{start:18}};
-  countersArr = ["patient", "capacity", "doctor", "experience"]
-
+  countersArr = ["patient", "capacity", "doctor", "experience"];
+  specialties = ["Surgeon", "Dentist", "Radiologist", "Pulmonologist","Radiologist","Cardiologist"]
   mainNews!: News ;
   otherNews: News[] = [];
+  currentDateTime = new Date().toJSON();
   @ViewChild("statistics") statistics!: ElementRef;
+  
+  quickAppointmentForm = new FormGroup({
+    email: new FormControl("", Validators.required),
+    doctor: new FormControl("", Validators.required),
+    name: new FormControl("", Validators.required),
+    visitStart: new FormControl("", Validators.required),
 
+  })
   ngOnInit(): void {
     this.vendorService.getAllHealthNews().subscribe((data)=>{
       this.mainNews = data.articles[0];
@@ -71,5 +80,7 @@ export class HomeComponent implements OnInit {
 
     observer.observe(this.statistics.nativeElement);
   }
+
+
 
 }

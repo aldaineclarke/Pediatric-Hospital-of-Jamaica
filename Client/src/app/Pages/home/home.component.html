@@ -17,17 +17,16 @@
                 </div>
             </div>
             <div class="booking-wrapper">
-                <form class="booking__form">
+                <form class="booking__form" [formGroup]="quickAppointmentForm">
                     <label>
                         <select class="" name="specialty">
-                            <option value="test1">Speciality 1</option>
-                            <option value="test2">Speciality 2</option>
-                            <option value="test3">Speciality 3</option>
+                            <option [value]="element" *ngFor="let element of specialties">{{element}}</option>
+
                         </select>
                         <span>Specialty</span>
                     </label>
                     <label>
-                        <select class="" name="doctor">
+                        <select class="" name="doctor" formControlName="doctor">
                             <option value="test1">Doctor 1</option>
                             <option value="test2">Doctor 2</option>
                             <option value="test3">Doctor 3</option>
@@ -35,15 +34,15 @@
                         <span>Pediatrician</span>
                     </label>
                     <label>
-                        <input type="datetime-local" name="date">
+                        <input type="datetime-local" name="date" [min]="currentDateTime" formControlName="visitStart">
                         <span>Date</span>
                     </label>
                     <label>
-                        <input type="text" name="email" placeholder="johndoe@gmail.com">
+                        <input type="text" name="email" placeholder="johndoe@gmail.com" formControlName="email">
                         <span>Email</span>
                     </label>
                     <label>
-                        <input type="text" name="name" placeholder="John Doe">
+                        <input type="text" name="name" placeholder="John Doe"formControlName="name">
                         <span>Name</span>
                     </label>
                     <div class="cta">
