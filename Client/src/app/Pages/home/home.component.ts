@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { News } from 'src/app/Interfaces/news';
+import { User } from 'src/app/Interfaces/user';
+import { AppointmentService } from 'src/app/Services/appointment.service';
+import { UsersService } from 'src/app/Services/users.service';
 import { VendorService } from 'src/app/Services/vendor.service';
 
 @Component({
@@ -10,7 +13,7 @@ import { VendorService } from 'src/app/Services/vendor.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService, private appointmentService: AppointmentService, private usersService:UsersService) { }
   
   counters:{[key: string]:{start:number}} = {patient: {start:300}, capacity:{start: 150}, doctor:{start: 1500}, experience:{start:18}};
   countersArr = ["patient", "capacity", "doctor", "experience"];
@@ -18,6 +21,9 @@ export class HomeComponent implements OnInit {
   mainNews!: News ;
   otherNews: News[] = [];
   currentDateTime = new Date().toJSON();
+
+  doctors: User[] = [];
+  doctorsPool: User[] = [];
   @ViewChild("statistics") statistics!: ElementRef;
   
   quickAppointmentForm = new FormGroup({
@@ -25,15 +31,49 @@ export class HomeComponent implements OnInit {
     doctor: new FormControl("", Validators.required),
     name: new FormControl("", Validators.required),
     visitStart: new FormControl("", Validators.required),
-
+    specialty: new FormControl("Surgeon", Validators.required)
   })
+
+
   ngOnInit(): void {
     this.vendorService.getAllHealthNews().subscribe((data)=>{
       this.mainNews = data.articles[0];
       this.otherNews = data.articles.slice(1,4);
     });
+    this.getAllDoctors();
+    
+    this.quickAppointmentForm.get("specialty")?.valueChanges.subscribe((change)=>{
+      this.doctorsPool = this.doctors.filter((doc)=>{
+        return doc.department == change;
+      })
+    })
+
+    
 
   }
+
+  getAllDoctors(){
+    this.usersService.getAllUsers("Doctor").subscribe((response)=>{
+      this.doctors = response.data;
+      this.doctorsPool = this.doctors;
+    })
+  }
+
+  submitForm(){
+    let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
+    let data = {
+      fname: fname,
+      lname: lname,
+      email: this.quickAppointmentForm.get("email")?.value,
+      doctor: this.quickAppointmentForm.get("doctor")?.value,
+      visitStart: this.quickAppointmentForm.get("visitStart")?.value,
+
+    }
+    this.appointmentService.createAppointment(data).subscribe(()=>{
+      alert("Appointment was set successfully");
+    })
+  }
+
   ngAfterViewInit(): void {
     console.log(this.statistics)
 

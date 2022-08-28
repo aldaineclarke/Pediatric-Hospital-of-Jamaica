@@ -19,7 +19,7 @@
             <div class="booking-wrapper">
                 <form class="booking__form" [formGroup]="quickAppointmentForm">
                     <label>
-                        <select class="" name="specialty">
+                        <select class="" name="specialty" formControlName="specialty">
                             <option [value]="element" *ngFor="let element of specialties">{{element}}</option>
 
                         </select>
@@ -27,14 +27,13 @@
                     </label>
                     <label>
                         <select class="" name="doctor" formControlName="doctor">
-                            <option value="test1">Doctor 1</option>
-                            <option value="test2">Doctor 2</option>
-                            <option value="test3">Doctor 3</option>
+                            <option [value]="doc._id" *ngFor="let doc of doctorsPool">{{doc.title +" "+ doc.fname +" "+ doc.lname}}</option>
+                            
                         </select>
                         <span>Pediatrician</span>
                     </label>
                     <label>
-                        <input type="datetime-local" name="date" [min]="currentDateTime" formControlName="visitStart">
+                        <input type="datetime-local" name="date" [min]="currentDateTime.slice(0,16)" formControlName="visitStart">
                         <span>Date</span>
                     </label>
                     <label>

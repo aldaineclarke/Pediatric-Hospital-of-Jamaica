@@ -20,7 +20,6 @@ export class AppointmentCreateComponent implements OnInit {
     this.getAllDoctors();
     this.appointmentCreationForm.get("specialty")?.valueChanges.subscribe((change)=>{
       this.doctorsPool = this.doctors.filter((doc)=>{
-        console.log(change)
         return doc.department == change;
       })
     })
