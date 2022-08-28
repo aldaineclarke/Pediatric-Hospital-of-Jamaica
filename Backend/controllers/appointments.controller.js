@@ -1,3 +1,4 @@
+const { isValidObjectId } = require("mongoose");
 const Appointment = require("../schemas/appointment.schema");
 const {ObjectId} = require("mongoose").Types;
 const {jsonResponse} = require("../utilities/jsonResponse");
@@ -23,7 +24,7 @@ class AppointmentController{
      */
     static async getSingleAppointment(req, res, next){
         try{
-            let id = parseInt(req.params.id);
+            let id = req.params.id;
             let appointment = await Appointment.findById(id);
             if(appointment){
                 jsonResponse(res, 200, "Success", "Successfully Retrieved", appointment);
@@ -51,7 +52,7 @@ class AppointmentController{
      */
     static async updateAppointment(req,res, next){
         try{
-           let id = parseInt(req.params.id);
+           let id = req.params.id;
            if(Object.keys(req.body).length == 0){
             return res.json({message: "There is no data passed to update the patient "})
            }else{
@@ -70,8 +71,8 @@ class AppointmentController{
      */
     static async deleteAppointment(req,res, next){
         try{
-            let id = parseInt(req.params.id);
-            await Appointment.findByIdAndDelete(id);
+            let id = req.params.id;
+            let count = await Appointment.findByIdAndDelete(id);
             jsonResponse(res, 200, "Success", "Successfully Deleted");
         }catch(error){
             jsonResponse(res, 400, "Failed", error.message)

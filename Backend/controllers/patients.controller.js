@@ -24,7 +24,7 @@ class PatientsController{
      */
     static async getSinglePatient(req, res, next){
         try{
-            let id = parseInt(req.params.id);
+            let id = req.params.id;
             let patient = await Patient.findById(id);
             if(patient){
                 return jsonResponse(res, 200, "Success", "Successfully Retrieved", patient);
@@ -53,7 +53,7 @@ class PatientsController{
      */
     static async updatePatient(req,res, next){
         try{
-           let id = parseInt(req.params.id);
+           let id = req.params.id;
            if(Object.keys(req.body).length == 0){
             return jsonResponse(res, 400,"Failed", "There is no data passed to update the patient");
            }else{
@@ -72,7 +72,7 @@ class PatientsController{
      */
     static async deletePatient(req,res, next){
         try{
-            let id = parseInt(req.params.id);
+            let id = req.params.id;
             await Patient.findByIdAndDelete(id);
             jsonResponse(res, 200, "Success","Patient deleted")
         }catch(error){
