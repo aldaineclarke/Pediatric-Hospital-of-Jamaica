@@ -1,8 +1,17 @@
-<section >
+<section class="admin-section">
+    <ul class="nav-section">
+        <li class="logo text-4xl font-bold"><a routerLink="/">PHJ</a></li>
+        <li class="ml-auto">
+            <div routerLink="/" class="userInfo">
+                <span>ADMIN</span>
+                <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="image of user">
+            </div>
+        <li>
+        <li><a routerLink="/"><i class="mr-1 fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
     <div class="page-wrapper">
         <div class="sidebar-wrapper">
-            <h1 class="text-4xl my-8 pl-2 font-semibold text-dark-brown">PHJ</h1>
-            <ul class="sidebar">
+            <ul class="sidebar mt-6">
                 <li class="sidebar__item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                     true}">
                     <a  class="sidebar__link"><i class="fa-solid fa-house-chimney"></i>Home</a>
