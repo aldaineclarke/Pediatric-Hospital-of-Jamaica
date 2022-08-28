@@ -21,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //ANGULAR MATERIAL COMPONENTS
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { AppointmentCreateComponent } from './Pages/appointment-create/appointment-create.component'
+import { AppointmentCreateComponent } from './Pages/appointment-create/appointment-create.component';
+import { AppointmentEditComponent } from './Pages/appointment-edit/appointment-edit.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AppointmentCreateComponent } from './Pages/appointment-create/appointme
     MedicalRecordsComponent,
     AppointmentComponent,
     AppointmentCreateComponent,
+    AppointmentEditComponent,
   ],
   imports: [
     BrowserModule,
