@@ -6,7 +6,8 @@ export interface Appointment {
     lname:string;
     title:string;
     email:string;
-    geder:string;
+    gender:string;
     notes:string;
     status: string;
+    phone:string;
 }

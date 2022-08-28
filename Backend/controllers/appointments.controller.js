@@ -26,8 +26,9 @@ class AppointmentController{
         try{
             let id = req.params.id;
             let appointment = await Appointment.findById(id);
+            console.log(appointment)
             if(appointment){
-                jsonResponse(res, 200, "Success", "Successfully Retrieved", appointment);
+                return jsonResponse(res, 200, "Success", "Successfully Retrieved", appointment);
             }
             return jsonResponse(res, 400, "Failed","No user exist with that information");
         }catch(error){
