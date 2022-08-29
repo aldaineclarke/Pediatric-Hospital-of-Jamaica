@@ -16,8 +16,9 @@
                     <img src="/assets/doc no bg.png" alt="Doctor" class="h-full">
                 </div>
             </div>
+            {{quickAppointmentForm.get("doc")?.value}}
             <div class="booking-wrapper">
-                <form class="booking__form" [formGroup]="quickAppointmentForm">
+                <form class="booking__form" [formGroup]="quickAppointmentForm" (submit)="submitForm()">
                     <label>
                         <select class="" name="specialty" formControlName="specialty">
                             <option [value]="element" *ngFor="let element of specialties">{{element}}</option>
@@ -26,7 +27,7 @@
                         <span>Specialty</span>
                     </label>
                     <label>
-                        <select class="" name="doctor" formControlName="doctor">
+                        <select class="" name="doctor" formControlName="doc">
                             <option [value]="doc._id" *ngFor="let doc of doctorsPool">{{doc.title +" "+ doc.fname +" "+ doc.lname}}</option>
                             
                         </select>

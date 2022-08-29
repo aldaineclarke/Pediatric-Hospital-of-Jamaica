@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   
   quickAppointmentForm = new FormGroup({
     email: new FormControl("", Validators.required),
-    doctor: new FormControl("", Validators.required),
+    doc: new FormControl("", Validators.required),
     name: new FormControl("", Validators.required),
     visitStart: new FormControl("", Validators.required),
     specialty: new FormControl("Surgeon", Validators.required)
@@ -45,11 +45,8 @@ export class HomeComponent implements OnInit {
     this.quickAppointmentForm.get("specialty")?.valueChanges.subscribe((change)=>{
       this.doctorsPool = this.doctors.filter((doc)=>{
         return doc.department == change;
-      })
-    })
-
-    
-
+      });
+    });
   }
 
   getAllDoctors(){
@@ -61,16 +58,18 @@ export class HomeComponent implements OnInit {
 
   submitForm(){
     let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
+    console.log(this.quickAppointmentForm.get("doctor")?.value)
     let data = {
       fname: fname,
       lname: lname,
       email: this.quickAppointmentForm.get("email")?.value,
-      doctor: this.quickAppointmentForm.get("doctor")?.value,
+      doctor: this.quickAppointmentForm.get("doc")?.value,
       visitStart: this.quickAppointmentForm.get("visitStart")?.value,
 
     }
     this.appointmentService.createAppointment(data).subscribe(()=>{
       alert("Appointment was set successfully");
+      this.quickAppointmentForm.reset();
     })
   }
 

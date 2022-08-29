@@ -41,6 +41,7 @@ class AppointmentController{
      */
     static async createAppointment(req, res, next){
         try{
+            req.body.doctor = ObjectId(req.body.doctor);
             let newAppointment = await new Appointment(req.body).save();
             jsonResponse(res, 200, "Success", "Successfully Created Appointment", newAppointment);
         }catch(error){
