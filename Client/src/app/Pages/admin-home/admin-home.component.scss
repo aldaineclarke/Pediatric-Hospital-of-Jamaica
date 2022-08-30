@@ -54,6 +54,7 @@ section.admin-section{
 .page-wrapper{
     flex:1;
     display:flex;
+    overflow:hidden;
 
     .sidebar-wrapper{
         width: 250px;
