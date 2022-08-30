@@ -6,7 +6,14 @@ export interface Patient{
     email: string;
     DOB: Date;
     patientImage: string;
-    guardian:string;
+    guardian_fname:string;
+    guardian_lname:string;
+    guardian_address:[{
+        street: string,
+        city:string,
+        parish: string
+    }];
+    phone: string;
     gender:string;
     allergies: string;
     nationality:string;
