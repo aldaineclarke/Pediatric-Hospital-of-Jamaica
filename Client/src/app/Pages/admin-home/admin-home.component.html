@@ -13,17 +13,20 @@
     <div class="page-wrapper">
         <div class="sidebar-wrapper">
             <ul class="sidebar mt-6">
-                <li class="sidebar__item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                    true}">
+                <li class="sidebar__item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a  class="sidebar__link"><i class="fa-solid fa-house-chimney"></i>Home</a>
                 </li>
                 <li class="sidebar__item" routerLink="appointments" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                    true}">
+                    false}">
                     <a   class="sidebar__link"><i class="fa-solid fa-calendar-days"></i>Appointments</a>
                 </li>
                 <li class="sidebar__item" routerLink="doctors" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                    true}">
+                    false}">
                     <a  class="sidebar__link"><i class="fa-solid fa-user-doctor"></i>Doctors</a>
+                </li>
+                <li class="sidebar__item" routerLink="patients" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    false}">
+                    <a class="sidebar__link"><i class="fa-solid fa-file-medical"></i>Patients</a>
                 </li>
                 <li class="sidebar__item">
                     <a href="#" class="sidebar__link"><i class="fa-solid fa-file-medical"></i>Medical Records</a>
