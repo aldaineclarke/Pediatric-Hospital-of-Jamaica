@@ -58,8 +58,8 @@ section.admin-section{
     .sidebar-wrapper{
         width: 250px;
         height: 100%;
-        // background-color: white;
-        box-shadow: 1px 0px 3px rgba(0,0,0, 0.1);
+        background-color: #65483d08;
+        // box-shadow: 1px 0px 3px rgba(0,0,0, 0.1);
     }
     .content-wrapper{
         flex: 1;
@@ -73,17 +73,28 @@ section.admin-section{
 }
 .sidebar{  
     border-radius: 1rem;  
-    .sidebar__item.active, .sidebar__item:hover{
-        border-radius: 0px 2rem 2rem 0;
-        background-color: $mystic;
-        box-shadow: 0 2px 6px rgba($mystic, 0.2);
+    .sidebar__item.active{
+        border-radius: 2rem 0  0 2rem;
+
+        .sidebar__link{
+            color:$mystic;
+        }
+        // background-color: $mystic;
+        background-color: white;
+        box-shadow: -2px -2px 2px rgba(0,0,0, 0.1),-2px 2px 2px rgba(0,0,0, 0.1);  ;
         // border-radius: 5px;
+    }
+    .sidebar__item:hover{
+        .sidebar__link{
+            color: $mystic;
+        }
     }
     .sidebar__link{
         display:inline-flex;
         width: 100%;
         // background-color:red;
         padding: 10px;
+        padding-left: 1.3rem;
         gap: 5px;
         align-items: center;
         color: $dark-brown;
