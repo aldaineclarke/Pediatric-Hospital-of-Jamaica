@@ -1,8 +1,9 @@
 @import "../../../styles.scss";
 
 .service-grid{
-    display:flex;
-    flex-wrap: wrap;
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    // flex-wrap: wrap;
     gap: 4rem;
 }
 .service{
@@ -13,7 +14,8 @@
     flex-grow:1;
     flex-direction: column;
     gap: 10px;
-    width: 10rem;
+    min-width: 10rem;
+    width: 100%;
     justify-content: center;
     align-items: center;
     box-shadow:1px 1px 9px 4px rgba(0,0,0,0.1);
