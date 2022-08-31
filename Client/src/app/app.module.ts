@@ -23,7 +23,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AppointmentCreateComponent } from './Pages/appointment-create/appointment-create.component';
 import { AppointmentEditComponent } from './Pages/appointment-edit/appointment-edit.component';
-import { CalenderComponent } from './Components/calender/calender.component'
+import { CalenderComponent } from './Components/calender/calender.component';
+import { PatientCreateComponent } from './Pages/patient-create/patient-create.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CalenderComponent } from './Components/calender/calender.component'
     AppointmentCreateComponent,
     AppointmentEditComponent,
     CalenderComponent,
+    PatientCreateComponent,
   ],
   imports: [
     BrowserModule,

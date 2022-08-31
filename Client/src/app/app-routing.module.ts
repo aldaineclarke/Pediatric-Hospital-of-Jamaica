@@ -9,6 +9,7 @@ import { AppointmentComponent } from './Pages/appointment/appointment.component'
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { PatientCreateComponent } from './Pages/patient-create/patient-create.component';
 import { PatientComponent } from './Pages/patient/patient.component';
 import { UserCreateComponent } from './Pages/user-create/user-create.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
@@ -35,6 +36,8 @@ const routes: Routes = [
       {path:"appointments/create", component: AppointmentCreateComponent},
       {path:"appointments/edit/:id", component: AppointmentEditComponent},
       {path:"patients", component: PatientComponent},
+      {path:"patients/create", component: PatientCreateComponent},
+      {path:"patients/edit/:id", component: PatientComponent},
     ],
     canActivate:[AuthGuard],
     canActivateChild:[AuthGuard]
