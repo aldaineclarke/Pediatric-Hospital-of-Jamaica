@@ -1,0 +1,44 @@
+@import "../../../styles.scss";
+
+.section{
+    padding: 1rem 0;
+    
+    h2{
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $dark-brown;
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom: 1rem;
+        span{
+            font-size: .8rem;
+            color: $gold;
+        }
+    }
+
+}
+.appointment-list{
+    display:flex;
+    flex-direction: column;
+    
+    width: 100%;
+    gap: 1rem;
+
+    .appointment{
+        display:flex;
+        align-items:center;
+        gap: 10px;
+        padding: 10px;
+        box-shadow: 0 0 3px 3px rgba(0,0,0, 0.1);
+        flex-grow: 1;
+        border-radius: 5px;
+    }
+    img{
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position:center;
+    }
+}
