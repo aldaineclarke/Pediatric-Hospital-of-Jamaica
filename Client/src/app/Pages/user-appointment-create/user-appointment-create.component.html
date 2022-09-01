@@ -1,0 +1,70 @@
+<section>
+    <div class="cta p-6 email-dark-brown font-bold text-lg text-dark-brown" (click)="goBack()">
+        <span><i class="fa fa-solid fa-arrow-left mr-2"></i>Back</span>
+    </div>
+    <div class="form-wrapper px-6">
+        <form class="appointment-form" [formGroup]="appointmentForm">
+            <legend class="text-center text-2xl font-bold mb-3 text-dark-brown">Appointment Form</legend>
+            <div class="form-fields">
+                <div class="text-sm text-light-brown">
+                    <label class="flex gap-1 ">
+                        <input type="checkbox" name="fillForm">
+                        <span>Fill with account information</span>
+                    </label>
+                </div>
+                <label>
+                    <span>First Name</span>
+                    <input type="text" name="fname" formControlName="fname">
+                </label>
+                <label>
+                    <span>Last Name</span>
+                    <input type="text" name="lname" formControlName="lname">
+                </label>
+                <label>
+                    <span>Gender</span>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" value ="Male" name="gender" formControlName="gender">
+                            <span>Male</span>
+                        </label>
+                        <label>
+                            <input type="radio" value ="Female" name="gender" formControlName="gender">
+                            <span>Female</span>
+                        </label>
+                    </div>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" formControlName="email">
+                </label>
+                <label>
+                    <span>Specialty</span>
+                    <select name="specialty" formControlName="specialty">
+                        <option value="Option2">Option 2</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Doctor</span>
+                    <select name="doctor" formControlName="doctor">
+                        <option value="doctor 2">Doctor 2</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Appointment Date</span>
+                    <input type="datetime-local" name="visitStart" formControlName="visitStart">
+                </label>
+                <label>
+                    <span>Chief Complaint/ Purpose</span>
+                    <textarea name="notes" formControlName="notes"></textarea>
+                </label>
+
+            </div>
+            <div class="cta flex justify-end mt-5">
+                <button type="submit" class="cta__btn cta__btn--gold">Set Appointment</button>
+            </div>
+        </form>
+    </div>
+    <div class="footer mt-4 text-gray-400" style="border-top: 1px solid lightgrey">
+        <p class="p-4 text-xs text-center">Created by VaineStudios &copy; All Rights Reserved</p>
+    </div>
+</section>
