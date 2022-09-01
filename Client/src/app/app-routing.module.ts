@@ -13,7 +13,9 @@ import { PatientCreateComponent } from './Pages/patient-create/patient-create.co
 import { PatientComponent } from './Pages/patient/patient.component';
 import { UserCreateComponent } from './Pages/user-create/user-create.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
+import { UserHomeComponent } from './Pages/user-home/user-home.component';
 import { UserLoginComponent } from './Pages/user-login/user-login.component';
+import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.component';
 import { NavService } from './Services/nav.service';
 
 const routes: Routes = [
@@ -44,6 +46,9 @@ const routes: Routes = [
     canActivateChild:[AuthGuard]
   },
   {path: "user/login", component: UserLoginComponent}, 
+  {path: "user", component: UserWrapperComponent, children:[
+    {path:"", component:UserHomeComponent}
+  ]},
   {path: "**", redirectTo:"home", pathMatch:"full"}
 
   
