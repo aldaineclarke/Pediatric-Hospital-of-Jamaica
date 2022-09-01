@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/Services/users.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'hos-admin-login',
@@ -10,7 +11,7 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private location: Location) { }
 
 
 
@@ -38,5 +39,8 @@ export class AdminLoginComponent implements OnInit {
       }
     })
   }
+  goBack(){
+    this.location.back();
+ }
 
 }

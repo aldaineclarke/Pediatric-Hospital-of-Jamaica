@@ -2,7 +2,7 @@
     <div class="section-wrapper h-screen w-screen ">
         <div class="login-form-wrapper">
             <div class="p-8">
-                <button class="text-dark-brown text-lg font-semibold"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                <button (click)="goBack()" class="text-dark-brown text-lg font-semibold"><i class="fa-solid fa-arrow-left"></i> Back</button>
             </div>
 
             <form [formGroup]="adminLoginForm" (submit)="loginUser()">
