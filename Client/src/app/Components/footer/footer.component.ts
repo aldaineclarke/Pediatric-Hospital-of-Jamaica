@@ -12,5 +12,8 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
   year = new Date().getFullYear();
+  submitNewsletter(){
+    alert("Newsletter subscription comming soon")
+  }
 
 }
