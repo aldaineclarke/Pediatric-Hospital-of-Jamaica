@@ -1,6 +1,6 @@
 <div class="user-view">
     <nav class="nav-wrapper">
-        <ul class="nav" role="navigation">
+        <ul [class]="{'nav': true, 'active': navOpened}" role="navigation">
             <li>
                 <div [class]="{'top-nav': true, 'active': navOpened}">
                     <div class="navToggle" (click)="toggleNav()">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </li>
-            <li *ngIf="navOpened">
+            <li>
                 <div class="dropdown-nav mt-10">
                     <a routerLink="profile">
                         <i class="fa-solid fa-user"></i>
