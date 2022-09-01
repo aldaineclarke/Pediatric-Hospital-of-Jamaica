@@ -1,0 +1,107 @@
+@import "../../../styles.scss";
+.content-wrapper{
+    padding: 10px 1.5rem;
+}
+.searchForm{
+
+    display:flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+
+    input{
+        flex-grow: 1;
+        border: 2px solid lightgrey;
+        height: 2.3rem;
+        border-radius: .8rem;
+        font-size: .8rem;
+        padding-left:.8rem;
+
+    }
+    .submit-btn{
+        background-color: $gold;
+        height: 40px;
+        width: 40px;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 1.2rem;
+
+    }
+
+}
+.news__details{
+    border: 1px solid lightgrey;
+    border-radius:  3rem 0 0 3rem;
+    padding: 10px 10px 10px 1rem;
+
+}
+.news__img{
+    align-items:stretch;
+    overflow: hidden;
+    border-radius: 0 3rem  3rem 0;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+        object-position: center;
+
+    }
+}
+
+.section{
+    padding: 1rem 0;
+    
+    h2{
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $dark-brown;
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+
+        span{
+            font-size: .8rem;
+            color: $gold;
+        }
+    }
+
+}
+
+.service-cards{
+    display:flex;
+    gap: 1rem;
+    padding: 1rem 0 ;
+
+    .service-card{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        height: 150px;
+        width: 130px;
+        padding: 1.5rem 1rem;
+        background-color: $gold;
+        color: $dark-brown;
+        border-radius: 1rem;
+        box-shadow: 0 0 5px 3px rgba($mystic, 0.1);
+        gap: .6rem;
+
+        i{
+            font-size: 2.8rem;
+        }
+        p{
+            font-size: 1rem;
+            font-weight: bold;
+            
+        }
+
+    }
+
+}
+.footer{
+    margin-top: 1rem;
+    border-top: 1px solid lightgrey;
+}

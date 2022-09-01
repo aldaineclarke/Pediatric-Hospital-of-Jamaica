@@ -27,7 +27,9 @@ import { CalenderComponent } from './Components/calender/calender.component';
 import { PatientCreateComponent } from './Pages/patient-create/patient-create.component';
 import { UserLoginComponent } from './Pages/user-login/user-login.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
-import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.component'
+import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.component';
+import { AppointmentCardComponent } from './Components/appointment-card/appointment-card.component';
+import { UserAppointmentCreateComponent } from './Pages/user-appointment-create/user-appointment-create.component'
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.componen
     UserLoginComponent,
     UserHomeComponent,
     UserWrapperComponent,
+    AppointmentCardComponent,
+    UserAppointmentCreateComponent,
   ],
   imports: [
     BrowserModule,

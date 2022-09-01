@@ -1,0 +1,21 @@
+<div class="appointment">
+    <div class="appointment-w-data" *ngIf="dataPresent ; else addAppointment">
+        <div class="appointment__date">
+            <p>{{month_day}}</p>
+            <p>{{time}}</p>
+        </div>
+        <div class="appointment__img">
+            <img [src]="imageSrc" alt="image of doctor for appointment">
+        </div>
+        <div class="appointment__details flex flex-col items-center gap-0">
+            <p class="appointment__doctor leading-4">{{doctor}}</p>
+            <p class="appointment__specialty font-semibold">{{specialty}}</p>
+        </div>
+    </div>
+    <ng-template #addAppointment>
+        <div class="create-appointment">
+            <i class="fa fa-solid fa-plus"></i>
+            <p>Add</p>
+        </div>
+    </ng-template>
+</div>

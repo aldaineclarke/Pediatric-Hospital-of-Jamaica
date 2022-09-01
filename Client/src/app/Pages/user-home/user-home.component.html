@@ -1,1 +1,58 @@
-<p>user-home works!</p>
+<section class="home-section">
+    <div class="content-wrapper">
+        <form class="searchForm">
+            <input type="search" #search placeholder="Search..." autocomplete="off">
+            <div class="submit-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </form>
+        <div class="news-carousel mt-8">
+            <div class="news-container">
+                <div class="news-item flex">
+                    <div class="news__details">
+                        <p class="font-semibold text-dark-brown text-sm">Covid Case found in Kingston.</p>
+                        <p class="body text-xs">
+                            There have beeen rising cases of Covid-19 in the parish of kingston, Jamaica. Many have ...
+                        </p>
+                        <a class="more text-gold text-[.6rem] font-bold">Learn More</a>
+                    </div>
+                    <div class="news__img w-[300px]">
+                        <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of some news">
+                    </div>
+                </div>
+            </div>
+            <div class="news-indicator">
+                <span></span>
+            </div>
+        </div>
+        <div class="services section">
+            <h2>Our Services <span>See More</span></h2>
+            <div class="service-cards">
+                <div class="service-card" routerLink="doctors">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <p>Doctors</p>
+                </div>
+                <div class="service-card" routerLink="">
+                    <i class="fa-solid fa-blog"></i>
+                    <p>Blog</p>
+                </div>
+                <div class="service-card" routerLink="">
+                    <i class="fa-solid fa-pills"></i>
+                    <p>Medicine</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="appointments section">
+            <h2 class="mb-6">Upcomming Appointments <span>See More</span></h2>
+            <div class="appointments flex gap-4">
+                <hos-appointment-card [dataPresent]="true"></hos-appointment-card>
+                <hos-appointment-card [dataPresent]="false" routerLink="apointments/create"></hos-appointment-card>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer text-gray-400 ">
+        <p class="p-4 text-xs text-center">Created by VaineStudios &copy; All Rights Reserved</p>
+    </div>
+</section>
