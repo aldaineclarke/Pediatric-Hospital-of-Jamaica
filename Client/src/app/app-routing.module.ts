@@ -53,8 +53,8 @@ const routes: Routes = [
     {path:"", component:UserHomeComponent},
     {path:"appointments", component: UserAppointmentsComponent},
     {path:"appointments/create", component: UserAppointmentCreateComponent},
-    {path:"profile", component: UserProfileComponent}
   ]},
+  {path:"user/profile", component: UserProfileComponent},
   {path: "**", redirectTo:"home", pathMatch:"full"}
 
   
