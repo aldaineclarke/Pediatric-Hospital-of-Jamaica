@@ -1,0 +1,53 @@
+@import "../../../styles.scss";
+
+.login-page{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url("/assets/mother-two-her-sons-have-appointment-with-pediatrician.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-color: $dark-brown;
+    background-blend-mode:multiply;
+
+}
+.form-wrapper{
+    background-color: white;
+    position:relative;
+    z-index: 5;
+    margin-top: auto;
+    border-radius: 3rem 3rem 0 0;
+    border-top:1px solid rgba(0, 0, 0, 0.2);
+    
+    form{
+        padding: 1.5rem;
+        display:flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        legend{
+            font-size: 1.8rem;
+        }
+        label{
+            display:flex;
+            flex-direction: column;
+
+            span{
+                font-size: .8rem;
+            }
+        }
+        input{
+            height: 2.7rem;
+            border-radius: 10px;
+            border: 2px solid $dark-brown;
+            background-color: transparent;
+            padding-left: .7rem;
+            font-size: .8rem;
+        }
+    }
+
+    .footer{
+        box-shadow: 1px -1px 1px rgba(0,0,0,0.2)
+    }
+}

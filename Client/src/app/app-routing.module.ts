@@ -13,6 +13,7 @@ import { PatientCreateComponent } from './Pages/patient-create/patient-create.co
 import { PatientComponent } from './Pages/patient/patient.component';
 import { UserCreateComponent } from './Pages/user-create/user-create.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
+import { UserLoginComponent } from './Pages/user-login/user-login.component';
 import { NavService } from './Services/nav.service';
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     canActivateChild:[AuthGuard]
   },
+  {path: "user/login", component: UserLoginComponent}, 
   {path: "**", redirectTo:"home", pathMatch:"full"}
 
   
@@ -55,6 +57,9 @@ const routes: Routes = [
 export class AppRoutingModule { 
   constructor(private router:Router, private navService: NavService){
     this.router.events.subscribe((res)=>{
+        if(location.href.indexOf("user") > -1){
+          return this.navService.removeOriginalNav();
+        }
         if(location.href.indexOf("admin") > -1){
           this.navService.removeOriginalNav();
         }else if(location.href.indexOf("admin") == -1 ){
