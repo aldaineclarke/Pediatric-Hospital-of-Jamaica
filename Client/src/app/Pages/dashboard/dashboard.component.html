@@ -1,11 +1,40 @@
 <section>
     <div class="dashboard-wrapper">
-        <div class="service-grid">
-            <div class="service" routerLink="appointments">
-                <div class="service__icon">
-                    <img src="/assets/svgs/calendar-svgrepo-com.svg" alt="svg for appointment">
-                    
+        <h1 class="text-2xl">Dashboard</h1>
+
+        <div class="flex gap-4">
+
+            <div class="stats shadow-md p-5 rounded-lg flex-grow items-start flex justify-between gap-4">
+                <div class="stat">
+                    <p class="stat__title">Total Appointments</p>
+                    <p class="stat__count"> 800</p>
                 </div>
+                <div class="stat">
+                    <p class="stat__title">Total Patients</p>
+                    <p class="stat__count"> 800</p>
+                </div>
+                <div class="stat">
+                    <p class="stat__title">Total Rooms</p>
+                    <p class="stat__count"> 800</p>
+                </div>
+                <div class="stat">
+                    <p class="stat__title">Total Doctors</p>
+                    <p class="stat__count"> 800</p>
+                </div>
+
+    
+               
+            </div>
+            <div class="calendar-container">
+                <hos-calender></hos-calender>
+            </div>
+        </div>
+
+        
+        <div class="service-grid mt-5">
+            <div class="service-circle" routerLink="appointments">
+                <img src="/assets/phj-dash/Appointment-Scheduling-cover.webp" alt="img for appointment">
+                    
                 <p class="service__title">Appointments</p>
             </div>
             <div class="service" routerLink="patients">
