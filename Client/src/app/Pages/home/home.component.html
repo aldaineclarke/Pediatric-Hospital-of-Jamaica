@@ -4,7 +4,9 @@
             <div class="intro grid grid-cols-2 h-3/4 mt-24">
                 <div class="intro-text text-light-brown w-11/12 ">
                     <h1 class="text-5xl font-bold leading-12">Let us show you how we care.</h1>
-                    <p class="mt-4 leading-8 font-thin text-lg">Our center is not just geared towards creating a clean and hospitable environment for the future generation, but alse to ensure that both you and your child has the best experience.</p>
+                    <p class="mt-4 leading-8 font-thin text-lg">
+                        Our center is not just geared towards creating a clean and hospitable environment for the future generation, but alse to ensure that both you and your child has the best experience.
+                    </p>
                     <div class="cta mt-6">
                         <button class="cta__btn cta__btn--mystic">
                             Learn More
@@ -16,7 +18,6 @@
                     <img src="/assets/doc no bg.png" alt="Doctor" class="h-full">
                 </div>
             </div>
-            {{quickAppointmentForm.get("doc")?.value}}
             <div class="booking-wrapper">
                 <form class="booking__form" [formGroup]="quickAppointmentForm" (submit)="submitForm()">
                     <label>
@@ -38,7 +39,7 @@
                         <span>Date</span>
                     </label>
                     <label>
-                        <input type="text" name="email" placeholder="johndoe@gmail.com" formControlName="email">
+                        <input type="email" name="email" placeholder="johndoe@gmail.com" formControlName="email">
                         <span>Email</span>
                     </label>
                     <label>

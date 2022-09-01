@@ -16,23 +16,39 @@ export class HomeComponent implements OnInit {
   constructor(private vendorService: VendorService, private appointmentService: AppointmentService, private usersService:UsersService) { }
   
   counters:{[key: string]:{start:number}} = {patient: {start:300}, capacity:{start: 150}, doctor:{start: 1500}, experience:{start:18}};
-  countersArr = ["patient", "capacity", "doctor", "experience"];
   specialties = ["Surgeon", "Dentist", "Radiologist", "Pulmonologist","Radiologist","Cardiologist"]
   mainNews!: News ;
   otherNews: News[] = [];
   currentDateTime = new Date().toJSON();
 
-  doctors: User[] = [];
-  doctorsPool: User[] = [];
   @ViewChild("statistics") statistics!: ElementRef;
   
+  doctors: User[] = [];
+  doctorsPool: User[] = [];
   quickAppointmentForm = new FormGroup({
     email: new FormControl("", Validators.required),
     doc: new FormControl("", Validators.required),
     name: new FormControl("", Validators.required),
     visitStart: new FormControl("", Validators.required),
     specialty: new FormControl("Surgeon", Validators.required)
-  })
+  });
+
+  submitForm(){
+    let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
+    console.log(this.quickAppointmentForm.get("doctor")?.value)
+    let data = {
+      fname: fname,
+      lname: lname,
+      email: this.quickAppointmentForm.get("email")?.value,
+      doctor: this.quickAppointmentForm.get("doc")?.value,
+      visitStart: this.quickAppointmentForm.get("visitStart")?.value,
+
+    }
+    this.appointmentService.createAppointment(data).subscribe(()=>{
+      alert("Appointment was set successfully");
+      this.quickAppointmentForm.reset();
+    })
+  }
 
 
   ngOnInit(): void {
@@ -56,22 +72,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  submitForm(){
-    let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
-    console.log(this.quickAppointmentForm.get("doctor")?.value)
-    let data = {
-      fname: fname,
-      lname: lname,
-      email: this.quickAppointmentForm.get("email")?.value,
-      doctor: this.quickAppointmentForm.get("doc")?.value,
-      visitStart: this.quickAppointmentForm.get("visitStart")?.value,
-
-    }
-    this.appointmentService.createAppointment(data).subscribe(()=>{
-      alert("Appointment was set successfully");
-      this.quickAppointmentForm.reset();
-    })
-  }
+ 
 
   ngAfterViewInit(): void {
     console.log(this.statistics)
@@ -119,6 +120,7 @@ export class HomeComponent implements OnInit {
 
     observer.observe(this.statistics.nativeElement);
   }
+
 
 
 
