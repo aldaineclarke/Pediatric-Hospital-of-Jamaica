@@ -8,24 +8,33 @@
         </div>
         <div class="all-appointments section">
             <h2>All Appointments</h2>
-            <div class="appointment-list">
-                <div class="appointment">
-                    <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
-                    <div class="appointment__details flex flex-col flex-grow">
-                        <p class="doctor font-bold">Dr. Warmington</p>
-                        <p class="specialty text-xs text-light-brown">Dentist</p>
-                        <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>Aug 23, 2022</span> <span>5:00 PM</span></p>
+            <ng-container  *ngIf="userAppointments.length > 0; else showEmptyAppointment">
+
+                <div class="appointment-list">
+                    <div class="appointment" *ngFor="let appointment of userAppointments">
+                        <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
+                        <div class="appointment__details flex flex-col flex-grow">
+                            <p class="doctor font-bold">{{appointment.doctor.title+ " "+ appointment.doctor.fname + " "+ appointment.doctor.lname }}</p>
+                            <p class="specialty text-xs text-light-brown">{{appointment.doctor.role}}</p>
+                            <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>{{appointment.visitStart}}</span> <span>5:00 PM</span></p>
+                        </div>
                     </div>
+                    <!-- <div class="appointment">
+                        <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
+                        <div class="appointment__details flex flex-col flex-grow">
+                            <p class="doctor font-bold">Dr. Warmington</p>
+                            <p class="specialty text-xs text-light-brown">Dentist</p>
+                            <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>Aug 23, 2022</span> <span>5:00 PM</span></p>
+                        </div>
+                    </div> -->
                 </div>
-                <div class="appointment">
-                    <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
-                    <div class="appointment__details flex flex-col flex-grow">
-                        <p class="doctor font-bold">Dr. Warmington</p>
-                        <p class="specialty text-xs text-light-brown">Dentist</p>
-                        <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>Aug 23, 2022</span> <span>5:00 PM</span></p>
-                    </div>
+            </ng-container>
+            <ng-template #showEmptyAppointment>
+                <div class="no-appointments text-gray-300 flex flex-col items-center gap-2">
+                    <i class="fa-solid fa-calendar-xmark text-[6rem]"></i>
+                    <p>Nothing Here</p>
                 </div>
-            </div>
+            </ng-template>
         </div>
     </div> 
     <div class="footer text-gray-400 mt-auto" style="border-top: 1px solid lightgrey">
