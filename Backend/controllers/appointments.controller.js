@@ -9,8 +9,13 @@ class AppointmentController{
      * Gets all the Appointment from the database
      * 
      */
-    static async getAllAppointments(req, res, next){
+    static  getAllAppointments = async(req, res, next) =>{
         try{
+            let query = req.query.email;
+            console.log(query);
+            if(query){
+                return this.getAppointmentsByEmail(req, res, next);
+            }
             let appointments = await Appointment.find();
             jsonResponse(res, 200, "Success", "Successfully Retrieved", appointments);
         }catch(error){
@@ -22,7 +27,7 @@ class AppointmentController{
      * Gets a singles appointment from the database where it matches the id that is found in the request parameters
      * 
      */
-    static async getSingleAppointment(req, res, next){
+    static getSingleAppointment = async(req, res, next) =>{
         try{
             let id = req.params.id;
             let appointment = await Appointment.findById(id);
@@ -39,7 +44,7 @@ class AppointmentController{
      * ### Description
      * Creates a single appointment with the data that is submitted in the request body
      */
-    static async createAppointment(req, res, next){
+    static createAppointment = async(req, res, next)=>{
         try{
             req.body.doctor = ObjectId(req.body.doctor);
             let newAppointment = await new Appointment(req.body).save();
@@ -52,7 +57,7 @@ class AppointmentController{
      * ### Description
      * Updates the Appointment with the data that is passed in the request body, and identifies the patient by the id passed in the request parameters
      */
-    static async updateAppointment(req,res, next){
+    static updateAppointment = async(req,res, next) =>{
         try{
            let id = req.params.id;
            if(Object.keys(req.body).length == 0){
@@ -71,13 +76,28 @@ class AppointmentController{
      * ### Description
      * Deletes the Appointment that matches the id that is passed in the request url.
      */
-    static async deleteAppointment(req,res, next){
+    static deleteAppointment = async(req,res, next)=>{
         try{
             let id = req.params.id;
             let count = await Appointment.findByIdAndDelete(id);
             jsonResponse(res, 200, "Success", "Successfully Deleted");
         }catch(error){
             jsonResponse(res, 400, "Failed", error.message)
+        }
+    }
+
+    static getAppointmentsByEmail = async(req, res, next) =>{
+        try{
+            let email = req.query.email;
+            console.log(email);
+            if(email){
+
+                let appointments = await Appointment.find({"email": email}).exec();
+                console.log(appointments);
+                return jsonResponse(res, 200, "Success", "Successfully",appointments);
+            }
+        }catch(error){
+            return jsonResponse(res, 400, "Failed", error.message);
         }
     }
 }
