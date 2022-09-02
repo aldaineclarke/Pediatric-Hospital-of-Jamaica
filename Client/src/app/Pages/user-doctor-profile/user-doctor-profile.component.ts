@@ -12,7 +12,7 @@ export class UserDoctorProfileComponent implements OnInit {
   ngOnInit(): void {
   }
   goBack(){
-
+    this.location.back()
   }
 
 }
