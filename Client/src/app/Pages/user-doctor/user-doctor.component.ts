@@ -12,4 +12,8 @@ export class UserDoctorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showApology(){
+    alert("Unfortunately this feature hasn't been implemented yet.")
+  }
+
 }

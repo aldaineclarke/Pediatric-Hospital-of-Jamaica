@@ -1,1 +1,73 @@
-<p>user-doctor works!</p>
+<section class="docgors-section">
+    <div class="content-wrapper">
+        <form class="searchForm">
+            <input type="search" #search placeholder="Search Doctors" autocomplete="off">
+            <div class="submit-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </form>
+
+        <div class="doctors section">
+            <h2 class="mb-6">Popular Doctors <span>See More</span></h2>
+            <div class="doctors flex flex-col gap-4">
+                <div class="doctor-card">
+                    <div class="doc__details">
+                        <img src="/assets/toddler-white-shirt-curly-hair.jpg" alt="image of a doctor">
+                        <div class="doctor-info">
+                            <p class="docName font-semibold">Dr. Paul Harris</p>
+                            <p class="specialty text-light-brown text-xs">Dentist</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <p> <i class="fa fa-solid fa-star mb-1"></i> 4.7</p>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doc__details">
+                        <img src="/assets/toddler-white-shirt-curly-hair.jpg" alt="image of a doctor">
+                        <div class="doctor-info">
+                            <p class="docName font-semibold">Dr. Paul Harris</p>
+                            <p class="specialty text-light-brown text-xs">Cardiologist</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <p> <i class="fa fa-solid fa-star mb-1"></i> 4.7</p>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doc__details">
+                        <img src="/assets/toddler-white-shirt-curly-hair.jpg" alt="image of a doctor">
+                        <div class="doctor-info">
+                            <p class="docName font-semibold">Dr. Paul Harris</p>
+                            <p class="specialty text-light-brown text-xs">Cardiologist</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <p> <i class="fa fa-solid fa-star mb-1"></i> 4.7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="specialties section">
+            <h2 class="mb-6">Doctor Specialties</h2>
+                <div class="service-cards">
+                    <div class="service-card" (click)="showApology()">
+                        <i class="fa-solid fa-stethoscope"></i>
+                        <p>Surgery</p>
+                    </div>
+                    <div class="service-card" (click)="showApology()">
+                        <i class="fa-solid fa-tooth"></i>
+                        <p>Dentistry</p>
+                    </div>
+                    <div class="service-card" (click)="showApology()">
+                        <i class="fa-solid fa-hospital"></i>
+                        <p>Consult</p>
+                    </div>
+                </div>
+        </div>
+        
+    </div>
+    <div class="footer text-gray-400 " style="border-top: 1px solid lightgrey">
+        <p class="p-4 text-xs text-center">Created by VaineStudios &copy; All Rights Reserved</p>
+    </div>
+</section>
