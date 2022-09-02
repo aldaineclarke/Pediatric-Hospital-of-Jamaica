@@ -11,8 +11,8 @@ let appointmentSchema = new Schema({
     title: {type:String},
     email: {type:String},
     gender: {type:String},
-    phone:{type:Schema.Types.ObjectId},
-    userId: {type: String},
+    phone:{type:String},
+    userId: {type: Schema.Types.ObjectId},
     status: {type:Boolean, default:false},
 }, {timestamps:true});
 // Will create timestamps for the createdAt and updatedAt time;

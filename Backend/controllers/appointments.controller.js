@@ -47,9 +47,13 @@ class AppointmentController{
     static createAppointment = async(req, res, next)=>{
         try{
             let data = req.body;
+            console.log(data.doctor);
             data.doctor = ObjectId(req.body.doctor);
             if(!data.userId){
                 data.userId = new ObjectId();
+            }else{
+                console.log(data.userId);
+                data.userId = ObjectId(data.userId);
             }
             let newAppointment = await new Appointment(req.body).save();
             jsonResponse(res, 200, "Success", "Successfully Created Appointment", newAppointment);
