@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError, tap } from 'rxjs';
 import { API_Response, User } from '../Interfaces/user';
 
 @Injectable({
@@ -44,6 +44,11 @@ export class UsersService {
   loginUser(data:Partial<User>){
     return this._http.post<API_Response<string>>(this.USERS_ENDPOINT+"/login",data)
     .pipe(
+      tap((response)=>{
+        if(response.data){
+          localStorage.setItem("token",response.data);
+        }
+      }),
       catchError(this.handleErrror)
     )
   }

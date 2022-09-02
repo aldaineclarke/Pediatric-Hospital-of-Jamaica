@@ -23,13 +23,16 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goBack(){
+    this.location.back();
+  }
+  
   loginUser(){
     this.usersService.loginUser(this.adminLoginForm.value).subscribe({
       next: (response)=>{
-        if(response.data){
-          localStorage.setItem("token",response.data);
+        
           this.router.navigate(['/admin']);
-        }
+        
         
       },
       error: (error)=>{
@@ -39,8 +42,6 @@ export class AdminLoginComponent implements OnInit {
       }
     })
   }
-  goBack(){
-    this.location.back();
- }
+ 
 
 }
