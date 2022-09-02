@@ -1,7 +1,60 @@
 <section>
     <div class="profile-wrapper flex flex-col h-screen">
-        <div class="cta p-6">
-            <p><i class="fa fa-solid fa-arrow-left"></i><span>Back</span></p>
+        <div class="cta px-6 pt-6 pb-0 text-lg font-semibold text-dark-brown" (click)="goBack()">
+            <p><i class="fa fa-solid fa-arrow-left mr-2"></i><span>Back</span></p>
+        </div>
+        <div class="profileImg-wrapper">
+            <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="">
+        </div>
+        <div class="userInfo-wrapper section">
+            <h2>User Profile</h2>
+            <form [formGroup]="updateProfileForm" class="updateProfileForm">
+                <div class="form-group">
+                    <label>
+                        <span>First Name</span>
+                        <input type="text" name="fname" formControlName="fname">
+                    </label>
+                    <label>
+                        <span>Last Name</span>
+                        <input type="text" name="lname" formControlName="lname">
+                    </label>
+                </div>
+                <label>
+                    <span>Username</span>
+                    <input type="text" name="username" formControlName="username">
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" formControlName="email">
+                </label>
+                <label>
+                    <span>Telephone Number (876-555-5555)</span>
+                    <input type="tel" name="phone" formControlName="phone">
+                </label>
+                <label>
+                    <span>Street</span>
+                    <input type="text" name="street" formControlName="street">
+                </label>
+                <label>
+                    <span>City</span>
+                    <input type="text" name="city" formControlName="city">
+                </label>
+                <label>
+                    <span>Parish</span>
+                    <input type="text" name="parish" formControlName="parish">
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="text" name="password" formControlName="password">
+                </label>
+                <div class="cta">
+                    <button class="cta__btn cta__btn--gold">Update Profile</button>
+                </div>
+            </form>
+            
+        </div>
+        <div class="footer text-gray-400 mt-auto" style="border-top: 1px solid lightgrey">
+            <p class="p-4 text-xs text-center">Created by VaineStudios &copy; All Rights Reserved</p>
         </div>
     </div>
 </section>

@@ -1,0 +1,80 @@
+@import "../../../styles.scss";
+
+
+.profile-wrapper{
+    background-image: linear-gradient(rgb(116, 190, 255), white);
+    gap: 1rem;
+}
+.userInfo-wrapper{
+    border-radius: 3rem 3rem 0 0;
+    background-color:white;
+    padding: 1.5rem;
+    box-shadow: 0 -2px 2px rgba(0,0, 0, 0.2);
+
+   
+
+    h2{
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $dark-brown;
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom: 1rem;
+        span{
+            font-size: .8rem;
+            color: $gold;
+        }
+    }
+}
+
+.profileImg-wrapper{
+    display: flex;
+    justify-content: center;
+
+    img{
+        height: 15rem;
+        width: 15rem;
+        object-fit: cover;
+        object-position:center;
+        border-radius:50%;
+        box-shadow: 0 0 5px 4px rgba(0,0,0, 0.1);
+
+    }
+}
+.updateProfileForm{
+        display:flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        label{
+            display:flex;
+            flex-direction: column;
+
+            span{
+                font-size: .8rem;
+                font-weight: 500;
+                color: $dark-brown;
+            }
+            input{
+                border: 2px solid lightgrey;
+                height: 2.7rem;
+                border-radius: 10px;
+                padding-left: 1rem;
+                font-size: .8rem;
+            }
+
+        }
+
+        .form-group{
+            display:flex;
+            width: 100%;
+            gap: 1rem;
+
+            label{
+                flex-grow: 1;
+                width: 100%;
+            }
+        }
+    
+}
