@@ -3,7 +3,7 @@
         <span><i class="fa fa-solid fa-arrow-left mr-2"></i>Back</span>
     </div>
     <div class="form-wrapper px-6">
-        <form class="appointment-form" [formGroup]="appointmentForm">
+        <form class="appointment-form" [formGroup]="appointmentForm" (submit)="submitForm()">
             <legend class="text-center text-2xl font-bold mb-3 text-dark-brown">Appointment Form</legend>
             <div class="form-fields">
                 <div class="text-sm text-light-brown">
@@ -19,6 +19,10 @@
                 <label>
                     <span>Last Name</span>
                     <input type="text" name="lname" formControlName="lname">
+                </label>
+                <label>
+                    <span>Title</span>
+                    <input type="text" name="title" formControlName="title" placeholder="Mr or Mrs">
                 </label>
                 <label>
                     <span>Gender</span>
@@ -38,6 +42,10 @@
                     <input type="email" name="email" formControlName="email">
                 </label>
                 <label>
+                    <span>Phone</span>
+                    <input type="tel" name="phone" formControlName="phone">
+                </label>
+                <label>
                     <span>Specialty</span>
                     <select name="specialty" formControlName="specialty">
                         <option value="Option2">Option 2</option>
@@ -46,7 +54,9 @@
                 <label>
                     <span>Doctor</span>
                     <select name="doctor" formControlName="doctor">
-                        <option value="doctor 2">Doctor 2</option>
+                        <option [value]="doctor._id" *ngFor="let doctor of doctors">
+                            {{doctor.title +" "+ doctor.fname+" "+doctor.lname }}
+                        </option>
                     </select>
                 </label>
                 <label>
