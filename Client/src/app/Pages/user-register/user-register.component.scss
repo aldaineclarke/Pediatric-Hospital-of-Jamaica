@@ -1,0 +1,73 @@
+@import "../../../styles.scss";
+
+.appointment-form{
+    display:flex;
+    flex-direction:column;
+    gap: .5rem;
+
+    
+}
+.form-fields {
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+
+
+    > label{
+        display:flex;
+        flex-direction:column;
+        
+        input, select, textarea{
+            flex-grow: 1;
+            width:100%;
+            border: 2px solid lightgrey;
+            height: 2.7rem;
+            border-radius: .8rem;
+            font-size: .9rem;
+            padding-left: 1rem;
+            background-color:transparent;
+        }
+        input:focus, select:focus, textarea:focus{
+            outline:none;
+            border-color: $dark-brown;
+        }
+
+        textarea{
+            height: 5rem;
+        }
+    }
+    span{
+        
+        font-weight: 500;
+        font-size: .8rem;
+        color: $light-brown;
+    }
+
+}
+.form-group {
+    display:flex;
+    gap: 1rem;
+}
+.form-group label{
+    display: flex;
+    flex-direction:column;
+
+    input, select, textarea{
+        flex-grow: 1;
+        width:100%;
+        border: 2px solid lightgrey;
+        height: 2.7rem;
+        border-radius: .8rem;
+        font-size: .9rem;
+        padding-left: 1rem;
+        background-color:transparent;
+    }
+    input:focus, select:focus, textarea:focus{
+        outline:none;
+        border-color: $dark-brown;
+    }
+
+
+
+}
+

@@ -22,6 +22,7 @@ import { UserLoginComponent } from './Pages/user-login/user-login.component';
 import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
 import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.component';
 import { NavService } from './Services/nav.service';
+import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,9 @@ const routes: Routes = [
     canActivateChild:[AuthGuard]
   },
   {path: "user/login", component: UserLoginComponent}, 
+  {path: "user/register", component: UserRegisterComponent}, 
+  {path:"user/profile", component: UserProfileComponent},
+  {path:"user/doctors/view", component: UserDoctorProfileComponent},
 
   {path: "user", component: UserWrapperComponent, children:[
     {path:"", component:UserHomeComponent},
@@ -59,8 +63,7 @@ const routes: Routes = [
     {path:"doctors", component: UserDoctorComponent},
   ]},
   
-  {path:"user/profile", component: UserProfileComponent},
-  {path:"user/doctors/view", component: UserDoctorProfileComponent},
+ 
 
   {path: "**", redirectTo:"home", pathMatch:"full"}
 
