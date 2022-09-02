@@ -21,8 +21,7 @@ export class UserLoginComponent implements OnInit {
   loginUser(){
     confirm("You are about to log in. Are you sure?")
     this.usersService.loginUser(this.userLoginForm.value).subscribe((response)=>{
-      localStorage.setItem("token",response.data);
-      this.router.navigate(['/user']);
+      this.router.navigate(['/user/profile']);
     })
   }
 

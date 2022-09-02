@@ -34,7 +34,7 @@ export class UserRegisterComponent implements OnInit {
     const data = this.signUpForm.value;
     console.log(data)
     this.usersService.createUser("Customer",data).subscribe(()=>{
-      this.router.navigate(["/user/profile"]);
+      this.router.navigate(["/user/login"]);
     })
   }
 
