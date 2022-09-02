@@ -10,4 +10,5 @@ export interface Appointment {
     notes:string;
     status: string;
     phone:string;
+    userId:string;
 }
