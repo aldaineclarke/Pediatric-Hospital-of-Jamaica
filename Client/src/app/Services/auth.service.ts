@@ -20,4 +20,9 @@ export class AuthService {
       
       return !jwtHelper.isTokenExpired(token);
   }
+
+  public getUser = () =>{
+    const token = localStorage.getItem("token") as string;
+    return jwtHelper.decodeToken(token);
+  }
 }
