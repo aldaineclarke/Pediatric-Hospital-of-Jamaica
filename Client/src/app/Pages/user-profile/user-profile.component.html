@@ -8,7 +8,7 @@
         </div>
         <div class="userInfo-wrapper section">
             <h2>User Profile</h2>
-            <form [formGroup]="updateProfileForm" class="updateProfileForm">
+            <form [formGroup]="updateProfileForm" class="updateProfileForm" (submit)="updateForm()">
                 <div class="form-group">
                     <label>
                         <span>First Name</span>
@@ -43,10 +43,7 @@
                     <span>Parish</span>
                     <input type="text" name="parish" formControlName="parish">
                 </label>
-                <label>
-                    <span>Password</span>
-                    <input type="text" name="password" formControlName="password">
-                </label>
+
                 <div class="cta">
                     <button class="cta__btn cta__btn--gold">Update Profile</button>
                 </div>
