@@ -65,7 +65,10 @@ class UsersController{
      static updateUser = async (req, res, next)=>{
         try{
             let id = req.params.id;
-            let user = await User.findByIdAndUpdate(id, req.body, {new:true});
+            let data = req.body;
+            data.address = {street: data.street, city: data.city, parish: data.parish};
+
+            let user = await User.findByIdAndUpdate(id, data, {new:true});
             jsonResponse(res, 200,"Success", "Successfully updated", user)
         }catch(error){
             jsonResponse(res, 400, "Failed", error.message);
@@ -90,10 +93,14 @@ class UsersController{
      */
          static createUser =  async (req, res, next)=>{
             try{
-                let user = new User(req.body);
+                let data = req.body;
+                data.address = {street: data.street, city: data.city, parish: data.parish};
+
+                let user = new User(data);
                 if(!user.password){
                     user.password = (user.fname.slice(0,1)+"."+ user.lname).toUpperCase()
                 }
+                
                 user.password = await bcrypt.hash(user.password, 10);
                 await user.save()
                 return jsonResponse(res, 200, "Success", "Successfully Logged in")

@@ -12,7 +12,6 @@ class AppointmentController{
     static  getAllAppointments = async(req, res, next) =>{
         try{
             let query = req.query.userId;
-            console.log(query);
             if(query){
                 return this.getAppointmentsByUID(req, res, next);
             }
@@ -31,7 +30,6 @@ class AppointmentController{
         try{
             let id = req.params.id;
             let appointment = await Appointment.findById(id);
-            console.log(appointment)
             if(appointment){
                 return jsonResponse(res, 200, "Success", "Successfully Retrieved", appointment);
             }
@@ -47,12 +45,10 @@ class AppointmentController{
     static createAppointment = async(req, res, next)=>{
         try{
             let data = req.body;
-            console.log(data.doctor);
             data.doctor = ObjectId(req.body.doctor);
             if(!data.userId){
                 data.userId = new ObjectId();
             }else{
-                console.log(data.userId);
                 data.userId = ObjectId(data.userId);
             }
             let newAppointment = await new Appointment(req.body).save();
@@ -68,10 +64,13 @@ class AppointmentController{
     static updateAppointment = async(req,res, next) =>{
         try{
            let id = req.params.id;
+           let data = req.body;
            if(Object.keys(req.body).length == 0){
             return res.json({message: "There is no data passed to update the patient "})
            }else{
-                let appointment = await Appointment.findByIdAndUpdate(id,req.body)
+                data = {street: data.street, city: data.city, parish: data.parish};
+
+                let appointment = await Appointment.findByIdAndUpdate(id,data)
                 jsonResponse(res, 200, "Success", "Successfully Updated", appointment);
             }
         }catch(error){
