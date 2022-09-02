@@ -19,8 +19,8 @@ export class AppointmentService {
   getAppointmentById(id:string):Observable<API_Response<Appointment>>{
     return this._http.get<API_Response<Appointment>>(this.APPOINTMENT_ENDPOINT+"/"+id);
   }
-  getUserAppointments(email:string):Observable<API_Response<Appointment[]>>{
-    return this._http.get<API_Response<Appointment[]>>(this.APPOINTMENT_ENDPOINT+ "?email="+ email);
+  getUserAppointments(id:string):Observable<API_Response<Appointment[]>>{
+    return this._http.get<API_Response<Appointment[]>>(this.APPOINTMENT_ENDPOINT+ "?userId="+ id);
   }
   createAppointment(data:Partial<Appointment>):Observable<API_Response<Appointment>>{
     return this._http.post<API_Response<Appointment>>(this.APPOINTMENT_ENDPOINT,data);

@@ -11,10 +11,10 @@ class AppointmentController{
      */
     static  getAllAppointments = async(req, res, next) =>{
         try{
-            let query = req.query.email;
+            let query = req.query.userId;
             console.log(query);
             if(query){
-                return this.getAppointmentsByEmail(req, res, next);
+                return this.getAppointmentsByUID(req, res, next);
             }
             let appointments = await Appointment.find();
             jsonResponse(res, 200, "Success", "Successfully Retrieved", appointments);
