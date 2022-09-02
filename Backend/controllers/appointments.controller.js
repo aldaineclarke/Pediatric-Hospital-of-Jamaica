@@ -46,7 +46,11 @@ class AppointmentController{
      */
     static createAppointment = async(req, res, next)=>{
         try{
-            req.body.doctor = ObjectId(req.body.doctor);
+            let data = req.body;
+            data.doctor = ObjectId(req.body.doctor);
+            if(!data.userId){
+                data.userId = new ObjectId();
+            }
             let newAppointment = await new Appointment(req.body).save();
             jsonResponse(res, 200, "Success", "Successfully Created Appointment", newAppointment);
         }catch(error){
@@ -92,7 +96,21 @@ class AppointmentController{
             console.log(email);
             if(email){
 
-                let appointments = await Appointment.find({"email": email}).exec();
+                let appointments = await Appointment.find({"email": email});
+                console.log(appointments);
+                return jsonResponse(res, 200, "Success", "Successfully",appointments);
+            }
+        }catch(error){
+            return jsonResponse(res, 400, "Failed", error.message);
+        }
+    }
+    static getAppointmentsByUID = async(req, res, next) =>{
+        try{
+            let id = req.query.userId;
+            console.log(id);
+            if(id){
+
+                let appointments = await Appointment.find({"userId": id});
                 console.log(appointments);
                 return jsonResponse(res, 200, "Success", "Successfully",appointments);
             }
