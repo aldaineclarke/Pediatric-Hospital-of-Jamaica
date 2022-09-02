@@ -32,7 +32,8 @@ import { AppointmentCardComponent } from './Components/appointment-card/appointm
 import { UserAppointmentCreateComponent } from './Pages/user-appointment-create/user-appointment-create.component';
 import { UserAppointmentsComponent } from './Pages/user-appointments/user-appointments.component';
 import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
-import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component'
+import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
+import { UserDoctorProfileComponent } from './Pages/user-doctor-profile/user-doctor-profile.component'
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component'
     UserAppointmentsComponent,
     UserProfileComponent,
     UserDoctorComponent,
+    UserDoctorProfileComponent,
   ],
   imports: [
     BrowserModule,

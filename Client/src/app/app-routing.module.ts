@@ -15,6 +15,7 @@ import { UserAppointmentCreateComponent } from './Pages/user-appointment-create/
 import { UserAppointmentsComponent } from './Pages/user-appointments/user-appointments.component';
 import { UserCreateComponent } from './Pages/user-create/user-create.component';
 import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
+import { UserDoctorProfileComponent } from './Pages/user-doctor-profile/user-doctor-profile.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 import { UserLoginComponent } from './Pages/user-login/user-login.component';
@@ -50,13 +51,17 @@ const routes: Routes = [
     canActivateChild:[AuthGuard]
   },
   {path: "user/login", component: UserLoginComponent}, 
+
   {path: "user", component: UserWrapperComponent, children:[
     {path:"", component:UserHomeComponent},
     {path:"appointments", component: UserAppointmentsComponent},
     {path:"appointments/create", component: UserAppointmentCreateComponent},
     {path:"doctors", component: UserDoctorComponent},
   ]},
+  
   {path:"user/profile", component: UserProfileComponent},
+  {path:"user/doctors/view", component: UserDoctorProfileComponent},
+
   {path: "**", redirectTo:"home", pathMatch:"full"}
 
   
