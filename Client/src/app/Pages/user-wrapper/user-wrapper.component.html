@@ -13,8 +13,8 @@
                         <img src="/assets/toddler-white-shirt-curly-hair.jpg" alt="profile image" routerLink="profile">
 
                        <div class="text-center" *ngIf="navOpened">
-                        <p class="name text-lg font-bold text-white">Jane Doe</p>
-                        <p class="email text-light-brown font-bold">janedoe@mailme.com</p>
+                        <p class="name text-lg font-bold text-white">{{user.fname+" "+user.lname}}</p>
+                        <p class="email text-light-brown font-bold">{{user.email}}</p>
                        </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
             </li>
             <li *ngIf="!navOpened">
                 <p class="text-center text-light-brown text-sm">Welcome Back</p>
-                <p class="text-center font-bold text-white text-xl">John Doe</p>
+                <p class="text-center font-bold text-white text-xl">{{user.fname+" "+user.lname}}</p>
             </li>
         </ul>
     </nav>
