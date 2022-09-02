@@ -14,6 +14,7 @@ import { PatientComponent } from './Pages/patient/patient.component';
 import { UserAppointmentCreateComponent } from './Pages/user-appointment-create/user-appointment-create.component';
 import { UserAppointmentsComponent } from './Pages/user-appointments/user-appointments.component';
 import { UserCreateComponent } from './Pages/user-create/user-create.component';
+import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
 import { UserEditComponent } from './Pages/user-edit/user-edit.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 import { UserLoginComponent } from './Pages/user-login/user-login.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
     {path:"", component:UserHomeComponent},
     {path:"appointments", component: UserAppointmentsComponent},
     {path:"appointments/create", component: UserAppointmentCreateComponent},
+    {path:"doctors", component: UserDoctorComponent},
   ]},
   {path:"user/profile", component: UserProfileComponent},
   {path: "**", redirectTo:"home", pathMatch:"full"}
