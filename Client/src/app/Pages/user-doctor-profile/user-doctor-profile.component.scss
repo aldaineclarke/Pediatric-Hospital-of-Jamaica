@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+
+.top-wrapper{
+    position:relative;
+    height: 60vh;
+    background-image: linear-gradient(rgb(56, 173, 240), white);
+
+    .cta{
+        position: relative;
+        z-index: 3;
+        color:$dark-brown;
+    }
+
+
+    img{
+        position:absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0 0 3rem 3rem;
+    }
+}
+.doctor__detail{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'hos-user-dpctor-profile',
   templateUrl: './user-doctor-profile.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDoctorProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor( private location: Location) { }
 
   ngOnInit(): void {
+  }
+  goBack(){
+
   }
 
 }
