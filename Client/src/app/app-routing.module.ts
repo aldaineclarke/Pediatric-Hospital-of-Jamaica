@@ -53,15 +53,20 @@ const routes: Routes = [
   },
   {path: "user/login", component: UserLoginComponent}, 
   {path: "user/register", component: UserRegisterComponent}, 
-  {path:"user/profile", component: UserProfileComponent},
-  {path:"user/doctors/:id", component: UserDoctorProfileComponent},
+  {path:"user/profile", component: UserProfileComponent, canActivate:[AuthGuard]},
+  {path:"user/doctors/:id", component: UserDoctorProfileComponent,canActivate:[AuthGuard]},
 
-  {path: "user", component: UserWrapperComponent, children:[
+  {path: "user", component: UserWrapperComponent, 
+   children:[
     {path:"", component:UserHomeComponent},
     {path:"appointments", component: UserAppointmentsComponent},
     {path:"appointments/create", component: UserAppointmentCreateComponent},
     {path:"doctors", component: UserDoctorComponent},
-  ]},
+
+   ], 
+   canActivate:[AuthGuard], 
+   canActivateChild:[AuthGuard]
+  },
   
  
 

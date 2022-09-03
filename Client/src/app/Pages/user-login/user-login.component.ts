@@ -21,7 +21,7 @@ export class UserLoginComponent implements OnInit {
   loginUser(){
     confirm("You are about to log in. Are you sure?")
     this.usersService.loginUser(this.userLoginForm.value).subscribe((response)=>{
-      this.router.navigate(['/user/profile']);
+      this.router.navigate(['/user/']);
     })
   }
 
