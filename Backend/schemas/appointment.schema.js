@@ -8,7 +8,6 @@ let appointmentSchema = new Schema({
     notes:{type:String},
     fname: {type:String},
     lname: {type:String},
-    title: {type:String},
     email: {type:String},
     gender: {type:String},
     phone:{type:String},
