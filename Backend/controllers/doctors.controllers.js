@@ -57,7 +57,7 @@ class DoctorsController{
      static getDoctorById = async (req, res, next)=>{
         try{
             let id = req.params.id;
-            let doctor = await User.findById(id);
+            let doctor = await Doctor.findById(id);
             return jsonResponse(res, 200,"Success", "Successfully retrieved", doctor)
         }catch(error){
             jsonResponse(res, 500, "Failed", error.message)
