@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment } from 'src/app/Interfaces/appointment';
+import { Doctor } from 'src/app/Interfaces/doctor';
 import { User } from 'src/app/Interfaces/user';
 import { AppointmentService } from 'src/app/Services/appointment.service';
+import { DoctorService } from 'src/app/Services/doctor.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -13,17 +15,16 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class AppointmentEditComponent implements OnInit {
 
-  doctors: User[] = [];
-  doctorsPool: User[] = [];
+  doctors: Doctor[] = [];
+  doctorsPool: Doctor[] = [];
   appointment!: Appointment;
-  constructor(private usersService: UsersService, private appointmentService: AppointmentService, private route:ActivatedRoute, private router:Router) { }
+  constructor(private doctorService: DoctorService, private appointmentService: AppointmentService, private route:ActivatedRoute, private router:Router) { }
 
   appointmentUpdateForm = new FormGroup({
     doctor: new FormControl("", Validators.required),
     fname: new FormControl("", Validators.required),
-    title: new FormControl("", Validators.required),
     lname: new FormControl("", Validators.required),
-    gender: new FormControl("", Validators.required),
+    email: new FormControl("", Validators.required),
     phone: new FormControl("", Validators.required),
     visitStart: new FormControl("", Validators.required),
     notes: new FormControl("", Validators.required),
@@ -51,9 +52,7 @@ export class AppointmentEditComponent implements OnInit {
         let data = {
           doctor: this.appointment.doctor,
           fname: this.appointment.fname,
-          title: this.appointment.title,
           lname: this.appointment.lname,
-          gender: this.appointment.gender,
           phone: this.appointment.phone,
           visitStart:this.appointment.visitStart,
           notes: this.appointment.notes,
@@ -77,7 +76,7 @@ export class AppointmentEditComponent implements OnInit {
   }
 
   getDoctors(){
-    this.usersService.getAllDoctors().subscribe((response)=>{
+    this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       this.doctorsPool = this.doctors;
     })

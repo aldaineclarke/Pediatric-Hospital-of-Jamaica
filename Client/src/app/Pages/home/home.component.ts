@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Doctor } from 'src/app/Interfaces/doctor';
 import { News } from 'src/app/Interfaces/news';
 import { User } from 'src/app/Interfaces/user';
 import { AppointmentService } from 'src/app/Services/appointment.service';
+import { DoctorService } from 'src/app/Services/doctor.service';
 import { UsersService } from 'src/app/Services/users.service';
 import { VendorService } from 'src/app/Services/vendor.service';
 
@@ -13,7 +15,7 @@ import { VendorService } from 'src/app/Services/vendor.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private vendorService: VendorService, private appointmentService: AppointmentService, private usersService:UsersService) { }
+  constructor(private vendorService: VendorService, private appointmentService: AppointmentService, private doctorService: DoctorService) { }
   
   counters:{[key: string]:{start:number}} = {patient: {start:300}, capacity:{start: 150}, doctor:{start: 1500}, experience:{start:18}};
   specialties = ["Surgeon", "Dentist", "Radiologist", "Pulmonologist","Radiologist","Cardiologist"]
@@ -23,8 +25,8 @@ export class HomeComponent implements OnInit {
 
   @ViewChild("statistics") statistics!: ElementRef;
   
-  doctors: User[] = [];
-  doctorsPool: User[] = [];
+  doctors: Doctor[] = [];
+  doctorsPool: Doctor[] = [];
   quickAppointmentForm = new FormGroup({
     email: new FormControl("", Validators.required),
     doc: new FormControl("", Validators.required),
@@ -66,7 +68,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAllDoctors(){
-    this.usersService.getAllDoctors().subscribe((response)=>{
+    this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       this.doctorsPool = this.doctors;
     })

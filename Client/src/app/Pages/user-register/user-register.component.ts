@@ -18,7 +18,6 @@ export class UserRegisterComponent implements OnInit {
 
   signUpForm = new FormGroup({
     fname: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
     lname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),

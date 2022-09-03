@@ -6,6 +6,8 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
 import { UsersService } from 'src/app/Services/users.service';
+import { DoctorService } from 'src/app/Services/doctor.service';
+import { Doctor } from 'src/app/Interfaces/doctor';
 @Component({
   selector: 'hos-user-appointment-create',
   templateUrl: './user-appointment-create.component.html',
@@ -13,9 +15,9 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class UserAppointmentCreateComponent implements OnInit {
 
-  constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private usersService: UsersService) { }
+  constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private doctorService: DoctorService) { }
   user = this.authService.getUser();
-  doctors:User[] = []
+  doctors:Doctor[] = []
   ngOnInit(): void {
     console.log( this.authService.getUser())
     this.getAllDoctors()
@@ -24,8 +26,6 @@ export class UserAppointmentCreateComponent implements OnInit {
   appointmentForm = new FormGroup({
     fname: new FormControl('', Validators.required),
     lname: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
-    gender: new FormControl('Male', Validators.required),
     email: new FormControl('', Validators.required),
     phone: new FormControl(''),
     specialty: new FormControl('', Validators.required),
@@ -48,7 +48,7 @@ export class UserAppointmentCreateComponent implements OnInit {
   }
 
   getAllDoctors(){
-    this.usersService.getAllDoctors().subscribe((response)=>{
+    this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       console.log(this.doctors);
 

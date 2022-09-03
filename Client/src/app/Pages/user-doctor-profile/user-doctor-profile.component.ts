@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from 'src/app/Services/users.service';
+import { User } from 'src/app/Interfaces/user';
+import { DoctorService } from 'src/app/Services/doctor.service';
+import { Doctor } from 'src/app/Interfaces/doctor';
 @Component({
   selector: 'hos-user-dpctor-profile',
   templateUrl: './user-doctor-profile.component.html',
@@ -7,12 +12,25 @@ import { Location } from '@angular/common';
 })
 export class UserDoctorProfileComponent implements OnInit {
 
-  constructor( private location: Location) { }
+  constructor( private location: Location, private route: ActivatedRoute, private router: Router, private doctorService: DoctorService) { }
 
+  doctor!:Doctor;
   ngOnInit(): void {
+
   }
   goBack(){
     this.location.back()
+  }
+
+  getDoctorFromRouteParams(){
+    let id = "";
+    this.route.paramMap.subscribe((params)=>{
+      id = params.get("id") as string;
+    });
+
+    this.doctorService.getDoctorById(id).subscribe((response)=>{
+      this.doctor = response.data;
+    })
   }
 
 }

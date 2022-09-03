@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Doctor } from 'src/app/Interfaces/doctor';
 import { User } from 'src/app/Interfaces/user';
+import { DoctorService } from 'src/app/Services/doctor.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -9,9 +11,9 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class DoctorsComponent implements OnInit {
   showDropdown = false;
-  doctors: User[] = [];
+  doctors: Doctor[] = [];
 
-  constructor(private usersService: UsersService) { }
+  constructor(private doctorService: DoctorService) { }
 
   ngOnInit(): void {
     this.getDoctors()
@@ -21,14 +23,14 @@ export class DoctorsComponent implements OnInit {
     this.showDropdown = !this.showDropdown;
   }
   getDoctors(){
-    this.usersService.getAllDoctors().subscribe((response)=>{
+    this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       console.log(this.doctors)
     })
   }
   deleteUser(id:string){
     if(confirm('Are you sure you want to delete')){
-      this.usersService.deleteUser(id).subscribe(()=>{
+      this.doctorService.deleteDoctor(id).subscribe(()=>{
         this.doctors = this.doctors.filter((user)=> user._id != id)
       })
     }

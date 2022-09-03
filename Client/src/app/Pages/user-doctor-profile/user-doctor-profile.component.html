@@ -9,8 +9,8 @@
         </div>
         <div class="doctor__detail section px-6 pt-4">
             <div class="flex flex-col gap-0 mb-2">
-                <p class="text-2xl font-bold text-dark-brown">Dr. Paul Harris</p>
-                <p class="text-xs text-dull-grey">Dentist</p>
+                <p class="text-2xl font-bold text-dark-brown">{{doctor.title + " "+ doctor.fname+ " "+ doctor.lname}}</p>
+                <p class="text-xs text-dull-grey">{{doctor.department}}</p>
                 <p class="text-xs text-dull-grey">Status: <span class="text-green-600">Available</span></p>
                 <p class="flex items-center gap-1 font-semibold">5.0 
                     <span>
@@ -35,8 +35,8 @@
             <div class="contact">
                 <h2 class="text-lg text-dark-brown font-semibold mb-2">Contact</h2>
                 <div class="text-sm text-dark-brown">
-                    <p><span class="font-semibold text-gray-400">Email:</span> paulHarris@phjdoctors.com</p>
-                    <p><span class="font-semibold text-gray-400">Phone:</span> 876-434-5466</p>
+                    <p><span class="font-semibold text-gray-400">Email:</span> {{doctor.email}}</p>
+                    <p><span class="font-semibold text-gray-400">Phone:</span> {{doctor.phone}}</p>
                 </div>
             </div>
 

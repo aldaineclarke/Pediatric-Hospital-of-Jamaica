@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor( private router: Router) { }
   username = ""
   ngOnInit(): void {
     let token = decode(localStorage.getItem("token") as string);

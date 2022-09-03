@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/Interfaces/user';
-import { UsersService } from 'src/app/Services/users.service';
+import { Doctor } from 'src/app/Interfaces/doctor';
+import { DoctorService } from 'src/app/Services/doctor.service';
 
 @Component({
   selector: 'hos-patient-create',
@@ -10,9 +10,9 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class PatientCreateComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  constructor(private doctorService: DoctorService) { }
 
-  doctors: User[] = [];
+  doctors: Doctor[] = [];
   
   ngOnInit(): void {
 
@@ -40,7 +40,7 @@ export class PatientCreateComponent implements OnInit {
   });
 
   getAllDoctors(){
-    this.usersService.getAllDoctors().subscribe(response =>{
+    this.doctorService.getAllDoctors().subscribe(response =>{
       this.doctors = response.data;
     })
   }

@@ -18,7 +18,7 @@
                         <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
                         <div class="appointment__details flex flex-col flex-grow">
                             <p class="doctor font-bold">{{appointment.doctor.title+ " "+ appointment.doctor.fname + " "+ appointment.doctor.lname }}</p>
-                            <p class="specialty text-xs text-light-brown">{{appointment.doctor.role}}</p>
+                            <p class="specialty text-xs text-light-brown">{{appointment.doctor.department}}</p>
                             <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>{{appointment.visitStart.toDateString().slice(4,11)}}</span> <span>{{appointment.visitStart.toLocaleTimeString("en-US", {timeStyle:"short"})}}</span></p>
                         </div>
                     </div>

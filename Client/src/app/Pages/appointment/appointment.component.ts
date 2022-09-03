@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/Interfaces/appointment';
+import { Doctor } from 'src/app/Interfaces/doctor';
 import { User } from 'src/app/Interfaces/user';
 import { AppointmentService } from 'src/app/Services/appointment.service';
+import { DoctorService } from 'src/app/Services/doctor.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -11,9 +13,10 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class AppointmentComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private appointmentService: AppointmentService) { }
+  constructor(private doctorService: DoctorService, private appointmentService: AppointmentService) { }
   appointments:Appointment[] = [];
-  doctors: User[] = [];
+  doctors: Doctor[] = [];
+  
   ngOnInit(): void {
     this.getAllAppointments();
     this.getAllDoctors();
@@ -44,7 +47,7 @@ export class AppointmentComponent implements OnInit {
     })
   }
   getAllDoctors(){
-    this.usersService.getAllDoctors().subscribe((response)=>{
+    this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
     })
   }

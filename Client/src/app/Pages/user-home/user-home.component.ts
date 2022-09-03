@@ -3,7 +3,6 @@ import { AppointmentPop } from 'src/app/Interfaces/appointment';
 import { User } from 'src/app/Interfaces/user';
 import { AppointmentService } from 'src/app/Services/appointment.service';
 import { AuthService } from 'src/app/Services/auth.service';
-import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'hos-user-home',
@@ -12,8 +11,7 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class UserHomeComponent implements OnInit {
 
-  constructor(private authService: AuthService, private usersService: UsersService, private appointmentService: AppointmentService) { }
-  user!: Partial<User>
+  constructor(private authService: AuthService, private appointmentService: AppointmentService) { }
   upAppointment!: AppointmentPop;
 
   ngOnInit(): void {
