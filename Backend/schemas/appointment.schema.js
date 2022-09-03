@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 
 let appointmentSchema = new Schema({
-    doctor:{type: Schema.Types.ObjectId, ref:"User"},
+    doctor:{type: Schema.Types.ObjectId, ref:"Doctor", required:[true, "There must be a Doctor assigned to the appointment"]},
     visitStart: {type:Date, required: true},
     guardian:{type:String},
     notes:{type:String},

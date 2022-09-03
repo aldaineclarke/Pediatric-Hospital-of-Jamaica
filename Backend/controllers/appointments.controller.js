@@ -45,13 +45,13 @@ class AppointmentController{
     static createAppointment = async(req, res, next)=>{
         try{
             let data = req.body;
-            data.doctor = ObjectId(req.body.doctor);
+            data.doctor = ObjectId(data.doctor);
             if(!data.userId){
                 data.userId = new ObjectId();
             }else{
                 data.userId = ObjectId(data.userId);
             }
-            let newAppointment = await new Appointment(req.body).save();
+            let newAppointment = await new Appointment(data).save();
             jsonResponse(res, 200, "Success", "Successfully Created Appointment", newAppointment);
         }catch(error){
             jsonResponse(res, 400, "Failed", error.message)
@@ -110,11 +110,9 @@ class AppointmentController{
     static getAppointmentsByUID = async(req, res, next) =>{
         try{
             let id = req.query.userId;
-            console.log(id);
             if(id){
 
                 let appointments = await Appointment.find({"userId": id});
-                console.log(appointments);
                 return jsonResponse(res, 200, "Success", "Successfully",appointments);
             }
         }catch(error){
