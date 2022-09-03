@@ -1,6 +1,5 @@
 const User = require("../schemas/user.schema");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const {jsonResponse} = require("../utilities/jsonResponse");
 class UsersController{
     /**
@@ -13,11 +12,10 @@ class UsersController{
             let email = req.body.email;
             let password = req.body.password;
             let user = await User.findOne({"email": email});
-            console.log(user)
             if(user){
                 let isAuthenticated = await bcrypt.compare(password,user.password)
                 if(isAuthenticated){
-                    let token = generateToken({_id:user._id,username:user.username, role: user.role})
+                    let token = generateToken({_id:user._id,username:user.username, email: user.email})
                     return jsonResponse(res,200,"Success","Successfully Logged in",token);
                 }
                 return jsonResponse(res,401,"Failed","Credentials are Incorrect");
@@ -33,9 +31,6 @@ class UsersController{
      */
     static getAllUsers = async (req, res, next)=>{
         try{
-            if(req.query.role){
-                return this.getAllUsersByRole(req,res,next);
-            }
             let users = await User.find();
 
             return jsonResponse(res,200, "Success", "Successfully retrieved", users)
@@ -109,20 +104,7 @@ class UsersController{
             }
         }
 
-        static getAllUsersByRole = async (req,res,next) =>{
-            try{
-                const role = req.query.role;
-                if(role){
-                    let users = await User.find({"role":role})
-                    return jsonResponse(res, 200, "Success", "Successfully Retrieved", users)
-                }
-            }catch(error){
-                jsonResponse(res, 400, "Failed", error.message);
-            }
-        }
 }
 
-function generateToken(data){
-    return jwt.sign(data,process.env.JWT_SECRET_KEY, {expiresIn: "3600s"})
-}
+
 module.exports = UsersController;
