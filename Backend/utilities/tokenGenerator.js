@@ -7,5 +7,6 @@ const jwt = require("jsonwebtoken");
  * @param {string} expiryDate string representation of time, in seconds
  * */ 
 exports.generateJWTToken = (data, expiryDate)=>{
-    return jwt.sign(data,process.env.JWT_SECRET_KEY, {expiresIn: expiryDate+"s"})
+    let expireIn = expiryDate + "s"
+    return jwt.sign(data,process.env.JWT_SECRET_KEY, {expiresIn: expireIn})
 }
