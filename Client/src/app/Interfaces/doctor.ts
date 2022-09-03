@@ -1,4 +1,5 @@
 export interface Doctor{
+    _id: string;
     fname: string;
     lname: string,
     title:string,
