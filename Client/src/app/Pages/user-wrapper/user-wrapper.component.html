@@ -49,7 +49,7 @@
             </li>
             <li *ngIf="!navOpened">
                 <p class="text-center text-light-brown text-sm">Welcome Back</p>
-                <p class="text-center font-bold text-white text-xl">{{user.fname+" "+user.lname}}</p>
+                <p class="text-center font-bold text-white text-xl" *ngIf="user">{{user.fname+" "+user.lname}}</p>
             </li>
         </ul>
     </nav>
