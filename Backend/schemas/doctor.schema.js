@@ -10,7 +10,8 @@ const doctorSchema = mongoose.Schema({
     email:{type:String, unique:true, lowercase:true},
     phone: {type:String, required:true},
     department:{
-        type:String, 
+        type:String,
+        uppercase:true,
         required:[true, "Doctor must be apart of a department"], 
         enum:{
             values:["SURGEON", "DENTISTRY", "RADIOLOGY","CARDIOLOGY", "DERMATOLOGY","OPTHALMOLOGY", "NEUROLOGY", "EMERGENCY" ],
@@ -33,7 +34,7 @@ const doctorSchema = mongoose.Schema({
             },
         default: "AVAILABLE"},
     password: {type:String, required:[true,"password field should not be empty"]},
-    rating: {type:Number, default: 5},
+    rating: {type:Number, default: 5, max:[5, "Rating cannot be more than 5"]},
     isSuperAdmin: {type:Boolean, default:false}
 
 }, {timestamps:true});
