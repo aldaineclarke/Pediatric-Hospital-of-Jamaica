@@ -2,7 +2,10 @@
     <div class="appointment-page px-6">
         <div class="upcomming section">
             <h2>Upcomming Appointments</h2>
-            <div class="upcomming-appointments flex">
+            <div class="upcomming-appointments flex gap-4">
+                <ng-container *ngIf="appointment">
+                    <hos-appointment-card [appointment]= "appointment"></hos-appointment-card>
+                </ng-container>
                 <hos-appointment-card routerLink="create"></hos-appointment-card>
             </div>
         </div>
@@ -16,17 +19,10 @@
                         <div class="appointment__details flex flex-col flex-grow">
                             <p class="doctor font-bold">{{appointment.doctor.title+ " "+ appointment.doctor.fname + " "+ appointment.doctor.lname }}</p>
                             <p class="specialty text-xs text-light-brown">{{appointment.doctor.role}}</p>
-                            <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>{{appointment.visitStart}}</span> <span>5:00 PM</span></p>
+                            <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>{{appointment.visitStart.toDateString().slice(4,11)}}</span> <span>{{appointment.visitStart.toLocaleTimeString("en-US", {timeStyle:"short"})}}</span></p>
                         </div>
                     </div>
-                    <!-- <div class="appointment">
-                        <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
-                        <div class="appointment__details flex flex-col flex-grow">
-                            <p class="doctor font-bold">Dr. Warmington</p>
-                            <p class="specialty text-xs text-light-brown">Dentist</p>
-                            <p class="date text-xs flex  justify-between font-semibold text-dark-brown"><span>Aug 23, 2022</span> <span>5:00 PM</span></p>
-                        </div>
-                    </div> -->
+
                 </div>
             </ng-container>
             <ng-template #showEmptyAppointment>

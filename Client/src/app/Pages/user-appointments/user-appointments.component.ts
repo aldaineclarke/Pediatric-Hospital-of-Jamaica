@@ -13,7 +13,7 @@ export class UserAppointmentsComponent implements OnInit {
   constructor(private appointmentService: AppointmentService, private authService: AuthService) { }
   userAppointments:AppointmentPop[] = [];
   userData = this.authService.getUser()
-
+  appointment!:AppointmentPop;
 
   ngOnInit(): void {
     console.log(this.authService.getUser())
@@ -21,7 +21,15 @@ export class UserAppointmentsComponent implements OnInit {
   }
   getAllAppointments(){
     this.appointmentService.getUserAppointments(this.userData._id).subscribe((response)=>{
-      this.userAppointments = response.data
+      this.userAppointments = response.data;
+      if(this.userAppointments.length > 0){
+
+        this.appointment = this.userAppointments[0];
+      }
+
+      this.userAppointments.forEach((appointment)=>{
+        appointment.visitStart = new Date(appointment.visitStart);
+      })
       console.log(this.userAppointments);
     })
   }
