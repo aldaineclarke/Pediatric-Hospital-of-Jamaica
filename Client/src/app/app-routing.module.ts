@@ -54,7 +54,7 @@ const routes: Routes = [
   {path: "user/login", component: UserLoginComponent}, 
   {path: "user/register", component: UserRegisterComponent}, 
   {path:"user/profile", component: UserProfileComponent},
-  {path:"user/doctors/view", component: UserDoctorProfileComponent},
+  {path:"user/doctors/:id", component: UserDoctorProfileComponent},
 
   {path: "user", component: UserWrapperComponent, children:[
     {path:"", component:UserHomeComponent},
