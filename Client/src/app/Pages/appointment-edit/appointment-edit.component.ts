@@ -53,6 +53,7 @@ export class AppointmentEditComponent implements OnInit {
           doctor: this.appointment.doctor,
           fname: this.appointment.fname,
           lname: this.appointment.lname,
+          email: this.appointment.email,
           phone: this.appointment.phone,
           visitStart:this.appointment.visitStart,
           notes: this.appointment.notes,
