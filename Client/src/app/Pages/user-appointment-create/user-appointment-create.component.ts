@@ -75,15 +75,10 @@ export class UserAppointmentCreateComponent implements OnInit, AfterViewInit{
     })
   }
   fillFormWithData(){
-    this.appointmentForm.setValue({
-        fname: this.currentUser.fname,
-        lname: this.currentUser.lname,
-        email: this.currentUser.email,
-        phone: this.currentUser.phone,
-        specialty:"",
-        doctor:"",
-        visitStart:"",
-        notes:"",
-    })
+    this.appointmentForm.get("fname")?.setValue(this.currentUser.fname),
+    this.appointmentForm.get("lname")?.setValue(this.currentUser.lname),
+    this.appointmentForm.get("email")?.setValue(this.currentUser.email),
+    this.appointmentForm.get("phone")?.setValue(this.currentUser.phone)
+
   }
 }

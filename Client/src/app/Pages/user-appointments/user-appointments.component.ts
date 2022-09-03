@@ -25,6 +25,7 @@ export class UserAppointmentsComponent implements OnInit {
       if(this.userAppointments.length > 0){
 
         this.appointment = this.userAppointments[0];
+        console.log(this.appointment)
       }
 
       this.userAppointments.forEach((appointment)=>{
