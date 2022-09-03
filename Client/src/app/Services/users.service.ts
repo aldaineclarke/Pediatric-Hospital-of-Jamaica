@@ -19,12 +19,6 @@ export class UsersService {
     return throwError(()=> new Error(message));
   }
 
-  /**
-   * ### Description
-   * Gets all the users from the database that matches the role that is passed to the method. If no user is passed then it assumes that the user is a customer
-   * @param role {string} default value for the method
-   * @returns 
-   */
   getAllUsers():Observable<API_Response<User[]>>{
     return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT)
   }
@@ -32,11 +26,6 @@ export class UsersService {
     return this._http.get<API_Response<User>>(this.USERS_ENDPOINT+ "/"+id)
   }
   createUser(data: Partial<User>){
-    data.role = "Customer";
-    return this._http.post(this.USERS_ENDPOINT, data);
-  }
-  createDoctor(data: Partial<User>){
-    data.role = "Doctor";
     return this._http.post(this.USERS_ENDPOINT, data);
   }
   updateUser(id: string, changes: Partial<User>){
@@ -45,9 +34,7 @@ export class UsersService {
   deleteUser(id:string){
     return this._http.delete(this.USERS_ENDPOINT+ "/"+id);
   }
-  getAllDoctors():Observable<API_Response<User[]>>{
-    return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT + "?role=Doctor");
-  }
+
   loginUser(data:Partial<User>){
     return this._http.post<API_Response<string>>(this.USERS_ENDPOINT+"/login",data)
     .pipe(
