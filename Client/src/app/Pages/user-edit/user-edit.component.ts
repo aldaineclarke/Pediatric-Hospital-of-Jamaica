@@ -54,7 +54,7 @@ export class UserEditComponent implements OnInit {
   }
 
   submitForm(){
-    this.usersService.updateUser(this.user.role, this.user._id, this.editUserForm.value).subscribe(()=>{
+    this.usersService.updateUser(this.user._id, this.editUserForm.value).subscribe(()=>{
       this.router.navigateByUrl("/admin/doctors");
     })
   }

@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAllDoctors(){
-    this.usersService.getAllUsers("Doctor").subscribe((response)=>{
+    this.usersService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       this.doctorsPool = this.doctors;
     })

@@ -48,7 +48,7 @@ export class UserAppointmentCreateComponent implements OnInit {
   }
 
   getAllDoctors(){
-    this.usersService.getAllUsers("Doctor").subscribe((response)=>{
+    this.usersService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       console.log(this.doctors);
 

@@ -11,16 +11,7 @@ import { UsersService } from 'src/app/Services/users.service';
 export class UserCreateComponent implements OnInit {
 
   constructor(private usersService: UsersService, private router: Router) { }
-  userRole = "Customer"
   ngOnInit(): void {
-    this.userRole = this.checkRole();
-  }
-
-  checkRole():string{
-    if(location.href.indexOf("doctor") > -1){
-      return "Doctor"
-    }
-    return "Customer"
   }
 
   addUserForm = new FormGroup({
@@ -36,8 +27,7 @@ export class UserCreateComponent implements OnInit {
   })
 
   createUser(){
-    console.log(this.userRole);
-    this.usersService.createUser(this.userRole,this.addUserForm.value).subscribe(()=>{
+    this.usersService.createDoctor(this.addUserForm.value).subscribe(()=>{
       this.router.navigateByUrl("/admin/doctors");
 
     })

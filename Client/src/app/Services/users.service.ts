@@ -25,21 +25,28 @@ export class UsersService {
    * @param role {string} default value for the method
    * @returns 
    */
-  getAllUsers(role="Customer"):Observable<API_Response<User[]>>{
-    return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT+ "?role="+role)
+  getAllUsers():Observable<API_Response<User[]>>{
+    return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT)
   }
   getUserById(id:string):Observable<API_Response<User>>{
     return this._http.get<API_Response<User>>(this.USERS_ENDPOINT+ "/"+id)
   }
-  createUser(role="Customer", data: Partial<User>){
-    data.role = role;
+  createUser(data: Partial<User>){
+    data.role = "Customer";
     return this._http.post(this.USERS_ENDPOINT, data);
   }
-  updateUser(role="Customer", id: string, changes: Partial<User>){
+  createDoctor(data: Partial<User>){
+    data.role = "Doctor";
+    return this._http.post(this.USERS_ENDPOINT, data);
+  }
+  updateUser(id: string, changes: Partial<User>){
     return this._http.patch(this.USERS_ENDPOINT+"/"+ id, changes);
   }
   deleteUser(id:string){
     return this._http.delete(this.USERS_ENDPOINT+ "/"+id);
+  }
+  getAllDoctors():Observable<API_Response<User[]>>{
+    return this._http.get<API_Response<User[]>>(this.USERS_ENDPOINT + "?role=Doctor");
   }
   loginUser(data:Partial<User>){
     return this._http.post<API_Response<string>>(this.USERS_ENDPOINT+"/login",data)

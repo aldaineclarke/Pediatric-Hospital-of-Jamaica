@@ -44,7 +44,7 @@ export class AppointmentComponent implements OnInit {
     })
   }
   getAllDoctors(){
-    this.usersService.getAllUsers("Doctor").subscribe((response)=>{
+    this.usersService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
     })
   }

@@ -33,7 +33,7 @@ export class UserRegisterComponent implements OnInit {
   submitForm(){
     const data = this.signUpForm.value;
     console.log(data)
-    this.usersService.createUser("Customer",data).subscribe(()=>{
+    this.usersService.createUser(data).subscribe(()=>{
       this.router.navigate(["/user/login"]);
     })
   }

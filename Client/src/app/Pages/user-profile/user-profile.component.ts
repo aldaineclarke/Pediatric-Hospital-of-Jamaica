@@ -58,7 +58,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateForm(){
-    this.usersService.updateUser("Customer",this.user._id, this.updateProfileForm.value).subscribe(()=>{
+    this.usersService.updateUser(this.user._id, this.updateProfileForm.value).subscribe(()=>{
       this.router.navigate(["/user"])
     })
   }

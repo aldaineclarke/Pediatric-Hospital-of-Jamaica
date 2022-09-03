@@ -8,7 +8,6 @@ import { UsersService } from 'src/app/Services/users.service';
   styleUrls: ['./doctors.component.scss']
 })
 export class DoctorsComponent implements OnInit {
-  user = "Doctor";
   showDropdown = false;
   doctors: User[] = [];
 
@@ -22,7 +21,7 @@ export class DoctorsComponent implements OnInit {
     this.showDropdown = !this.showDropdown;
   }
   getDoctors(){
-    this.usersService.getAllUsers(this.user).subscribe((response)=>{
+    this.usersService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
       console.log(this.doctors)
     })
