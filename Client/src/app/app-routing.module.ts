@@ -13,10 +13,10 @@ import { PatientCreateComponent } from './Pages/patient-create/patient-create.co
 import { PatientComponent } from './Pages/patient/patient.component';
 import { UserAppointmentCreateComponent } from './Pages/user-appointment-create/user-appointment-create.component';
 import { UserAppointmentsComponent } from './Pages/user-appointments/user-appointments.component';
-import { UserCreateComponent } from './Pages/user-create/user-create.component';
+import { DoctorCreateComponent } from './Pages/user-create/doctor-create.component';
 import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
 import { UserDoctorProfileComponent } from './Pages/user-doctor-profile/user-doctor-profile.component';
-import { UserEditComponent } from './Pages/user-edit/user-edit.component';
+import { DoctorEditComponent } from './Pages/doctor-edit/doctor-edit.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 import { UserLoginComponent } from './Pages/user-login/user-login.component';
 import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
@@ -39,8 +39,8 @@ const routes: Routes = [
     children:[
       {path:"", component:DashboardComponent},
       {path:"doctors", component:DoctorsComponent},
-      {path:"doctors/edit/:id", component: UserEditComponent},
-      {path:"doctors/create", component: UserCreateComponent},
+      {path:"doctors/edit/:id", component: DoctorEditComponent},
+      {path:"doctors/create", component: DoctorCreateComponent},
       {path:"appointments", component: AppointmentComponent},
       {path:"appointments/create", component: AppointmentCreateComponent},
       {path:"appointments/edit/:id", component: AppointmentEditComponent},

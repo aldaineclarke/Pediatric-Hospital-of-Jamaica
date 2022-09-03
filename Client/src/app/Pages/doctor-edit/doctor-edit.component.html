@@ -1,6 +1,7 @@
+
 <section>
-    <h1 class="font-bold text-4xl mb-4">Add Doctor</h1>
-    <form class="w-3/4" [formGroup]="addUserForm" (submit)="createUser()">
+    <h1 class="font-bold text-4xl mb-4">Edit Doctor</h1>
+    <form class="w-3/4" [formGroup]="editDoctorForm" (submit)="submitForm()">
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 mb-6 w-full group">
                 <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required formControlName="fname">
@@ -59,7 +60,7 @@
                 <label for="checkbox-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Has Administration Privilages</label>
             </div>
         </div>
-        <button type="submit" class="cta__btn cta__btn--mystic">Create</button>
+        <button type="submit" class="cta__btn cta__btn--mystic">Update</button>
     </form>
 </section>
   

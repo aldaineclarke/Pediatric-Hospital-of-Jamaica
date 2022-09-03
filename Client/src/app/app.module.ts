@@ -11,8 +11,8 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
-import { UserEditComponent } from './Pages/user-edit/user-edit.component';
-import { UserCreateComponent } from './Pages/user-create/user-create.component';
+import { DoctorEditComponent } from './Pages/doctor-edit/doctor-edit.component';
+import { DoctorCreateComponent } from './Pages/user-create/doctor-create.component';
 import { PatientComponent } from './Pages/patient/patient.component';
 import { MedicalRecordsComponent } from './Pages/medical-records/medical-records.component';
 import { AppointmentComponent } from './Pages/appointment/appointment.component';
@@ -46,8 +46,8 @@ import { UserRegisterComponent } from './Pages/user-register/user-register.compo
     AdminLoginComponent,
     DashboardComponent,
     DoctorsComponent,
-    UserEditComponent,
-    UserCreateComponent,
+    DoctorEditComponent,
+    DoctorCreateComponent,
     PatientComponent,
     MedicalRecordsComponent,
     AppointmentComponent,
