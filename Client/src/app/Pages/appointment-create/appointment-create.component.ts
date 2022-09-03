@@ -29,7 +29,7 @@ export class AppointmentCreateComponent implements OnInit {
   appointmentCreationForm = new FormGroup({
     doctor: new FormControl("", Validators.required),
     fname: new FormControl("", Validators.required),
-    title: new FormControl("", Validators.required),
+    email: new FormControl("", Validators.required),
     lname: new FormControl("", Validators.required),
     phone: new FormControl("", Validators.required),
     visitStart: new FormControl("", Validators.required),
@@ -50,12 +50,14 @@ export class AppointmentCreateComponent implements OnInit {
     const data = {
       doctor: this.appointmentCreationForm.get("doctor")?.value,
       fname: this.appointmentCreationForm.get("fname")?.value,
-      title: this.appointmentCreationForm.get("title")?.value,
       lname: this.appointmentCreationForm.get("lname")?.value,
+      email: this.appointmentCreationForm.get("email")?.value,
       phone: this.appointmentCreationForm.get("phone")?.value,
       visitStart: this.appointmentCreationForm.get("visitStart")?.value,
       notes: this.appointmentCreationForm.get("notes")?.value,
     }
+
+    
     this.appointmentService.createAppointment(data).subscribe(()=>{
       this.router.navigate(["admin/appointments"])
     })
