@@ -46,8 +46,10 @@
         <div class="appointments section">
             <h2 class="mb-6">Upcomming Appointments <span>See More</span></h2>
             <div class="appointments flex gap-4">
-                <hos-appointment-card [dataPresent]="true"></hos-appointment-card>
-                <hos-appointment-card [dataPresent]="false" routerLink="appointments/create"></hos-appointment-card>
+                <ng-container *ngIf="upAppointment">
+                    <hos-appointment-card [appointment]="upAppointment" ></hos-appointment-card>
+                </ng-container>
+                <hos-appointment-card routerLink="appointments/create"></hos-appointment-card>
             </div>
         </div>
         
