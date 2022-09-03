@@ -1,6 +1,7 @@
 const User = require("../schemas/user.schema");
 const bcrypt = require("bcrypt");
 const {jsonResponse} = require("../utilities/jsonResponse");
+const { generateJWTToken } = require("../utilities/tokenGenerator");
 class UsersController{
     /**
      * ### Description
@@ -15,7 +16,7 @@ class UsersController{
             if(user){
                 let isAuthenticated = await bcrypt.compare(password,user.password)
                 if(isAuthenticated){
-                    let token = generateToken({_id:user._id,username:user.username, email: user.email})
+                    let token = generateJWTToken({_id:user._id,username:user.username, email: user.email},)
                     return jsonResponse(res,200,"Success","Successfully Logged in",token);
                 }
                 return jsonResponse(res,401,"Failed","Credentials are Incorrect");
