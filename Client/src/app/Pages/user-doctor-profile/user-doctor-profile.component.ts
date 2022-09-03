@@ -16,7 +16,7 @@ export class UserDoctorProfileComponent implements OnInit {
 
   doctor!:Doctor;
   ngOnInit(): void {
-
+    this.getDoctorFromRouteParams();
   }
   goBack(){
     this.location.back()

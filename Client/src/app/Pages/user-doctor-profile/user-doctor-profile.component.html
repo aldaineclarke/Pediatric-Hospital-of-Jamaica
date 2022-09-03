@@ -7,12 +7,13 @@
             </div>
 
         </div>
+        <ng-container *ngIf="doctor">
         <div class="doctor__detail section px-6 pt-4">
             <div class="flex flex-col gap-0 mb-2">
                 <p class="text-2xl font-bold text-dark-brown">{{doctor.title + " "+ doctor.fname+ " "+ doctor.lname}}</p>
                 <p class="text-xs text-dull-grey">{{doctor.department}}</p>
-                <p class="text-xs text-dull-grey">Status: <span class="text-green-600">Available</span></p>
-                <p class="flex items-center gap-1 font-semibold">5.0 
+                <p class="text-xs text-dull-grey">Status: <span class="text-green-600">{{doctor.status}}</span></p>
+                <p class="flex items-center gap-1 font-semibold">{{doctor.rating.toFixed(1)}} 
                     <span>
                         <i class="fa fa-solid fa-star text-gold"></i>
                         <i class="fa fa-solid fa-star text-gold"></i>
@@ -25,11 +26,11 @@
             <div class="flex justify-between mb-4">
                 <div class="patient flex flex-col gap-0 items-center">
                     <p class="text-gray-400">Patient</p>
-                    <p class="font-bold">573</p>
+                    <p class="font-bold">{{doctor.patientCount + 15}}</p>
                 </div>
                 <div class="patient flex flex-col gap-0 items-center mr-8">
                     <p class="text-gray-400">Experience</p>
-                    <p class="font-bold">5 yrs</p>
+                    <p class="font-bold">{{doctor.experience}} yrs</p>
                 </div>
             </div>
             <div class="contact">
@@ -44,6 +45,7 @@
                 <button class="cta__btn cta__btn--gold">Set Appointment</button>
             </div>
         </div>
+        </ng-container>
         <div class="footer text-gray-400 mt-auto" style="border-top: 1px solid lightgrey">
             <p class="p-4 text-xs text-center">Created by VaineStudios &copy; All Rights Reserved</p>
         </div>
