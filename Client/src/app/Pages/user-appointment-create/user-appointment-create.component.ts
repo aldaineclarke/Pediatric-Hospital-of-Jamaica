@@ -1,28 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { AppointmentService } from 'src/app/Services/appointment.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/Interfaces/user';
-import { UsersService } from 'src/app/Services/users.service';
 import { DoctorService } from 'src/app/Services/doctor.service';
 import { Doctor } from 'src/app/Interfaces/doctor';
+import { UsersService } from 'src/app/Services/users.service';
+import { User } from 'src/app/Interfaces/user';
 @Component({
   selector: 'hos-user-appointment-create',
   templateUrl: './user-appointment-create.component.html',
   styleUrls: ['./user-appointment-create.component.scss']
 })
-export class UserAppointmentCreateComponent implements OnInit {
+export class UserAppointmentCreateComponent implements OnInit, AfterViewInit{
 
-  constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private doctorService: DoctorService) { }
+  constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private doctorService: DoctorService, private usersService: UsersService) { }
   user = this.authService.getUser();
+  currentUser!: User;
+
+  @ViewChild("fillData") fillDataCheckbox!:ElementRef<HTMLInputElement>
   doctors:Doctor[] = []
   ngOnInit(): void {
     console.log( this.authService.getUser())
-    this.getAllDoctors()
+    this.getAllDoctors();
+    this.getCurrentUser();
+    
   }
 
+
+  ngAfterViewInit(): void {
+      this.fillDataCheckbox.nativeElement.addEventListener(("click"),()=>{
+        if(this.fillDataCheckbox.nativeElement.checked){
+          this.fillFormWithData()
+        }else{
+          this.appointmentForm.reset();
+        }
+      })  
+  }
   appointmentForm = new FormGroup({
     fname: new FormControl('', Validators.required),
     lname: new FormControl('', Validators.required),
@@ -52,6 +67,23 @@ export class UserAppointmentCreateComponent implements OnInit {
       this.doctors = response.data;
       console.log(this.doctors);
 
+    })
+  }
+  getCurrentUser(){
+    this.usersService.getUserById(this.user._id).subscribe((response)=>{
+      this.currentUser = response.data;
+    })
+  }
+  fillFormWithData(){
+    this.appointmentForm.setValue({
+        fname: this.currentUser.fname,
+        lname: this.currentUser.lname,
+        email: this.currentUser.email,
+        phone: this.currentUser.phone,
+        specialty:"",
+        doctor:"",
+        visitStart:"",
+        notes:"",
     })
   }
 }

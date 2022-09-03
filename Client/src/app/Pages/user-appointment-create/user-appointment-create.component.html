@@ -8,7 +8,7 @@
             <div class="form-fields">
                 <div class="text-sm text-light-brown">
                     <label class="flex gap-1 ">
-                        <input type="checkbox" name="fillForm">
+                        <input type="checkbox" name="fillForm" #fillData>
                         <span>Fill with account information</span>
                     </label>
                 </div>
@@ -19,23 +19,6 @@
                 <label>
                     <span>Last Name</span>
                     <input type="text" name="lname" formControlName="lname">
-                </label>
-                <label>
-                    <span>Title</span>
-                    <input type="text" name="title" formControlName="title" placeholder="Mr or Mrs">
-                </label>
-                <label>
-                    <span>Gender</span>
-                    <div class="form-group">
-                        <label>
-                            <input type="radio" value ="Male" name="gender" formControlName="gender">
-                            <span>Male</span>
-                        </label>
-                        <label>
-                            <input type="radio" value ="Female" name="gender" formControlName="gender">
-                            <span>Female</span>
-                        </label>
-                    </div>
                 </label>
                 <label>
                     <span>Email</span>
