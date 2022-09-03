@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
-import { API_Response, User } from '../Interfaces/user';
+import { Doctor } from '../Interfaces/doctor';
+import { API_Response } from '../Interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,22 +19,22 @@ export class DoctorService {
     return throwError(()=> new Error(message));
   }
 
-  getAllDoctors():Observable<API_Response<User[]>>{
-    return this._http.get<API_Response<User[]>>(this.DOCTOR_ENDPOINT)
+  getAllDoctors():Observable<API_Response<Doctor[]>>{
+    return this._http.get<API_Response<Doctor[]>>(this.DOCTOR_ENDPOINT)
   }
-  getDoctorById(id:string):Observable<API_Response<User>>{
-    return this._http.get<API_Response<User>>(this.DOCTOR_ENDPOINT+ "/"+id)
+  getDoctorById(id:string):Observable<API_Response<Doctor>>{
+    return this._http.get<API_Response<Doctor>>(this.DOCTOR_ENDPOINT+ "/"+id)
   }
-  createDoctor(data: Partial<User>){
+  createDoctor(data: Partial<Doctor>){
     return this._http.post(this.DOCTOR_ENDPOINT, data);
   }
-  updateDoctor(id: string, changes: Partial<User>){
+  updateDoctor(id: string, changes: Partial<Doctor>){
     return this._http.patch(this.DOCTOR_ENDPOINT+"/"+ id, changes);
   }
   deleteDoctor(id:string){
     return this._http.delete(this.DOCTOR_ENDPOINT+ "/"+id);
   }
-  loginDoctor(data:Partial<User>){
+  loginDoctor(data:Partial<Doctor>){
     return this._http.post<API_Response<string>>(this.DOCTOR_ENDPOINT+"/login",data)
     .pipe(
       tap((response)=>{
