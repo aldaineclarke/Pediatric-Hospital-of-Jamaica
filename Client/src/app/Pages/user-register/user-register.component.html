@@ -5,39 +5,40 @@
     <div class="form-wrapper px-6 flex-grow">
         <form class="appointment-form" [formGroup]="signUpForm" (submit)="submitForm()">
             <legend class="text-center text-2xl font-bold mb-3 text-dark-brown">Sign Up Form</legend>
-            < class="form-fields">
-            <div class="form-group">
+            <div class="form-fields">
+                <div class="form-group">
+                    <label>
+                        <span>First Name</span>
+                        <input type="text" name="fname" formControlName="fname">
+                    </label>
+                    <label>
+                        <span>Last Name</span>
+                        <input type="text" name="lname" formControlName="lname">
+                    </label>
+                </div>
                 <label>
-                    <span>First Name</span>
-                    <input type="text" name="fname" formControlName="fname">
+                    <span>Username</span>
+                    <input type="text" name="username" formControlName="username">
+                </label>
+                
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" formControlName="email">
                 </label>
                 <label>
-                    <span>Last Name</span>
-                    <input type="text" name="lname" formControlName="lname">
+                    <span>Phone ( 876-555-5555 )</span>
+                    <input type="tel" name="phone" formControlName="phone">
                 </label>
-            </div>
-            <label>
-                <span>Username</span>
-                <input type="text" name="username" formControlName="username">
-            </label>
-            
-            <label>
-                <span>Email</span>
-                <input type="email" name="email" formControlName="email">
-            </label>
-            <label>
-                <span>Phone</span>
-                <input type="tel" name="phone" formControlName="phone">
-            </label>
 
-            <label>
-                <span>Password</span>
-                <input type="password" name="password" formControlName="password">
-            </label>
-            <label>
-                <span>Confirm Password</span>
-                <input type="password" name="password2" formControlName="password2">
-            </label> 
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" formControlName="password">
+                </label>
+                <label>
+                    <span>Confirm Password</span>
+                    <input type="password" name="password2" formControlName="password2">
+                </label> 
+            </div>
             <div class="cta flex justify-end mt-5">
                 <button type="submit" class="cta__btn cta__btn--gold">Sign Up</button>
             </div>
