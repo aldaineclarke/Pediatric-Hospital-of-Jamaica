@@ -11,7 +11,7 @@ export class UsersService {
   private  USERS_ENDPOINT = "http://localhost:3000/api/v1/users"
   constructor(private _http: HttpClient) { }
 
-  private handleErrror(error:any) {
+  private handleErrror(error:any) { 
     let message = ""
       if(error.error.message){
         message = error.error.message;

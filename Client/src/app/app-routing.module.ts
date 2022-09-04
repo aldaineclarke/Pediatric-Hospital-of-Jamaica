@@ -24,6 +24,8 @@ import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.componen
 import { NavService } from './Services/nav.service';
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
+import { UserGuard } from './Guards/user.guard';
+import { DoctorGuard } from './Guards/doctor.guard';
 
 const routes: Routes = [
   {
@@ -49,13 +51,13 @@ const routes: Routes = [
       {path:"patients/create", component: PatientCreateComponent},
       {path:"patients/edit/:id", component: PatientComponent},
     ],
-    canActivate:[AuthGuard],
-    canActivateChild:[AuthGuard]
+    canActivate:[AuthGuard, DoctorGuard],
+    canActivateChild:[AuthGuard,DoctorGuard]
   },
   {path: "user/login", component: UserLoginComponent}, 
   {path: "user/register", component: UserRegisterComponent}, 
-  {path:"user/profile", component: UserProfileComponent, canActivate:[AuthGuard]},
-  {path:"user/doctors/:id", component: UserDoctorProfileComponent,canActivate:[AuthGuard]},
+  {path:"user/profile", component: UserProfileComponent, canActivate:[AuthGuard, UserGuard]},
+  {path:"user/doctors/:id", component: UserDoctorProfileComponent,canActivate:[AuthGuard, UserGuard]},
 
   {path: "user", component: UserWrapperComponent, 
    children:[
@@ -66,8 +68,8 @@ const routes: Routes = [
     {path:"doctors", component: UserDoctorComponent},
 
    ], 
-   canActivate:[AuthGuard], 
-   canActivateChild:[AuthGuard]
+   canActivate:[AuthGuard, UserGuard], 
+   canActivateChild:[AuthGuard, UserGuard]
   },
   
  
