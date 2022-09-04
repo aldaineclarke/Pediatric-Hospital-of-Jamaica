@@ -8,7 +8,7 @@ import { API_Response, User } from '../Interfaces/user';
 })
 export class UsersService {
 
-  private  USERS_ENDPOINT = "http://localhost:3000/api/v1/users"
+  private  USERS_ENDPOINT = "https://phj-app.herokuapp.com/api/v1/users"
   constructor(private _http: HttpClient) { }
 
   private handleErrror(error:any) {

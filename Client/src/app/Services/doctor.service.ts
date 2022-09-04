@@ -10,7 +10,7 @@ import { API_Response } from '../Interfaces/user';
 export class DoctorService {
 
   constructor(private _http: HttpClient) { }
-  DOCTOR_ENDPOINT = 'http://localhost:3000/api/v1/doctors';
+  DOCTOR_ENDPOINT = 'https://phj-app.herokuapp.com/api/v1/doctors';
   private handleErrror(error:any) {
     let message = ""
       if(error.error.message){
