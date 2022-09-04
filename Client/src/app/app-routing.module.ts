@@ -23,6 +23,7 @@ import { UserProfileComponent } from './Pages/user-profile/user-profile.componen
 import { UserWrapperComponent } from './Pages/user-wrapper/user-wrapper.component';
 import { NavService } from './Services/nav.service';
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
+import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,7 @@ const routes: Routes = [
     {path:"", component:UserHomeComponent},
     {path:"appointments", component: UserAppointmentsComponent},
     {path:"appointments/create", component: UserAppointmentCreateComponent},
+    {path:"appointments/:id", component: UserAppointmentEditComponent},
     {path:"doctors", component: UserDoctorComponent},
 
    ], 

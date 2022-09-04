@@ -4,7 +4,7 @@
             <h2>Upcomming Appointments</h2>
             <div class="upcomming-appointments flex gap-4">
                 <ng-container *ngIf="appointment">
-                    <hos-appointment-card [appointment]= "appointment"></hos-appointment-card>
+                    <hos-appointment-card [appointment]= "appointment" routerLink="{{appointment._id}}"></hos-appointment-card>
                 </ng-container>
                 <hos-appointment-card routerLink="create"></hos-appointment-card>
             </div>
@@ -14,7 +14,7 @@
             <ng-container  *ngIf="userAppointments.length > 0; else showEmptyAppointment">
 
                 <div class="appointment-list">
-                    <div class="appointment" *ngFor="let appointment of userAppointments">
+                    <div class="appointment" *ngFor="let appointment of userAppointments" routerLink="{{appointment._id}}">
                         <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of doctor">
                         <div class="appointment__details flex flex-col flex-grow">
                             <p class="doctor font-bold">{{appointment.doctor.title+ " "+ appointment.doctor.fname + " "+ appointment.doctor.lname }}</p>

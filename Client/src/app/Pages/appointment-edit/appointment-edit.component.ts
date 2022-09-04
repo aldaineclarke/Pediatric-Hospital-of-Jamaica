@@ -35,7 +35,6 @@ export class AppointmentEditComponent implements OnInit {
     this.getDoctors();
 
     this.appointmentUpdateForm.get("specialty")?.valueChanges.subscribe((change)=>{
-      console.log(change)
       this.doctorsPool = this.doctors.filter((doc)=>{
         return doc.department == change;
       })
@@ -48,7 +47,6 @@ export class AppointmentEditComponent implements OnInit {
 
       this.appointmentService.getAppointmentById(id).subscribe((response)=>{
         this.appointment = response.data;
-        console.log(this.appointment)
         let data = {
           doctor: this.appointment.doctor,
           fname: this.appointment.fname,
