@@ -1,6 +1,13 @@
 @import "../../../styles.scss";
 .content-wrapper{
     padding: 10px 1.5rem;
+    flex-grow: 1;
+}
+.doctors-section{
+    display:flex;
+    min-height: 75vh;
+    flex-direction:column;
+
 }
 .searchForm{
 
