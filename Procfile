@@ -1,1 +1,1 @@
-"web: node ./Backend/index.js"
+"web: npm run startServer"
