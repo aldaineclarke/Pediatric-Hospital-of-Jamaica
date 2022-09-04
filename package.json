@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/aldaineclarke/Pediatric-Hospital-of-Jamaica/issues"
   },
-  "homepage": "https://github.com/aldaineclarke/Pediatric-Hospital-of-Jamaica#readme"
+  "homepage": "https://github.com/aldaineclarke/Pediatric-Hospital-of-Jamaica#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2"
+  }
 }

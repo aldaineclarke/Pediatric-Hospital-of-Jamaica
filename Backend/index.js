@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res)=>{
-    res.status(200).json({message: "This is version 1 of the server"})
+    res.status(200).json({
+        message: "Welcome to the PHJ API. This is just the index page, visit '/api/v1'"
+    })
 })
 app.use("/api/v1/", apiRouter);
 
