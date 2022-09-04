@@ -8,6 +8,10 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use(cors());
+
+app.get("/", (req, res)=>{
+    res.status(200).json({message: "This is version 1 of the server"})
+})
 app.use("/api/v1/", apiRouter);
 
 
@@ -35,6 +39,8 @@ app.listen(PORT, (error)=>{
         
     });
 })
+
+
 
 
 
