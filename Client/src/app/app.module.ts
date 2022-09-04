@@ -18,9 +18,6 @@ import { MedicalRecordsComponent } from './Pages/medical-records/medical-records
 import { AppointmentComponent } from './Pages/appointment/appointment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//ANGULAR MATERIAL COMPONENTS
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { AppointmentCreateComponent } from './Pages/appointment-create/appointment-create.component';
 import { AppointmentEditComponent } from './Pages/appointment-edit/appointment-edit.component';
 import { CalenderComponent } from './Components/calender/calender.component';
@@ -74,10 +71,6 @@ import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
-    //Material modules
-    MatTableModule,
-    MatPaginatorModule
 
   ],
   providers: [],
