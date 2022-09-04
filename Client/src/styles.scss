@@ -42,3 +42,12 @@ body{
 .content-fix{
     @apply w-[1240px] m-auto
 }
+
+.mobile-view{
+    max-width: 480px;
+    margin: auto;
+    position:relative;
+    border:1px solid lightgrey;
+    border-top: none;
+    border-bottom:none;
+}
