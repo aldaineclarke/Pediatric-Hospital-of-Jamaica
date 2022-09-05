@@ -27,6 +27,9 @@
         visibility: hidden;
         display:none;
     }
+    a{
+        transition:300ms color ease-in-out;
+    }
 }
 .nav-wrapper ul.active{
     height: 80vh;
@@ -39,6 +42,9 @@
         animation-duration: 700ms;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
+    }
+    .dropdown-nav a:hover{
+        color:$gold;
     }
 }
 .top-nav{
