@@ -8,16 +8,16 @@
         </form>
         <div class="news-carousel mt-8">
             <div class="news-container">
-                <div class="news-item flex">
+                <div class="news-item flex"  *ngFor="let news of mainNews" (click)="goToPage(news.url)">
                     <div class="news__details">
-                        <p class="font-semibold text-dark-brown text-sm">Covid Case found in Kingston.</p>
+                        <p class="font-semibold text-dark-brown text-sm">{{news.title}}</p>
                         <p class="body text-xs">
-                            There have beeen rising cases of Covid-19 in the parish of kingston, Jamaica. Many have ...
+                            {{news.description}}
                         </p>
-                        <a class="more text-gold text-[.6rem] font-bold">Learn More</a>
+                        <a class="more text-gold text-[.6rem] font-bold" href="{{news.url}}">Learn More</a>
                     </div>
                     <div class="news__img w-[300px]">
-                        <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="Image of some news">
+                        <img [src]="news.urlToImage" alt="Image of some news">
                     </div>
                 </div>
             </div>

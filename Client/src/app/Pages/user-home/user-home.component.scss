@@ -32,10 +32,14 @@
 
 }
 .news__details{
-    border: 1px solid lightgrey;
     border-radius:  3rem 0 0 3rem;
     padding: 10px 10px 10px 1rem;
+    border:1px solid lightgrey;
 
+}
+.news-item{
+    cursor:pointer;
+    
 }
 .news__img{
     align-items:stretch;
