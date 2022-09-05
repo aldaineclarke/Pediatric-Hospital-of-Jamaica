@@ -2,7 +2,7 @@ export interface News{
     source: {id: string, name: string};
     author: string;
     title: string;
-    descrition:string;
+    description:string;
     url: string;
     urlToImage: string;
     publishedAt:string;
