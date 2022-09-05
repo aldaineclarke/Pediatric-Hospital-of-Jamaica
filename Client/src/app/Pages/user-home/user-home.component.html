@@ -7,16 +7,16 @@
             </div>
         </form>
         <div class="news-carousel mt-8">
-            <div class="news-container">
-                <div class="news-item flex"  *ngFor="let news of mainNews" (click)="goToPage(news.url)">
+            <div class="news-container" #newsWrapper>
+                <div class="news-item"  *ngFor="let news of mainNews" (click)="goToPage(news.url)">
                     <div class="news__details">
-                        <p class="font-semibold text-dark-brown text-sm">{{news.title}}</p>
+                        <p class="font-semibold text-dark-brown text-sm">{{news.title.slice(0,60)}} ...</p>
                         <p class="body text-xs">
-                            {{news.description}}
+                            {{news.description.slice(0,100)}} ...
                         </p>
                         <a class="more text-gold text-[.6rem] font-bold" href="{{news.url}}">Learn More</a>
                     </div>
-                    <div class="news__img w-[300px]">
+                    <div class="news__img">
                         <img [src]="news.urlToImage" alt="Image of some news">
                     </div>
                 </div>
