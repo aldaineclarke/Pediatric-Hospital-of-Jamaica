@@ -28,7 +28,13 @@ export class UserHomeComponent implements OnInit, AfterViewInit {
     let i = 0;
     let accum = 0;
     let translateConst = 480-48;
-    accum += translateConst
+    
+    if(window.innerWidth <= 480){
+      translateConst = window.innerWidth - 48;
+      
+    }
+    accum += translateConst;
+    console.log(accum );
     setInterval(()=>{
       this.newsContainer.nativeElement.style.transform = `translateX(-${accum}px)`;
       i++;
