@@ -36,4 +36,9 @@ export class UserWrapperComponent implements OnInit {
     localStorage.removeItem("token");
     this.router.navigate(["user/login"]);
   }
+
+  apologize(){
+    alert("We apologize, Route is under construction");
+    this.toggleNav();
+  }
 }
