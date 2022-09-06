@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UsersService } from 'src/app/Services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'hos-user-wrapper',
@@ -33,8 +34,24 @@ export class UserWrapperComponent implements OnInit {
   }
 
   logoutUser(){
-    localStorage.removeItem("token");
-    this.router.navigate(["user/login"]);
+    Swal.fire(
+      'Login Successful',
+      'success'
+    )
+    Swal.fire({
+      title: 'You are about to logout, Continue?',
+      showCancelButton: true,
+      confirmButtonText: 'Logout',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('User logged out!', '', 'success');
+        localStorage.removeItem("token");
+        this.router.navigate(["user/login"]);
+
+      } 
+    })
+    
   }
 
   apologize(){
