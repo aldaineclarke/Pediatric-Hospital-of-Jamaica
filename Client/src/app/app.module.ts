@@ -32,7 +32,10 @@ import { UserProfileComponent } from './Pages/user-profile/user-profile.componen
 import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
 import { UserDoctorProfileComponent } from './Pages/user-doctor-profile/user-doctor-profile.component';
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
-import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component'
+import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
+
+
+// ThirdParty Modules
 
 @NgModule({
   declarations: [
@@ -64,6 +67,8 @@ import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user
     UserDoctorProfileComponent,
     UserRegisterComponent,
     UserAppointmentEditComponent,
+
+    // NotinatorComponent
   ],
   imports: [
     BrowserModule,
