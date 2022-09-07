@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/Services/users.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'hos-user-register',
@@ -31,8 +32,16 @@ export class UserRegisterComponent implements OnInit {
   }
   submitForm(){
     const data = this.signUpForm.value;
-    console.log(data)
+    console.log(data);
+    if(this.signUpForm.valid){
+      
+      Swal.fire("Signup Successful", "", "success")
+    }else{
+      Swal.fire("Form Invalid", "", "error")
+    }
     this.usersService.createUser(data).subscribe(()=>{
+      Swal.fire("User created Successful", "", "success")
+
       this.router.navigate(["/user/login"]);
     })
   }

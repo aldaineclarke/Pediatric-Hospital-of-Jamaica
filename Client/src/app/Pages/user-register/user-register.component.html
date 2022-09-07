@@ -39,8 +39,9 @@
                     <input type="password" name="password2" formControlName="password2">
                 </label> 
             </div>
+            {{signUpForm | json}}
             <div class="cta flex justify-end mt-5">
-                <button type="submit" class="cta__btn cta__btn--gold">Sign Up</button>
+                <button type="submit" class="cta__btn cta__btn--gold" [disabled]="signUpForm.invalid">Sign Up</button>
             </div>
         </form>
     </div>
