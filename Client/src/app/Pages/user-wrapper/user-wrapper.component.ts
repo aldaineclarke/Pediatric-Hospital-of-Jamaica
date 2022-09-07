@@ -31,6 +31,7 @@ export class UserWrapperComponent implements OnInit {
     let id = this.authService.getUser()._id;
     this.usersService.getUserById(id).subscribe((response)=>{
       this.user = response.data
+      this.user.imageUrl = (this.user.imageUrl) ? this.user.imageUrl : "/assets/default-profile-img.png"
     })
   }
   logoutUser(){

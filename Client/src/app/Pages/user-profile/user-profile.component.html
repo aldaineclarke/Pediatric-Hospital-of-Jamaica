@@ -46,10 +46,23 @@
                     <span>Parish</span>
                     <input type="text" name="parish" formControlName="parish">
                 </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" formControlName="password">
+                </label>
+                <label>
+                    <span>Confirm Password</span>
+                    <input type="password" name="password2" formControlName="password2">
+                </label>
+                <label class="flex flex-row checkbox items-center gap-2" (click)="togglePasswordEditState(passwordToggle)">
+                    <input type="checkbox" name="password2" class="h-[1rem]" #passwordToggle>
+                    <span class="text-dark-brown text-[.8rem] font-semibold">Change Password</span>
+                </label>
                 
                 <div class="cta">
                     <button class="cta__btn cta__btn--gold my-2">Update Profile</button>
                 </div>
+
             </form>
             
         </div>
