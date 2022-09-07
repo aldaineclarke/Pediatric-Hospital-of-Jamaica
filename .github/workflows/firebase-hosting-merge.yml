@@ -19,5 +19,4 @@ jobs:
           channelId: live
           projectId: phj-app
           # path: "./Client"
-          entrypoint: /Client
-
+          entrypoint: ./Client
