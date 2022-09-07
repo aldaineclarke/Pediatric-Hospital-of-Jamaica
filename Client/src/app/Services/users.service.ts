@@ -11,14 +11,19 @@ export class UsersService {
 
   private  USERS_ENDPOINT = "http://10.44.16.32:3000/api/v1/users";
 
-  private userSubject = new BehaviorSubject<User | null>(null);
+  private userSubject = new BehaviorSubject<User | null>(this.getUserFromStorage());
 
   public user$:Observable<User | null> = this.userSubject.asObservable();
 
-  createUserLoginSession(user:User){
-    this.userSubject.next(user);
+  public getUserFromStorage(): User | null{
+    let user = localStorage.getItem("User")
+    if(user){
+      return JSON.parse(user)
+    }
+    return null
   }
   removeUserLoginSession(){
+    localStorage.removeItem("user");
     this.userSubject.next(null);
   }
 
@@ -83,8 +88,9 @@ export class UsersService {
       catchError((error)=>  this.handleErrror(error, "Authentication Failed")),
       tap((response)=>{
         if(response.data){
-          this.createUserLoginSession(response.data.user);
+          this.userSubject.next(response.data.user);
           localStorage.setItem("token",response.data.token);
+          localStorage.setItem("User", JSON.stringify(response.data.user))
           Swal.fire(
             'Login Successful',
             'success'
@@ -92,6 +98,11 @@ export class UsersService {
         }
       }),
     )
+  }
+
+  logoutUser(){
+    this.userSubject.next(null);
+    localStorage.removeItem("User")
   }
 
 }
