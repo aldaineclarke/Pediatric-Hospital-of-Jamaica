@@ -33,6 +33,7 @@ import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
 import { UserDoctorProfileComponent } from './Pages/user-doctor-profile/user-doctor-profile.component';
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
+import { FilterDepartmentPipe } from './Pipes/filterDepartment.pipe';
 
 
 // ThirdParty Modules
@@ -67,6 +68,7 @@ import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user
     UserDoctorProfileComponent,
     UserRegisterComponent,
     UserAppointmentEditComponent,
+    FilterDepartmentPipe,
 
     // NotinatorComponent
   ],
