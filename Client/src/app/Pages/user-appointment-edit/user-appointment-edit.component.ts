@@ -21,7 +21,7 @@ export class UserAppointmentEditComponent implements OnInit {
   user = this.authService.getUser();
   currentUser!: User;
   appointment!: Appointment;
-
+  departments:string[] = this.doctorService.DEPARTMENTS;
   doctors:Doctor[] = []
   ngOnInit(): void {
     console.log( this.authService.getUser())

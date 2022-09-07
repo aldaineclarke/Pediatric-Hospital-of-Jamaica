@@ -18,6 +18,7 @@ export class UserAppointmentCreateComponent implements OnInit, AfterViewInit{
   constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private doctorService: DoctorService, private usersService: UsersService) { }
   user = this.authService.getUser();
   currentUser!: User;
+  departments:string[] = this.doctorService.DEPARTMENTS;
 
   @ViewChild("fillData") fillDataCheckbox!:ElementRef<HTMLInputElement>
   doctors:Doctor[] = []

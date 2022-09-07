@@ -47,9 +47,9 @@
             <h2 class="mb-6">Upcomming Appointments <span>See More</span></h2>
             <div class="appointments flex gap-4">
                 <ng-container *ngIf="upAppointment">
-                    <hos-appointment-card [appointment]="upAppointment" ></hos-appointment-card>
+                    <hos-appointment-card class="cursor-pointer" [appointment]="upAppointment" routerLink="appointments/{{upAppointment._id}}" ></hos-appointment-card>
                 </ng-container>
-                <hos-appointment-card routerLink="appointments/create"></hos-appointment-card>
+                <hos-appointment-card routerLink="appointments/create" class="cursor-pointer"></hos-appointment-card>
             </div>
         </div>
         

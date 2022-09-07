@@ -19,6 +19,7 @@ export class AppointmentEditComponent implements OnInit {
   doctorsPool: Doctor[] = [];
   appointment!: Appointment;
   constructor(private doctorService: DoctorService, private appointmentService: AppointmentService, private route:ActivatedRoute, private router:Router) { }
+  departments = this.doctorService.DEPARTMENTS;
 
   appointmentUpdateForm = new FormGroup({
     doctor: new FormControl("", Validators.required),

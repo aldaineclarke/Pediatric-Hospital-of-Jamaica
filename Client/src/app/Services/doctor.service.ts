@@ -19,6 +19,10 @@ export class DoctorService {
     return throwError(()=> new Error(message));
   }
 
+  DEPARTMENTS = [
+    "SURGEON", "DENTISTRY", "RADIOLOGY","CARDIOLOGY", "DERMATOLOGY","OPTHALMOLOGY", "NEUROLOGY", "EMERGENCY"
+  ]
+
   getAllDoctors():Observable<API_Response<Doctor[]>>{
     return this._http.get<API_Response<Doctor[]>>(this.DOCTOR_ENDPOINT)
   }

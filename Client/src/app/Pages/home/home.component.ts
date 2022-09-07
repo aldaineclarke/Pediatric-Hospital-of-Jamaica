@@ -16,7 +16,7 @@ import { VendorService } from 'src/app/Services/vendor.service';
 export class HomeComponent implements OnInit {
 
   constructor(private vendorService: VendorService, private appointmentService: AppointmentService, private doctorService: DoctorService) { }
-  
+  departments = this.doctorService.DEPARTMENTS;
   counters:{[key: string]:{start:number}} = {patient: {start:300}, capacity:{start: 150}, doctor:{start: 1500}, experience:{start:18}};
   specialties = ["Surgeon", "Dentist", "Radiologist", "Pulmonologist","Radiologist","Cardiologist"]
   mainNews!: News ;
