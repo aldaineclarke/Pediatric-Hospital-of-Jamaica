@@ -15,10 +15,10 @@ export class UserWrapperComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService, private usersService: UsersService) { }
 
-  user$!: Observable<User | null>
+
+  user!:User;
   ngOnInit(): void {
-    this.user$ = this.usersService.user$; 
-    console.log(this.user$)
+  this.getUserInfo();
   }
 
   navOpened: boolean = false
@@ -27,6 +27,12 @@ export class UserWrapperComponent implements OnInit {
     this.navOpened = !this.navOpened;
   }
 
+  getUserInfo(){
+    let id = this.authService.getUser()._id;
+    this.usersService.getUserById(id).subscribe((response)=>{
+      this.user = response.data
+    })
+  }
   logoutUser(){
     Swal.fire(
       'Login Successful',
