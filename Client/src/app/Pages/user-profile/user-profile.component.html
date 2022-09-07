@@ -1,14 +1,17 @@
 <section class="mobile-view">
-    <div class="profile-wrapper flex flex-col h-screen">
-        <div class="cta px-6 pt-6 pb-0 text-lg font-semibold text-dark-brown" (click)="goBack()">
-            <p><i class="fa fa-solid fa-arrow-left mr-2"></i><span>Back</span></p>
+    <ng-container *ngIf="user">
+
+        <div class="profile-wrapper flex flex-col h-screen">
+            <div class="cta px-6 pt-6 pb-0 text-lg font-semibold text-dark-brown cursor-pointer" routerLink="/user">
+            <p><i class="fa fa-solid fa-arrow-left mr-2"></i><span>Home</span></p>
         </div>
         <div class="profileImg-wrapper">
-            <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="">
+            <img [src]="user.imageUrl" alt="Profile Image of user">
         </div>
         <div class="userInfo-wrapper section">
             <h2>{{user.fname}}'s Profile</h2>
-            <form [formGroup]="updateProfileForm" class="updateProfileForm" (submit)="updateForm()">
+            <form [formGroup]="updateProfileForm" class="updateProfileForm" (submit)="updateForm()" enctype="multipart/form-data" method="POST">
+                <input type="file" name="imageUrl" (change)="getFileData($event)">
                 <div class="form-group">
                     <label>
                         <span>First Name</span>
@@ -43,7 +46,7 @@
                     <span>Parish</span>
                     <input type="text" name="parish" formControlName="parish">
                 </label>
-
+                
                 <div class="cta">
                     <button class="cta__btn cta__btn--gold my-2">Update Profile</button>
                 </div>
@@ -54,4 +57,5 @@
             <p class="p-4 text-xs text-center">Created by VaineStudios &copy; All Rights Reserved</p>
         </div>
     </div>
+</ng-container>
 </section>

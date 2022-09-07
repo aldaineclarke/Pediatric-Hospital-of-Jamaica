@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   updateProfileForm = new FormGroup({
     fname: new FormControl("", Validators.required),
     lname: new FormControl("", Validators.required),
+    imageUrl: new FormControl(" ", Validators.required),
     username: new FormControl("", Validators.required),
     email: new FormControl("", Validators.required),
     phone: new FormControl("", Validators.required),
@@ -42,12 +43,13 @@ export class UserProfileComponent implements OnInit {
   getUserInfo(){
     this.usersService.getUserById(this.userInfo._id).subscribe((response)=>{
       this.user = response.data;
-      console.log(this.user)
+      this.user.imageUrl = (this.user.imageUrl) ? this.user.imageUrl : "/assets/default-profile-img.png"; 
       this.updateProfileForm.setValue({
         fname: this.user.fname,
         lname: this.user.lname,
         email: this.user.email,
         username: this.user.username,
+        imageUrl: "",
         phone: this.user.phone,
         street: (this.user.address)? this.user.address.street: " ",
         city: (this.user.address)? this.user.address.city: " ",
@@ -58,9 +60,50 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateForm(){
-    this.usersService.updateUser(this.user._id, this.updateProfileForm.value).subscribe(()=>{
+
+    this.updateProfileForm.value;
+    const formData = new FormData();
+
+    const form = this.updateProfileForm.value;
+    for (let i in form) {
+      if (form[i] instanceof Blob){  //  Check if key value is file
+        formData.append(i, form[i], form[i].name ? form[i].name : "");
+      }
+      else
+      formData.append(i, form[i]);
+    }
+
+    this.usersService.updateUser(this.user._id, formData as Partial<User>).subscribe(()=>{
       this.router.navigate(["/user"])
     })
   }
 
+  getFileData(event: Event){
+    let extensionAllowed:{[key:string]:boolean} = {"png":true,"jpeg":true, "jpg":true};
+    const fileElement = event.target as HTMLInputElement;
+
+    if(fileElement.files){
+      if (fileElement.files[0].size / 1024 / 1024 > 20) {
+        alert("File size should be less than 20MB")
+        return;
+      }
+      if (extensionAllowed) {
+        let nam = fileElement.files[0].name.split('.').pop();
+        if(nam){
+          if (!extensionAllowed[nam]) {
+            alert("Please upload " + Object.keys(extensionAllowed) + " file.")
+            return;
+          }
+        }
+      }
+
+      this.updateProfileForm.controls["imageUrl"].setValue(fileElement.files[0] as File);
+    }
+
+    
+    
+  }
+
 }
+
+
