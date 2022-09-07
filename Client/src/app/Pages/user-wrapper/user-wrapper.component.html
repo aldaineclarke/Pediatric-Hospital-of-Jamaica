@@ -1,5 +1,6 @@
 <div class="mobile-view">
     <nav class="nav-wrapper">
+        <ng-container *ngIf="(user$ | async) as user">
         <ul [class]="{'nav': true, 'active': navOpened}" role="navigation">
             <li>
                 <div [class]="{'top-nav': true, 'active': navOpened}">
@@ -10,7 +11,7 @@
                         </ng-template>
                     </div>
                     <div [class]="{'userInfo': true, 'active': navOpened}">
-                        <img src="/assets/toddler-white-shirt-curly-hair.jpg" alt="profile image" routerLink="profile">
+                        <img [src]="user.imageUrl" alt="profile image" routerLink="profile">
 
                        <div class="text-center" *ngIf="navOpened">
                         <p class="name text-lg font-bold text-white">{{user.fname+" "+user.lname}}</p>
@@ -20,7 +21,7 @@
                 </div>
             </li>
             <li>
-                <div class="dropdown-nav mt-10">
+                <div class="dropdown-nav mt-7">
                     <a routerLink="/user/" (click)="toggleNav()">
                         <i class="fa-solid fa-home"></i>
                         <span>Home</span>
@@ -52,6 +53,7 @@
                 <p class="text-center font-bold text-white text-xl" *ngIf="user">{{user.fname+" "+user.lname}}</p>
             </li>
         </ul>
+        </ng-container>
     </nav>
     <div class="overlay" *ngIf="navOpened"></div>
     <div class="user-container">
