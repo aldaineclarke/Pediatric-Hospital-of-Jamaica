@@ -20,7 +20,7 @@ export class UserLoginComponent implements OnInit {
 
   loginUser(){
     this.usersService.loginUser(this.userLoginForm.value).subscribe((response)=>{
-      this.router.navigate(['/user/']);
+      this.router.navigate(['/user']);
     })
   }
 
