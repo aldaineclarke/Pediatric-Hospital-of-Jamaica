@@ -13,7 +13,7 @@ import { Doctor } from 'src/app/Interfaces/doctor';
 export class UserDoctorProfileComponent implements OnInit {
 
   constructor( private location: Location, private route: ActivatedRoute, private router: Router, private doctorService: DoctorService) { }
-
+  id = ""
   doctor!:Doctor;
   ngOnInit(): void {
     this.getDoctorFromRouteParams();
@@ -23,14 +23,16 @@ export class UserDoctorProfileComponent implements OnInit {
   }
 
   getDoctorFromRouteParams(){
-    let id = "";
     this.route.paramMap.subscribe((params)=>{
-      id = params.get("id") as string;
+      this.id = params.get("id") as string;
     });
 
-    this.doctorService.getDoctorById(id).subscribe((response)=>{
+    this.doctorService.getDoctorById(this.id).subscribe((response)=>{
       this.doctor = response.data;
     })
+  }
+  sendDoctorInfo(){
+    this.router.navigateByUrl("/user/appointments/create", {state:{doctor_id:this.id}})
   }
 
 }
