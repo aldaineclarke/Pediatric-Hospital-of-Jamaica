@@ -26,17 +26,17 @@
             </div>
         </div>
         <div class="services section">
-            <h2>Our Services <span>See More</span></h2>
+            <h2>Our Services</h2>
             <div class="service-cards">
-                <div class="service-card" routerLink="doctors">
+                <div class="service-card cursor-pointer" routerLink="doctors">
                     <i class="fa-solid fa-stethoscope"></i>
                     <p>Doctors</p>
                 </div>
-                <div class="service-card" routerLink="">
+                <div class="service-card cursor-pointer" (click)="apologize()">
                     <i class="fa-solid fa-blog"></i>
                     <p>Blog</p>
                 </div>
-                <div class="service-card" routerLink="">
+                <div class="service-card cursor-pointer" (click)="apologize()">
                     <i class="fa-solid fa-pills"></i>
                     <p>Medicine</p>
                 </div>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="appointments section">
-            <h2 class="mb-6">Upcomming Appointments <span>See More</span></h2>
+            <h2 class="mb-6">Upcomming Appointments</h2>
             <div class="appointments flex gap-4">
                 <ng-container *ngIf="upAppointment">
                     <hos-appointment-card class="cursor-pointer" [appointment]="upAppointment" routerLink="appointments/{{upAppointment._id}}" ></hos-appointment-card>

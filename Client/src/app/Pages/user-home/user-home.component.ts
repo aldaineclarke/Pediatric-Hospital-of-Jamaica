@@ -66,4 +66,7 @@ export class UserHomeComponent implements OnInit, AfterViewInit {
     location.href=route
   }
 
+  apologize(){
+    return alert("This route is under Construction")
+  }
 }

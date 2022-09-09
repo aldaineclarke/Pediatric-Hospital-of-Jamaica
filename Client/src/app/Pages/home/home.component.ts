@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   @ViewChild("statistics") statistics!: ElementRef;
   
   doctors: Doctor[] = [];
-  doctorsPool: Doctor[] = [];
   quickAppointmentForm = new FormGroup({
     email: new FormControl("", Validators.required),
     doc: new FormControl("", Validators.required),
@@ -60,17 +59,11 @@ export class HomeComponent implements OnInit {
     });
     this.getAllDoctors();
     
-    this.quickAppointmentForm.get("specialty")?.valueChanges.subscribe((change)=>{
-      this.doctorsPool = this.doctors.filter((doc)=>{
-        return doc.department == change;
-      });
-    });
   }
 
   getAllDoctors(){
     this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
-      this.doctorsPool = this.doctors;
     })
   }
 
