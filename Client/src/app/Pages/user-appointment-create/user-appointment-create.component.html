@@ -37,8 +37,9 @@
                 <label>
                     <span>Doctor</span>
                     <select name="doctor" formControlName="doctor">
+                        <option value="">-- Select a Doctor --</option>
                         <option [value]="doctor._id" *ngFor="let doctor of doctors | filterDepartment:specialty.value">
-                            {{doctor.title +" "+ doctor.fname+" "+doctor.lname }}
+                            {{((doctor.title) ? doctor.title+" " :"" )+ doctor.fname+" "+doctor.lname }}
                         </option>
                     </select>
                 </label>

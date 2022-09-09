@@ -13,10 +13,12 @@ export class AppointmentCardComponent implements OnInit, OnChanges {
   time = " "
   doctor = ""
   specialty = ""
-  imageSrc = "/assets/mother-two-her-sons-have-appointment-with-pediatrician.jpg";
+  imageSrc = "";
   constructor() { }
 
   ngOnInit(): void {
+    
+
   }
   ngOnChanges(){
     this.appointment.visitStart = new Date (this.appointment.visitStart);
@@ -24,6 +26,7 @@ export class AppointmentCardComponent implements OnInit, OnChanges {
     this.time = this.appointment.visitStart.toLocaleTimeString("en-US", {timeStyle:"short"});
     this.doctor = this.appointment.doctor.title+ " "+ this.appointment.doctor.lname;
     this.specialty = this.appointment.doctor.department as string;
+    this.imageSrc = ((this.appointment.doctor) ? this.appointment.doctor.imageUrl: "/assets/mother-two-her-sons-have-appointment-with-pediatrician.jpg") as string;
   }
 
 }

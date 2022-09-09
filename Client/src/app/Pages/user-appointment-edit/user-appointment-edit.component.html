@@ -25,14 +25,15 @@
                 <label>
                     <span>Specialty</span>
                     <select name="specialty" formControlName="specialty" #specialty>
-                        <option [value]="dep" *ngFor="let dep of departments">{{dep.toLowerCase().charAt(0).toUpperCase()}}</option>
+                        <option [value]="dep" *ngFor="let dep of departments">{{dep.charAt(0).toUpperCase() + dep.slice(1).toLowerCase()}}</option>
                     </select>
                 </label>
                 <label>
                     <span>Doctor</span>
                     <select name="doctor" formControlName="doctor">
+                        <option value="">Select A doctor</option>
                         <option [value]="doctor._id" *ngFor="let doctor of doctors | filterDepartment:specialty.value">
-                            {{doctor.title +" "+ doctor.fname+" "+doctor.lname }}
+                            {{((doctor.title) ? doctor.title+" " :"")+ doctor.fname+" "+doctor.lname }}
                         </option>
                     </select>
                 </label>

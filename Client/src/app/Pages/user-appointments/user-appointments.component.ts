@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Appointment, AppointmentPop } from 'src/app/Interfaces/appointment';
 import { AppointmentService } from 'src/app/Services/appointment.service';
 import { AuthService } from 'src/app/Services/auth.service';
-
+import Swal from "sweetalert2";
 @Component({
   selector: 'hos-user-appointments',
   templateUrl: './user-appointments.component.html',
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class UserAppointmentsComponent implements OnInit {
 
-  constructor(private appointmentService: AppointmentService, private authService: AuthService) { }
+  constructor(private appointmentService: AppointmentService, private authService: AuthService, private router: Router) { }
   userAppointments:AppointmentPop[] = [];
   userData = this.authService.getUser()
   appointment!:AppointmentPop;
@@ -32,6 +33,26 @@ export class UserAppointmentsComponent implements OnInit {
         appointment.visitStart = new Date(appointment.visitStart);
       })
       console.log(this.userAppointments);
+    })
+  }
+  deleteAppointment(id: string){
+
+    Swal.fire({
+      title: 'You are about to Delete this appointment, Continue?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Appointment Deleted', '', 'success');
+        this.appointmentService.deleteAppointment(id).subscribe(()=>{
+          this.userAppointments = this.userAppointments.filter((appointment)=>{
+            appointment._id != id;
+          });
+          this.router.navigate(['/user/appointments'])
+        });
+
+      } 
     })
   }
 
