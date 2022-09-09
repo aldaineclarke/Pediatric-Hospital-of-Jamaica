@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appointment, AppointmentPop } from '../Interfaces/appointment';
 import { API_Response } from '../Interfaces/user';
-
+import {baseUrl} from "../../environments/environment.prod"
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
 
   constructor(private _http:HttpClient) { }
-  APPOINTMENT_ENDPOINT = 'http://localhost:3000/api/v1/appointments';
+  APPOINTMENT_ENDPOINT = `${baseUrl}/appointments`;
 
   getAllAppointments():Observable<API_Response<Appointment[]>>{
     return this._http.get<API_Response<Appointment[]>>(this.APPOINTMENT_ENDPOINT);

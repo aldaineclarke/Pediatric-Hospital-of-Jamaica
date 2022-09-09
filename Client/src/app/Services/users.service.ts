@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of, throwError, tap, BehaviorSubject } from 'rxjs';
 import { API_Response, User } from '../Interfaces/user';
 import Swal from 'sweetalert2';
+import { baseUrl } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private  USERS_ENDPOINT = "http://10.44.16.32:3000/api/v1/users";
+  private  USERS_ENDPOINT = `${baseUrl}/users`;
 
   // private userSubject = new BehaviorSubject<User | null>(this.getUserFromStorage());
 

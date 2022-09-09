@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { baseUrl } from 'src/environments/environment.prod';
 import { Doctor } from '../Interfaces/doctor';
 import { API_Response } from '../Interfaces/user';
 
@@ -10,7 +11,7 @@ import { API_Response } from '../Interfaces/user';
 export class DoctorService {
 
   constructor(private _http: HttpClient) { }
-  DOCTOR_ENDPOINT = 'http://localhost:3000/api/v1/doctors';
+  DOCTOR_ENDPOINT = `${baseUrl}/doctors`;
   private handleErrror(error:any) {
     let message = ""
       if(error.error.message){
