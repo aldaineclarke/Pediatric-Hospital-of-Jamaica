@@ -117,6 +117,9 @@ export class HomeComponent implements OnInit {
   }
 
 
+  apologize(){
+    alert("This site is under construction")
+  }
 
 
 }
