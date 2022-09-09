@@ -29,6 +29,7 @@ export class UserDoctorProfileComponent implements OnInit {
 
     this.doctorService.getDoctorById(this.id).subscribe((response)=>{
       this.doctor = response.data;
+      this.doctor.imageUrl = (this.doctor.imageUrl)? this.doctor.imageUrl :"/assets/Tishkoff-Sirugo-COVID-genetics.jpeg"; 
     })
   }
   sendDoctorInfo(){
