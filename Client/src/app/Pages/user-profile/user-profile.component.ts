@@ -15,6 +15,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private location: Location, private usersService: UsersService, private authService: AuthService, private router: Router) { }
 
+  passwordDisabled = true;
+
   updateProfileForm = new FormGroup({
     fname: new FormControl("", Validators.required),
     lname: new FormControl("", Validators.required),
@@ -25,6 +27,8 @@ export class UserProfileComponent implements OnInit {
     street: new FormControl("", Validators.required),
     city: new FormControl("", Validators.required),
     parish: new FormControl("", Validators.required),
+    password: new FormControl({value: "", disabled: this.passwordDisabled}, Validators.required),
+    password2: new FormControl({value: "", disabled: this.passwordDisabled},Validators.required)
 
   });
 
@@ -54,17 +58,30 @@ export class UserProfileComponent implements OnInit {
         street: (this.user.address)? this.user.address.street: " ",
         city: (this.user.address)? this.user.address.city: " ",
         parish: (this.user.address)? this.user.address.parish: " ",
-
+        password: "",
+        password2: "",
       })
     })
   }
 
   updateForm(){
 
-    this.updateProfileForm.value;
     const formData = new FormData();
 
     const form = this.updateProfileForm.value;
+
+    if(!this.passwordDisabled){
+      const passwordCorrect = this.verifyPassword(this.updateProfileForm.get("password")?.value,this.updateProfileForm.get("password2")?.value )
+      if(!passwordCorrect){
+          this.updateProfileForm.get("password")?.setErrors({notMatched: true});
+      }
+    }else{
+      console.log("password was not selected")
+      delete form.password
+      delete form.password2;
+    }
+    
+    console.log(form);
     for (let i in form) {
       if (form[i] instanceof Blob){  //  Check if key value is file
         formData.append(i, form[i], form[i].name ? form[i].name : "");
@@ -102,6 +119,27 @@ export class UserProfileComponent implements OnInit {
 
     
     
+  }
+  togglePasswordEditState(inputElem: HTMLInputElement){
+
+    if(inputElem.checked){
+      this.passwordDisabled = false;
+      this.updateProfileForm.get("password")?.enable()
+      this.updateProfileForm.get("password2")?.enable()
+    }else{
+      this.updateProfileForm.get("password")?.disable()
+      this.updateProfileForm.get("password2")?.disable()
+      this.passwordDisabled = true;
+
+    }
+    console.log(this.updateProfileForm.get("password")?.disabled)
+  }
+
+  verifyPassword(password1:string, password2:string){
+    if(password1 == password2){
+      return true;
+    }
+    return false;
   }
 
 }

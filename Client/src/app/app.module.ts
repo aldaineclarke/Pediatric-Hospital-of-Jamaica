@@ -8,7 +8,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { AdminHomeComponent } from './Pages/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { DoctorsComponent } from './Pages/doctors/doctors.component';
 import { DoctorEditComponent } from './Pages/doctor-edit/doctor-edit.component';
@@ -33,6 +33,8 @@ import { UserDoctorComponent } from './Pages/user-doctor/user-doctor.component';
 import { UserDoctorProfileComponent } from './Pages/user-doctor-profile/user-doctor-profile.component';
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
+import { FilterDepartmentPipe } from './Pipes/filterDepartment.pipe';
+import { FilterNamePipe } from './Pipes/filter-name.pipe';
 
 
 // ThirdParty Modules
@@ -67,6 +69,8 @@ import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user
     UserDoctorProfileComponent,
     UserRegisterComponent,
     UserAppointmentEditComponent,
+    FilterDepartmentPipe,
+    FilterNamePipe,
 
     // NotinatorComponent
   ],
@@ -76,6 +80,7 @@ import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule
 
   ],
   providers: [],

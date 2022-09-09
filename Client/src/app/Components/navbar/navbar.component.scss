@@ -22,7 +22,35 @@
 
     }
 }
+.nav_links{
+    flex-grow: 1;
+    
+    div{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap: 1.5rem;
+
+    }
+
+}
+
 
 .active{
     color:$mystic;
+}
+
+@media(max-width: 480px){
+
+    .nav{
+        padding: 1rem;
+    
+        .top-head{
+            display:flex;
+            align-items:center;
+        }
+    }
+    .lower-head{
+        padding: 0 1rem;
+    }
 }

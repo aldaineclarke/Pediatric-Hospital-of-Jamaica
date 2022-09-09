@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { baseUrl } from 'src/environments/environment.prod';
 import { Patient } from '../Interfaces/patient';
 import { API_Response } from '../Interfaces/user';
 
@@ -8,7 +9,7 @@ import { API_Response } from '../Interfaces/user';
   providedIn: 'root'
 })
 export class PatientService {
-  private  PATIENT_ENDPOINT = "http://localhost:3000/api/v1/patients"
+  private  PATIENT_ENDPOINT = `${baseUrl}/patients`;
   constructor(private _http:HttpClient) { }
 
   createPatient(data:Partial<Patient>):Observable<API_Response<Patient>> {

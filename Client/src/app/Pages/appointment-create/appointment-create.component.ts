@@ -16,16 +16,13 @@ export class AppointmentCreateComponent implements OnInit {
 
   constructor(private doctorsService: DoctorService, private appointmentService: AppointmentService, private router: Router) { }
   doctors:Doctor[] = [];
-  doctorsPool:Doctor[] = [];
+  departments = this.doctorsService.DEPARTMENTS;
+  
   ngOnInit(): void {
 
     this.getAllDoctors();
-    this.appointmentCreationForm.get("specialty")?.valueChanges.subscribe((change)=>{
-      this.doctorsPool = this.doctors.filter((doc)=>{
-        return doc.department == change;
-      })
-    })
   }
+
   appointmentCreationForm = new FormGroup({
     doctor: new FormControl("", Validators.required),
     fname: new FormControl("", Validators.required),
@@ -43,9 +40,10 @@ export class AppointmentCreateComponent implements OnInit {
   getAllDoctors(){
     this.doctorsService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
-      this.doctorsPool = this.doctors;
     })
   }
+
+
   submitForm(){
     const data = {
       doctor: this.appointmentCreationForm.get("doctor")?.value,

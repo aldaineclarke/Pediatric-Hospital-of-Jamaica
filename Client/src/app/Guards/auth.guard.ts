@@ -22,11 +22,13 @@ export class AuthGuard implements CanActivate,CanActivateChild {
 
   checkAuthenticated(){
     if (!this.auth.isAuthenticated()){
-      console.log(location.href.includes("user/"));
       if(location.href.includes("/user")){
         this.router.navigate(["/user/login"])
       }else{
-        console.log(location.href)
+        if(window.innerWidth < 480){
+          alert("You should not be viewing this sytem on your mobile device");
+          this.router.navigate(["/home"])
+        }
         this.router.navigate(["admin/login"]);
 
       }

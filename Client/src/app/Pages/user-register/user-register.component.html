@@ -39,7 +39,9 @@
                     <input type="password" name="password2" formControlName="password2">
                 </label> 
             </div>
-            {{signUpForm | json}}
+            <div class=" text-sm mt-5">
+                <p><span class="text-gray-400">Already have an account? </span> <a class="font-bold text-dark-brown" routerLink="/user/login">Sign in</a></p>
+            </div>
             <div class="cta flex justify-end mt-5">
                 <button type="submit" class="cta__btn cta__btn--gold" [disabled]="signUpForm.invalid">Sign Up</button>
             </div>

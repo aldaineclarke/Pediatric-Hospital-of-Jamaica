@@ -8,7 +8,7 @@
                         Our center is not just geared towards creating a clean and hospitable environment for the future generation, but alse to ensure that both you and your child has the best experience.
                     </p>
                     <div class="cta mt-6">
-                        <button class="cta__btn cta__btn--mystic">
+                        <button class="cta__btn cta__btn--mystic" (click)="apologize()">
                             Learn More
                         </button>
                     </div>
@@ -21,15 +21,16 @@
             <div class="booking-wrapper">
                 <form class="booking__form" [formGroup]="quickAppointmentForm" (submit)="submitForm()">
                     <label>
-                        <select class="" name="specialty" formControlName="specialty">
-                            <option [value]="element" *ngFor="let element of specialties">{{element}}</option>
+                        <select class="" name="specialty" formControlName="specialty" #specialty>
+                            <option [value]="dep" *ngFor="let dep of departments">{{dep.charAt(0).toUpperCase() + dep.slice(1).toLowerCase()}}</option>
 
                         </select>
                         <span>Specialty</span>
                     </label>
                     <label>
                         <select class="" name="doctor" formControlName="doc">
-                            <option [value]="doc._id" *ngFor="let doc of doctorsPool">{{doc.title +" "+ doc.fname +" "+ doc.lname}}</option>
+                            <option value=""> -- Select Doctor --</option>
+                            <option [value]="doc._id" *ngFor="let doc of doctors | filterDepartment: specialty.value ">{{((doc.title) ? doc.title+". " : "")+ doc.fname +" "+ doc.lname}}</option>
                             
                         </select>
                         <span>Pediatrician</span>

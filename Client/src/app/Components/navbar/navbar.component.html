@@ -44,25 +44,20 @@
             <li class="nav__item">
                 <a routerLink="/" class="nav__link" >PHJ</a>
             </li>
-            <li class="nav__item">
-                <a routerLink="/" class="nav__link" routerLinkActive="active">Home</a>
+            <li class="nav_links">
+                <div>
+                    <a routerLink="/" class="nav__link ml-auto" routerLinkActive="active">Home</a>
+                    <a (click)="apologize()" class="nav__link" routerLinkActive="active">About</a>
+                    <a (click)="apologize()" class="nav__link" routerLinkActive="active">Services</a>
+                    <a (click)="apologize()" class="nav__link" routerLinkActive="active">Gallery</a>
+                    <a (click)="apologize()" class="nav__link" routerLinkActive="active">Contact</a>
+                    <div class="cta-buttons">
+                        <button class="cta__btn cta__btn--outline" routerLink="/user/login">Login</button>
+                        <button class="cta__btn cta__btn--mystic" routerLink="/user/register">Sign Up</button>
+                    </div>
+                </div>
             </li>
-            <li class="nav__item">
-                <a href="#" class="nav__link" routerLinkActive="active">About</a>
-            </li>
-            <li class="nav__item">
-                <a href="#" class="nav__link" routerLinkActive="active">Services</a>
-            </li>
-            <li class="nav__item">
-                <a href="#" class="nav__link" routerLinkActive="active">Gallery</a>
-            </li>
-            <li class="nav__item">
-                <a href="#" class="nav__link" routerLinkActive="active">Contact</a>
-            </li>
-            <li class="cta-buttons">
-                <button class="cta__btn cta__btn--outline" routerLink="/user/login">Login</button>
-                <button class="cta__btn cta__btn--mystic" routerLink="/user/register">Sign Up</button>
-            </li>
+            
         </ul>
     </nav>
 </header>

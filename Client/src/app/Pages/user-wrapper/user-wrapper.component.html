@@ -1,6 +1,6 @@
 <div class="mobile-view">
     <nav class="nav-wrapper">
-        <ng-container *ngIf="(user$ | async) as user">
+        <ng-container *ngIf="user">
         <ul [class]="{'nav': true, 'active': navOpened}" role="navigation">
             <li>
                 <div [class]="{'top-nav': true, 'active': navOpened}">

@@ -3,7 +3,7 @@ import { Location } from '@angular/common'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { AppointmentService } from 'src/app/Services/appointment.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorService } from 'src/app/Services/doctor.service';
 import { Doctor } from 'src/app/Interfaces/doctor';
 import { UsersService } from 'src/app/Services/users.service';
@@ -15,20 +15,23 @@ import { User } from 'src/app/Interfaces/user';
 })
 export class UserAppointmentCreateComponent implements OnInit, AfterViewInit{
 
-  constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private doctorService: DoctorService, private usersService: UsersService) { }
+  constructor(private location: Location, private authService: AuthService, private appointmentService: AppointmentService, private router:Router, private doctorService: DoctorService, private usersService: UsersService, private route: ActivatedRoute) { }
   user = this.authService.getUser();
   currentUser!: User;
+  departments:string[] = this.doctorService.DEPARTMENTS;
 
   @ViewChild("fillData") fillDataCheckbox!:ElementRef<HTMLInputElement>
   doctors:Doctor[] = []
+  
   ngOnInit(): void {
     console.log( this.authService.getUser())
     this.getAllDoctors();
     this.getCurrentUser();
+    this.setDoctor(history.state["doctor_id"]);
     
   }
 
-
+  
   ngAfterViewInit(): void {
       this.fillDataCheckbox.nativeElement.addEventListener(("click"),()=>{
         if(this.fillDataCheckbox.nativeElement.checked){
@@ -51,6 +54,13 @@ export class UserAppointmentCreateComponent implements OnInit, AfterViewInit{
 
   goBack(){
     this.location.back();
+  }
+
+  setDoctor(doctor_id:string){
+    if(doctor_id){
+      console.log(doctor_id)
+      this.appointmentForm.get("doctor")?.setValue(doctor_id);
+    }
   }
 
   submitForm(){

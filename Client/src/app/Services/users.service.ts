@@ -3,30 +3,26 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of, throwError, tap, BehaviorSubject } from 'rxjs';
 import { API_Response, User } from '../Interfaces/user';
 import Swal from 'sweetalert2';
+import { baseUrl } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private  USERS_ENDPOINT = "http://10.44.16.32:3000/api/v1/users";
+  private  USERS_ENDPOINT = `${baseUrl}/users`;
 
-  private userSubject = new BehaviorSubject<User | null>(this.getUserFromStorage());
+  // private userSubject = new BehaviorSubject<User | null>(this.getUserFromStorage());
 
-  public user$:Observable<User | null> = this.userSubject.asObservable();
+  // public user$:Observable<User | null> = this.userSubject.asObservable();
 
-  public getUserFromStorage(): User | null{
-    let user = localStorage.getItem("User")
-    if(user){
-      return JSON.parse(user)
-    }
-    return null
-  }
-  removeUserLoginSession(){
-    localStorage.removeItem("user");
-    this.userSubject.next(null);
-  }
-
+  // public getUserFromStorage(): User | null{
+  //   let user = localStorage.getItem("User")
+  //   if(user){
+  //     return JSON.parse(user)
+  //   }
+  //   return null
+  // }
   constructor(private _http: HttpClient) { }
 
   private handleErrror(error:any, status:string) { 
@@ -73,7 +69,11 @@ export class UsersService {
   updateUser(id: string, changes: Partial<User>){
     return this._http.patch<API_Response<User>>(this.USERS_ENDPOINT+"/"+ id, changes)
     .pipe(
-      tap(this.handleSuccess),
+      tap((response)=> {
+        // resets local storage of user when user is updated for data consistency.
+        // localStorage.setItem("User", JSON.stringify(response.data))
+        this.handleSuccess(response)
+      }),
       catchError((error)=> this.handleErrror(error, "Update Failed"))
     );
   }
@@ -88,9 +88,9 @@ export class UsersService {
       catchError((error)=>  this.handleErrror(error, "Authentication Failed")),
       tap((response)=>{
         if(response.data){
-          this.userSubject.next(response.data.user);
+          // this.userSubject.next(response.data.user);
           localStorage.setItem("token",response.data.token);
-          localStorage.setItem("User", JSON.stringify(response.data.user))
+          // localStorage.setItem("User", JSON.stringify(response.data.user))
           Swal.fire(
             'Login Successful',
             'success'
@@ -101,8 +101,7 @@ export class UsersService {
   }
 
   logoutUser(){
-    this.userSubject.next(null);
-    localStorage.removeItem("User")
+    localStorage.removeItem("token")
   }
 
 }

@@ -41,4 +41,12 @@
         object-fit: cover;
         object-position:center;
     }
+    .delete-appointment{
+        color: lightgrey;
+    }
+
+    .delete-appointment:hover{
+        color: red;
+        z-index: 99;
+    }
 }

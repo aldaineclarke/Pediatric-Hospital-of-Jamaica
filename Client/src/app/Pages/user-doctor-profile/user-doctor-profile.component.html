@@ -1,7 +1,7 @@
 <section class="mobile-view">
     <div class="doctor-profile h-screen flex flex-col">
         <div class="top-wrapper">
-            <img src="/assets/Tishkoff-Sirugo-COVID-genetics.jpeg" alt="">
+            <img [src]="doctor.imageUrl" alt="">
             <div class="cta px-6 pt-6 pb-0 text-lg font-semibold text-dark-brown" (click)="goBack()">
                 <p><i class="fa fa-solid fa-arrow-left mr-2"></i><span>Back</span></p>
             </div>
@@ -10,7 +10,7 @@
         <ng-container *ngIf="doctor">
         <div class="doctor__detail section px-6 pt-4">
             <div class="flex flex-col gap-0 mb-2">
-                <p class="text-2xl font-bold text-dark-brown">{{doctor.title + ". "+ doctor.fname+ " "+ doctor.lname}}</p>
+                <p class="text-2xl font-bold text-dark-brown">{{((doctor.title) ? doctor.title+". " : "")+ doctor.fname+ " "+ doctor.lname}}</p>
                 <p class="text-xs text-dull-grey">{{doctor.department}}</p>
                 <p class="text-xs text-dull-grey"> <span class="capitalize font-semibold text-green-600">{{doctor.status}}</span></p>
                 <p class="flex items-center gap-1 font-semibold">{{doctor.rating.toFixed(1)}} 
@@ -42,7 +42,7 @@
             </div>
 
             <div class="cta mt-4 flex justify-end  my-2">
-                <button class="cta__btn cta__btn--gold">Set Appointment</button>
+                <button class="cta__btn cta__btn--gold" (click)="sendDoctorInfo()">Set Appointment</button>
             </div>
         </div>
         </ng-container>

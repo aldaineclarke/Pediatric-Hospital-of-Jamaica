@@ -16,7 +16,7 @@ import { VendorService } from 'src/app/Services/vendor.service';
 export class HomeComponent implements OnInit {
 
   constructor(private vendorService: VendorService, private appointmentService: AppointmentService, private doctorService: DoctorService) { }
-  
+  departments = this.doctorService.DEPARTMENTS;
   counters:{[key: string]:{start:number}} = {patient: {start:300}, capacity:{start: 150}, doctor:{start: 1500}, experience:{start:18}};
   specialties = ["Surgeon", "Dentist", "Radiologist", "Pulmonologist","Radiologist","Cardiologist"]
   mainNews!: News ;
@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   @ViewChild("statistics") statistics!: ElementRef;
   
   doctors: Doctor[] = [];
-  doctorsPool: Doctor[] = [];
   quickAppointmentForm = new FormGroup({
     email: new FormControl("", Validators.required),
     doc: new FormControl("", Validators.required),
@@ -60,17 +59,11 @@ export class HomeComponent implements OnInit {
     });
     this.getAllDoctors();
     
-    this.quickAppointmentForm.get("specialty")?.valueChanges.subscribe((change)=>{
-      this.doctorsPool = this.doctors.filter((doc)=>{
-        return doc.department == change;
-      });
-    });
   }
 
   getAllDoctors(){
     this.doctorService.getAllDoctors().subscribe((response)=>{
       this.doctors = response.data;
-      this.doctorsPool = this.doctors;
     })
   }
 
@@ -124,6 +117,9 @@ export class HomeComponent implements OnInit {
   }
 
 
+  apologize(){
+    alert("This site is under construction")
+  }
 
 
 }
