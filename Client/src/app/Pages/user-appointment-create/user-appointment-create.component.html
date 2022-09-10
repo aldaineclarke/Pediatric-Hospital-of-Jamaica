@@ -31,7 +31,7 @@
                 <label>
                     <span>Specialty</span>
                     <select name="specialty" formControlName="specialty" #specialty>
-                        <option [value]="dep" *ngFor="let dep of departments">{{dep.charAt(0).toUpperCase() + dep.slice(1).toLowerCase()}}</option>
+                        <option [value]="dep" *ngFor="let dep of departments">{{dep | titlecase}}</option>
                     </select>
                 </label>
                 <label>
