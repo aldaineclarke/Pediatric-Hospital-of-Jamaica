@@ -19,7 +19,6 @@ export class DoctorEditComponent implements OnInit {
   editDoctorForm = new FormGroup({
     fname: new FormControl('', Validators.required),
     lname: new FormControl('', Validators.required),
-    gender: new FormControl('Male', Validators.required),
     title: new FormControl('Mr', Validators.required),
     department: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
