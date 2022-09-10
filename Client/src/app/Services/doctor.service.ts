@@ -40,11 +40,11 @@ export class DoctorService {
     return this._http.delete(this.DOCTOR_ENDPOINT+ "/"+id);
   }
   loginDoctor(data:Partial<Doctor>){
-    return this._http.post<API_Response<string>>(this.DOCTOR_ENDPOINT+"/login",data)
+    return this._http.post<API_Response<{doctor:Doctor, token:string}>>(this.DOCTOR_ENDPOINT+"/login",data)
     .pipe(
       tap((response)=>{
         if(response.data){
-          localStorage.setItem("token",response.data);
+          localStorage.setItem("token",response.data.token);
         }
       }),
       catchError(this.handleErrror)
