@@ -7,6 +7,7 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 import { DoctorService } from 'src/app/Services/doctor.service';
 import { UsersService } from 'src/app/Services/users.service';
 import { VendorService } from 'src/app/Services/vendor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'hos-home',
@@ -35,20 +36,26 @@ export class HomeComponent implements OnInit {
   });
 
   submitForm(){
-    let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
-    console.log(this.quickAppointmentForm.get("doctor")?.value)
-    let data = {
-      fname: fname,
-      lname: lname,
-      email: this.quickAppointmentForm.get("email")?.value,
-      doctor: this.quickAppointmentForm.get("doc")?.value,
-      visitStart: this.quickAppointmentForm.get("visitStart")?.value,
-
+    if(Object.keys(this.quickAppointmentForm?.value)){
+      return Swal.fire("Error","No data was passed to the form", "error");
+    }else{
+      if(this.quickAppointmentForm.valid){
+        let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
+        let data = {
+          fname: fname,
+          lname: lname,
+          email: this.quickAppointmentForm.get("email")?.value,
+          doctor: this.quickAppointmentForm.get("doc")?.value,
+          visitStart: this.quickAppointmentForm.get("visitStart")?.value,
+        }
+        this.appointmentService.createAppointment(data).subscribe(()=>{
+          Swal.fire("Success","Appointment was set successfully", "success");
+          this.quickAppointmentForm.reset();
+        });
+      }
+      this.quickAppointmentForm
     }
-    this.appointmentService.createAppointment(data).subscribe(()=>{
-      alert("Appointment was set successfully");
-      this.quickAppointmentForm.reset();
-    })
+    
   }
 
 
