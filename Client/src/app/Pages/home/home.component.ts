@@ -36,11 +36,12 @@ export class HomeComponent implements OnInit {
   });
 
   submitForm(){
-    if(Object.keys(this.quickAppointmentForm?.value)){
+    if(Object.keys(this.quickAppointmentForm?.value).length == 0){
       return Swal.fire("Error","No data was passed to the form", "error");
     }else{
       if(this.quickAppointmentForm.valid){
         let [fname, lname] = this.quickAppointmentForm.get("name")?.value.split(" ");
+        console.log(lname)
         let data = {
           fname: fname,
           lname: lname,
@@ -53,9 +54,8 @@ export class HomeComponent implements OnInit {
           this.quickAppointmentForm.reset();
         });
       }
-      this.quickAppointmentForm
     }
-    
+    return 
   }
 
 
