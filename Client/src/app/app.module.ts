@@ -35,6 +35,7 @@ import { UserRegisterComponent } from './Pages/user-register/user-register.compo
 import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
 import { FilterDepartmentPipe } from './Pipes/filterDepartment.pipe';
 import { FilterNamePipe } from './Pipes/filter-name.pipe';
+import { ContactComponent } from './Pages/contact/contact.component';
 
 
 // ThirdParty Modules
@@ -71,6 +72,7 @@ import { FilterNamePipe } from './Pipes/filter-name.pipe';
     UserAppointmentEditComponent,
     FilterDepartmentPipe,
     FilterNamePipe,
+    ContactComponent,
 
     // NotinatorComponent
   ],

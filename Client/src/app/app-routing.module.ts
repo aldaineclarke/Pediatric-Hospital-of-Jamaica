@@ -26,11 +26,14 @@ import { UserRegisterComponent } from './Pages/user-register/user-register.compo
 import { UserAppointmentEditComponent } from './Pages/user-appointment-edit/user-appointment-edit.component';
 import { UserGuard } from './Guards/user.guard';
 import { DoctorGuard } from './Guards/doctor.guard';
+import { ContactComponent } from './Pages/contact/contact.component';
 
 const routes: Routes = [
   {
     path:"home",
     component:HomeComponent,
+  },{
+    path: "contact", component:ContactComponent
   },{
     path:"",
     pathMatch:"full",
