@@ -14,6 +14,13 @@ export class UserRegisterComponent implements OnInit {
 
   constructor(private location: Location, private router: Router, private usersService: UsersService) { }
 
+  get password (){
+    return this.signUpForm.get("password")?.value
+  }
+  get password2 (){
+    return this.signUpForm.get("password2")?.value
+  }
+
   ngOnInit(): void {
   }
 
@@ -36,14 +43,15 @@ export class UserRegisterComponent implements OnInit {
     if(this.signUpForm.valid){
       
       Swal.fire("Signup Successful", "", "success")
+
+      this.usersService.createUser(data).subscribe(()=>{
+        Swal.fire("User created Successful", "", "success")
+  
+        this.router.navigate(["/user/login"]);
+      })
     }else{
       Swal.fire("Form Invalid", "", "error")
     }
-    this.usersService.createUser(data).subscribe(()=>{
-      Swal.fire("User created Successful", "", "success")
-
-      this.router.navigate(["/user/login"]);
-    })
+   
   }
-
 }

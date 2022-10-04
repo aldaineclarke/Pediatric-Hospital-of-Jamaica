@@ -7,6 +7,11 @@
 
     
 }
+
+.errors .error{
+    color: red;
+    font-size: .7rem;
+}
 .form-fields {
     display:flex;
     flex-direction: column;

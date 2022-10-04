@@ -6,24 +6,27 @@
         <form class="appointment-form" [formGroup]="signUpForm" (submit)="submitForm()">
             <legend class="text-center text-2xl font-bold mb-3 text-dark-brown">Sign Up Form</legend>
             <div class="form-fields">
+                <div class="errors text-xs"*ngIf="signUpForm.invalid">
+                    <span  *ngIf="password != password2 && password.touched || password2.touched" class="error">Passwords do not match</span>
+                </div>
                 <div class="form-group">
                     <label>
                         <span>First Name</span>
-                        <input type="text" name="fname" formControlName="fname">
+                        <input type="text" name="fname" formControlName="fname" required>
                     </label>
                     <label>
                         <span>Last Name</span>
-                        <input type="text" name="lname" formControlName="lname">
+                        <input type="text" name="lname" formControlName="lname" required>
                     </label>
                 </div>
                 <label>
                     <span>Username</span>
-                    <input type="text" name="username" formControlName="username">
+                    <input type="text" name="username" formControlName="username" required>
                 </label>
                 
                 <label>
                     <span>Email</span>
-                    <input type="email" name="email" formControlName="email">
+                    <input type="email" name="email" formControlName="email" required>
                 </label>
                 <label>
                     <span>Phone ( 876-555-5555 )</span>
@@ -32,7 +35,7 @@
 
                 <label>
                     <span>Password</span>
-                    <input type="password" name="password" formControlName="password">
+                    <input type="password" name="password" formControlName="password" required>
                 </label>
                 <label>
                     <span>Confirm Password</span>
